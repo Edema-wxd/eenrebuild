@@ -86,7 +86,7 @@ function Header() {
             alt="EEN Logo"
             width={120}
             height={120}
-            className="w-auto h-16 lg:h-20"
+            className="w-auto h-16  "
             priority
           />
         </Link>

@@ -67,18 +67,18 @@ function Hero() {
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   <p className=" flex-col max-w-fit  flex text-sm text-gray-600 font-medium">
                     <span className=" text-3xl text-blue-600 font-bold">
-                      100%
+                      +20%
                     </span>{" "}
-                    of our projects are certified EDGE
+                    Energy Savings Guaranteed
                   </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className=" w-3 h-3 bg-blue-500 rounded-full animate-pulse animation-delay-1000"></div>
                   <p className=" flex-col flex text-sm text-gray-600 font-medium">
                     <span className="text-2xl text-green-600 font-bold">
-                      500+
+                      5+
                     </span>{" "}
-                    successful projects
+                    Years of Excellence
                   </p>
                 </div>
               </div>
