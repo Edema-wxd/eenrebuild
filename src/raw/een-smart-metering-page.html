@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Metering Solutions - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --electric-purple: #6B46C1;
+            --data-blue: #0066CC;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .metering-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(107, 70, 193, 0.05) 0%, rgba(0, 102, 204, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metering-hero::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(107, 70, 193, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: var(--electric-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--electric-purple);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--electric-purple);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .secondary-button:hover {
+            background: var(--electric-purple);
+            color: white;
+        }
+        
+        /* Data Visualization */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .dashboard-preview {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .dashboard-title {
+            font-weight: 700;
+            color: var(--granite-gray);
+        }
+        
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--mantis-green);
+        }
+        
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--mantis-green);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .power-meter {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .meter-display {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .meter-unit {
+            font-size: 1rem;
+            color: var(--granite-gray);
+            font-weight: 500;
+        }
+        
+        .meter-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .stat-box {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--electric-purple);
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--granite-gray);
+            margin-top: 0.25rem;
+        }
+        
+        /* Problem Section */
+        .visibility-problem {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .problem-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .comparison-card {
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .without-metering {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.05) 0%, rgba(255, 100, 100, 0.05) 100%);
+            border: 2px solid rgba(255, 0, 0, 0.1);
+        }
+        
+        .with-metering {
+            background: linear-gradient(135deg, rgba(115, 193, 103, 0.05) 0%, rgba(26, 163, 221, 0.05) 100%);
+            border: 2px solid rgba(115, 193, 103, 0.2);
+        }
+        
+        .comparison-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .comparison-list {
+            list-style: none;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        
+        .comparison-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .comparison-list li::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .without-metering .comparison-list li::before {
+            content: '✗';
+            color: #FF0000;
+        }
+        
+        .with-metering .comparison-list li::before {
+            content: '✓';
+            color: var(--mantis-green);
+        }
+        
+        /* Features Section */
+        .metering-features {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(107, 70, 193, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .feature-card p {
+            color: var(--granite-gray);
+            line-height: 1.6;
+        }
+        
+        /* Integration Section */
+        .solar-integration {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(107, 70, 193, 0.03) 100%);
+        }
+        
+        .integration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .integration-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .integration-text h3 span {
+            color: var(--electric-purple);
+        }
+        
+        .integration-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .integration-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .integration-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--solar-orange, #FFA500) 0%, var(--solar-yellow, #FFD700) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .integration-content-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--granite-gray);
+        }
+        
+        .integration-visual {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .energy-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2rem 0;
+        }
+        
+        .energy-source {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .source-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--solar-orange, #FFA500) 0%, var(--solar-yellow, #FFD700) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--electric-purple);
+            animation: flow 2s ease-in-out infinite;
+        }
+        
+        @keyframes flow {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .process-connector {
+            position: absolute;
+            top: 60px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            z-index: 0;
+        }
+        
+        .process-card {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .process-number {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border: 3px solid var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .process-card:hover .process-number {
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1);
+        }
+        
+        .process-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-step-number {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        
+        .process-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .process-description {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Benefits Section */
+        .metering-benefits {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .benefits-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(107, 70, 193, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--granite-gray);
+        }
+        
+        .benefit-metrics {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .metric-item {
+            text-align: center;
+            flex: 1;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--electric-purple);
+        }
+        
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--granite-gray);
+            margin-top: 0.25rem;
+        }
+        
+        /* CTA Section */
+        .metering-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--data-blue) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .metering-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .metering-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--electric-purple);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="#edge">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="metering-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="tech-badge">Solid Green Technology Partner</div>
+                <h1>Take Control with <span>Smart Energy Monitoring</span></h1>
+                <p>Real-time visibility into your electrical consumption, enabling data-driven decisions that reduce costs and optimize energy usage.</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="cta-button">Request Live Demo</a>
+                    <a href="#features" class="secondary-button">Explore Features</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="dashboard-preview">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">Energy Dashboard</div>
+                        <div class="live-indicator">
+                            <div class="live-dot"></div>
+                            <span>Live</span>
+                        </div>
+                    </div>
+                    <div class="power-meter">
+                        <div class="meter-display">15.7</div>
+                        <div class="meter-unit">kW Current Usage</div>
+                    </div>
+                    <div class="meter-stats">
+                        <div class="stat-box">
+                            <div class="stat-value">₦2,450</div>
+                            <div class="stat-label">Today's Cost</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">-23%</div>
+                            <div class="stat-label">vs Yesterday</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">432</div>
+                            <div class="stat-label">kWh Today</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visibility Problem Section -->
+    <section class="visibility-problem">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Hidden Cost of Energy Blindness</h2>
+                <p>Without real-time monitoring, businesses waste 30-40% more on electricity through inefficiencies they can't see.</p>
+            </div>
+            <div class="problem-comparison">
+                <div class="comparison-card without-metering">
+                    <div class="comparison-icon">🚫</div>
+                    <h3 class="comparison-title">Without Smart Metering</h3>
+                    <ul class="comparison-list">
+                        <li>Monthly bill surprises</li>
+                        <li>No idea when peak usage occurs</li>
+                        <li>Equipment failures go unnoticed</li>
+                        <li>Can't identify energy vampires</li>
+                        <li>No data for cost reduction</li>
+                        <li>Reactive maintenance only</li>
+                    </ul>
+                </div>
+                <div class="comparison-card with-metering">
+                    <div class="comparison-icon">✅</div>
+                    <h3 class="comparison-title">With Smart Metering</h3>
+                    <ul class="comparison-list">
+                        <li>Real-time cost tracking</li>
+                        <li>Identify peak usage patterns</li>
+                        <li>Instant alerts for anomalies</li>
+                        <li>Pinpoint energy waste sources</li>
+                        <li>Data-driven optimization</li>
+                        <li>Predictive maintenance possible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="metering-features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Advanced Monitoring Capabilities</h2>
+                <p>Our smart metering solution provides comprehensive insights into every aspect of your electrical consumption.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Monitor electricity usage as it happens with second-by-second updates and instant notifications for unusual consumption.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile App Access</h3>
+                    <p>Check your energy usage from anywhere, anytime. Get alerts, view reports, and control systems remotely.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Automated Reporting</h3>
+                    <p>Receive daily, weekly, and monthly reports showing consumption patterns, costs, and optimization opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Circuit-Level Monitoring</h3>
+                    <p>Track individual circuits and equipment to identify exactly where energy is being consumed in your facility.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Alerts</h3>
+                    <p>Set custom thresholds and receive immediate notifications for overconsumption, equipment issues, or unusual patterns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Predictive Analytics</h3>
+                    <p>AI-powered insights predict future consumption and identify opportunities for energy and cost savings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solar Integration Section -->
+    <section class="solar-integration">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perfect Integration with Solar Systems</h2>
+                <p>Maximize your renewable energy investment by monitoring both consumption and generation in one platform.</p>
+            </div>
+            <div class="integration-content">
+                <div class="integration-text">
+                    <h3>Complete <span>Energy Ecosystem</span> Visibility</h3>
+                    <p>When combined with our solar installations, smart metering provides a complete picture of your energy independence journey.</p>
+                    <div class="integration-benefits">
+                        <div class="integration-item">
+                            <div class="integration-icon">☀️</div>
+                            <div class="integration-content-text">
+                                <h4>Solar Production Tracking</h4>
+                                <p>Monitor real-time solar generation and see exactly how much grid power you're offsetting.</p>
+                            </div>
+                        </div>
+                        <div class="integration-item">
+                            <div class="integration-icon">🔋</div>
+                            <div class="integration-content-text">
+                                <h4>Battery Performance</h4>
+                                <p>Track battery charge levels, cycles, and health to optimize storage utilization.</p>
+                            </div>
+                        </div>
+                        <div class="integration-item">
+                            <div class="integration-icon">💰</div>
+                            <div class="integration-content-text">
+                                <h4>ROI Calculations</h4>
+                                <p>See real-time savings from solar and calculate exact payback periods with accurate data.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="solar-energy.html" class="cta-button">Explore Solar Solutions</a>
+                </div>
+                <div class="integration-visual">
+                    <h4 style="margin-bottom: 2rem; color: var(--granite-gray);">Unified Energy Management</h4>
+                    <div class="energy-flow">
+                        <div class="energy-source">
+                            <div class="source-icon">☀️</div>
+                            <p>Solar Generation</p>
+                            <strong>8.5 kW</strong>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="energy-source">
+                            <div class="source-icon" style="background: linear-gradient(135deg, var(--electric-purple) 0%, var(--data-blue) 100%);">📊</div>
+                            <p>Smart Meter</p>
+                            <strong>Monitoring</strong>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="energy-source">
+                            <div class="source-icon" style="background: linear-gradient(135deg, var(--mantis-green) 0%, var(--battery-blue) 100%);">🏢</div>
+                            <p>Consumption</p>
+                            <strong>6.2 kW</strong>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--granite-gray);">
+                        Net Grid Independence: <strong style="color: var(--mantis-green);">73%</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple Installation Process</h2>
+                <p>From assessment to insights, we handle everything to get you monitoring in days, not weeks.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-connector"></div>
+                <div class="process-card">
+                    <div class="process-number">
+                        <div class="process-icon">🔍</div>
+                        <div class="process-step-number">Step 1</div>
+                    </div>
+                    <h3 class="process-title">Site Assessment</h3>
+                    <p class="process-description">Evaluate your electrical infrastructure and identify monitoring points</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">
+                        <div class="process-icon">📐</div>
+                        <div class="process-step-number">Step 2</div>
+                    </div>
+                    <h3 class="process-title">System Design</h3>
+                    <p class="process-description">Custom monitoring solution designed for your specific needs</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">
+                        <div class="process-icon">🔧</div>
+                        <div class="process-step-number">Step 3</div>
+                    </div>
+                    <h3 class="process-title">Installation</h3>
+                    <p class="process-description">Professional installation with minimal disruption to operations</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-number">
+                        <div class="process-icon">📱</div>
+                        <div class="process-step-number">Step 4</div>
+                    </div>
+                    <h3 class="process-title">Go Live</h3>
+                    <p class="process-description">System activation, app setup, and training for your team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="metering-benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Measurable Business Impact</h2>
+                <p>Smart metering delivers immediate visibility that translates into real savings and operational improvements.</p>
+            </div>
+            <div class="benefits-showcase">
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">💰</div>
+                        <h3 class="benefit-title">Cost Reduction</h3>
+                    </div>
+                    <p>Identify and eliminate energy waste, optimize usage patterns, and reduce peak demand charges.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">30%</div>
+                            <div class="metric-label">Average Savings</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">6 mo</div>
+                            <div class="metric-label">Typical ROI</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-header">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3 class="benefit-title">Equipment Protection</h3>
+                    </div>
+                    <p>Detect electrical anomalies early, prevent equipment failures, and extend asset lifespans.</p>
+                    <div class="benefit-metrics">
+                        <div class="metric-item">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Failure Prevention</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">2x</div>
+                            <div class="metric-label">Equipment Life</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="metering-cta">
+        <h2>See Your Energy Like Never Before</h2>
+        <p>Join forward-thinking Nigerian businesses using data to drive efficiency and reduce costs.</p>
+        <a href="#contact" class="cta-button cta-white">Schedule Your Smart Meter Demo</a>
+    </section>
+</body>
+</html>

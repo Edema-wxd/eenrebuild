@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .contact-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(26, 163, 221, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Quick Contact Cards */
+        .quick-contact {
+            padding: 5rem 0;
+            background: white;
+            margin-top: -3rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .contact-card p {
+            color: var(--granite-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-link {
+            color: var(--battery-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--mantis-green);
+            transform: translateX(5px);
+        }
+        
+        /* Main Contact Section */
+        .contact-main {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        /* Contact Form */
+        .contact-form-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-header {
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .form-header p {
+            color: var(--granite-gray);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+            font-size: 0.9rem;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--battery-blue);
+            box-shadow: 0 0 0 3px rgba(26, 163, 221, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .service-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .service-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--battery-blue);
+        }
+        
+        .service-checkbox label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        .form-submit {
+            margin-top: 1rem;
+        }
+        
+        /* Contact Information */
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--battery-blue);
+        }
+        
+        .info-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--granite-gray);
+        }
+        
+        .info-details p {
+            color: var(--granite-gray);
+            font-size: 0.95rem;
+        }
+        
+        .info-details a {
+            color: var(--battery-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .info-details a:hover {
+            color: var(--mantis-green);
+        }
+        
+        /* Team Contacts */
+        .team-contacts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .team-member-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .member-name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--granite-gray);
+        }
+        
+        .member-title {
+            font-size: 0.85rem;
+            color: var(--battery-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .member-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .member-contact-link {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--granite-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-contact-link:hover {
+            background: var(--battery-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .map-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .location-info h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .location-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.1) 0%, rgba(115, 193, 103, 0.1) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--battery-blue);
+        }
+        
+        .map-placeholder {
+            background: var(--light-gray);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--granite-gray);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.03) 0%, rgba(115, 193, 103, 0.03) 100%);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+        
+        .faq-question::before {
+            content: 'Q:';
+            color: var(--battery-blue);
+            flex-shrink: 0;
+        }
+        
+        .faq-answer {
+            color: var(--granite-gray);
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .contact-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .contact-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--battery-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-contacts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="edge.html">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <h1>Let's Build a <span>Sustainable Future</span> Together</h1>
+            <p>Ready to transform your building? Our team of experts is here to guide you through every step of your sustainability journey.</p>
+        </div>
+    </section>
+
+    <!-- Quick Contact Cards -->
+    <section class="quick-contact">
+        <div class="container">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our experts</p>
+                    <a href="tel:+2348099719533" class="contact-link">+234 809 971 9533 →</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email Us</h3>
+                    <p>Get detailed information via email</p>
+                    <a href="mailto:info@eenconsult.com.ng" class="contact-link">info@eenconsult.com.ng →</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <p>Quick questions? Chat with us</p>
+                    <a href="https://wa.me/2348099719533" class="contact-link">Start Chat →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <div class="form-header">
+                        <h2>Get Your Free Consultation</h2>
+                        <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">First Name *</label>
+                                <input type="text" id="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="company">Company/Organization</label>
+                            <input type="text" id="company" class="form-input">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="projectType">Project Type *</label>
+                            <select id="projectType" class="form-select" required>
+                                <option value="">Select project type</option>
+                                <option value="new-construction">New Construction</option>
+                                <option value="retrofit">Retrofit/Renovation</option>
+                                <option value="consultation">Consultation Only</option>
+                                <option value="edge-certification">EDGE Certification</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Services Interested In *</label>
+                            <div class="service-options">
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="water" name="services" value="water-solutions">
+                                    <label for="water">Water Solutions (Neoperl)</label>
+                                </div>
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="solar" name="services" value="solar-energy">
+                                    <label for="solar">Solar Energy Systems</label>
+                                </div>
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="metering" name="services" value="smart-metering">
+                                    <label for="metering">Smart Metering</label>
+                                </div>
+                                <div class="service-checkbox">
+                                    <input type="checkbox" id="edge" name="services" value="edge-certification">
+                                    <label for="edge">EDGE Certification</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="message">Project Details</label>
+                            <textarea id="message" class="form-textarea" placeholder="Tell us about your project, building size, location, and any specific requirements..."></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info-section">
+                    <div class="info-card">
+                        <h3>📍 Office Information</h3>
+                        <div class="info-item">
+                            <div class="info-icon">🏢</div>
+                            <div class="info-details">
+                                <h4>Head Office</h4>
+                                <p>Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">🕐</div>
+                            <div class="info-details">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 8:00 AM - 6:00 PM<br>
+                                Saturday: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📧</div>
+                            <div class="info-details">
+                                <h4>General Inquiries</h4>
+                                <p><a href="mailto:info@eenconsult.com.ng">info@eenconsult.com.ng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>👥 Direct Team Contacts</h3>
+                        <div class="team-contacts">
+                            <div class="team-member-card">
+                                <div class="member-avatar">OU</div>
+                                <div class="member-name">Obinna Ukwa</div>
+                                <div class="member-title">Managing Director</div>
+                                <div class="member-contacts">
+                                    <a href="mailto:obinna@eenconsult.com.ng" class="member-contact-link">✉</a>
+                                    <a href="tel:+2348099719533" class="member-contact-link">📞</a>
+                                </div>
+                            </div>
+                            <div class="team-member-card">
+                                <div class="member-avatar">UG</div>
+                                <div class="member-name">Unoma Grant</div>
+                                <div class="member-title">Chief Executive Officer</div>
+                                <div class="member-contacts">
+                                    <a href="mailto:unoma@eenconsult.com.ng" class="member-contact-link">✉</a>
+                                    <a href="tel:+2348094563216" class="member-contact-link">📞</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🚀 Quick Links</h3>
+                        <div class="info-item">
+                            <div class="info-icon">📊</div>
+                            <div class="info-details">
+                                <h4>Calculate Your Savings</h4>
+                                <p><a href="#calculator">Use our ROI calculator</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📄</div>
+                            <div class="info-details">
+                                <h4>Download Resources</h4>
+                                <p><a href="#resources">Product catalogs & guides</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <div class="location-info">
+                    <h3>Visit Our Office</h3>
+                    <div class="location-details">
+                        <div class="location-item">
+                            <div class="location-icon">📍</div>
+                            <div>
+                                <strong>Lagos Office</strong><br>
+                                Lagos, Nigeria
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-icon">🚗</div>
+                            <div>
+                                <strong>Parking Available</strong><br>
+                                Free visitor parking on-site
+                            </div>
+                        </div>
+                        <div class="location-item">
+                            <div class="location-icon">🚌</div>
+                            <div>
+                                <strong>Public Transport</strong><br>
+                                Accessible by major bus routes
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button">Get Directions</a>
+                </div>
+                <div class="map-placeholder">
+                    <p>Interactive Map Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about our services and process.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How long does EDGE certification take?</div>
+                    <div class="faq-answer">The EDGE certification process typically takes 6-8 weeks from design submission to final certification, depending on project complexity and documentation readiness.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you provide installation services?</div>
+                    <div class="faq-answer">Yes, we provide complete installation services for all our products including Neoperl water fixtures, solar systems, and smart meters through our certified technicians.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What areas do you service?</div>
+                    <div class="faq-answer">We service all of Nigeria with our headquarters in Lagos. For large projects, we can mobilize teams nationwide.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How much can I save with your solutions?</div>
+                    <div class="faq-answer">Savings vary by solution: Water solutions save up to 70%, solar systems can reduce electricity costs by 95%, and EDGE certification typically results in 20-30% overall operational savings.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer financing options?</div>
+                    <div class="faq-answer">We work with financial partners to provide flexible payment options for larger projects. Contact us to discuss available financing solutions.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What warranty do you provide?</div>
+                    <div class="faq-answer">We offer comprehensive warranties: 5 years on solar installations, 10 years on Neoperl products, and ongoing support for all EDGE certified projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-cta">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Don't wait to begin your sustainability transformation. Every day of delay is a day of lost savings.</p>
+        <a href="#quick-contact" class="cta-button cta-white">Contact Us Now</a>
+    </section>
+</body>
+</html>

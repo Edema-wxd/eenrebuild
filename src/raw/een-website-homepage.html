@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEN Consulting - Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            color: var(--mantis-green);
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+            font-weight: 400;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--battery-blue);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--battery-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .secondary-button:hover {
+            background: var(--battery-blue);
+            color: white;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--battery-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-graphic {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(26, 163, 221, 0.3);
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-card-1 {
+            top: 20%;
+            right: -50px;
+            animation-delay: 0s;
+        }
+        
+        .floating-card-2 {
+            bottom: 20%;
+            left: -50px;
+            animation-delay: 1s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mantis-green);
+        }
+        
+        .card-label {
+            font-size: 0.8rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-label {
+            color: var(--battery-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            font-weight: 400;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .service-card p {
+            color: var(--granite-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-link {
+            color: var(--battery-blue);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .service-link:hover {
+            gap: 1rem;
+        }
+        
+        /* EDGE Section */
+        .edge-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+        }
+        
+        .edge-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .edge-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .edge-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .edge-feature {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--mantis-green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .edge-visual {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .edge-process {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--battery-blue);
+            margin: 0 auto 1rem;
+        }
+        
+        .process-connector {
+            flex: 0.5;
+            height: 2px;
+            background: var(--light-gray);
+            margin-top: -25px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--battery-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+        
+        /* Partners Section */
+        .partners {
+            padding: 3rem 0;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .partners-label {
+            font-weight: 600;
+            color: var(--granite-gray);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .partner-logo {
+            height: 40px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#edge">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Building a <span>Sustainable</span> Nigeria Through Energy Efficiency</h1>
+                <p>West Africa's exclusive Neoperl distributor and certified EDGE experts, leading the transformation to green buildings.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button">Start Your Green Journey</a>
+                    <a href="#calculator" class="secondary-button">Calculate Savings</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">20%+</div>
+                        <div class="stat-label">Energy Savings Guaranteed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">45%</div>
+                        <div class="stat-label">Nigerians with Power Access</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <div class="floating-card floating-card-1">
+                        <div class="card-icon"></div>
+                        <div class="card-value">30%</div>
+                        <div class="card-label">Water Saved</div>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <div class="card-icon"></div>
+                        <div class="card-value">₦2.5M</div>
+                        <div class="card-label">Annual Savings</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="section-header">
+            <div class="section-label">Our Services</div>
+            <h2 class="section-title">Comprehensive Green Solutions</h2>
+            <p class="section-subtitle">From water conservation to renewable energy, we provide end-to-end sustainability solutions.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Water Solutions</h3>
+                <p>Premium Neoperl flow regulators and aerators reducing water consumption by up to 70% without compromising performance.</p>
+                <a href="#" class="service-link">Explore Products →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">☀️</div>
+                <h3>Solar Energy Systems</h3>
+                <p>Complete solar installations for residential and commercial properties with 5-year warranty and expert maintenance.</p>
+                <a href="#" class="service-link">View Solutions →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Smart Metering</h3>
+                <p>Advanced monitoring systems to track and optimize your energy consumption in real-time for maximum efficiency.</p>
+                <a href="#" class="service-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>EDGE Certification</h3>
+                <p>Expert guidance through the IFC EDGE green building certification process, ensuring 20%+ resource efficiency.</p>
+                <a href="#" class="service-link">Get Certified →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDGE Section -->
+    <section class="edge-section">
+        <div class="edge-container">
+            <div class="edge-content">
+                <h2>Why EDGE Certification?</h2>
+                <p>EDGE (Excellence in Design for Greater Efficiencies) is the green building certification designed specifically for emerging markets. As certified EDGE experts, we guide you through the entire process.</p>
+                <div class="edge-features">
+                    <div class="edge-feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <h4>Fast & Affordable</h4>
+                            <p>Streamlined certification process at a fraction of the cost of other green standards.</p>
+                        </div>
+                    </div>
+                    <div class="edge-feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <h4>Proven ROI</h4>
+                            <p>Increased property values and significantly lower utility bills from day one.</p>
+                        </div>
+                    </div>
+                    <div class="edge-feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <h4>ESG Compliance</h4>
+                            <p>Meet international sustainability standards and attract ESG-conscious investors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="edge-visual">
+                <h3>EDGE Certification Process</h3>
+                <div class="edge-process">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <p>Design</p>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <p>Audit</p>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <p>Certify</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Build Green?</h2>
+        <p>Join Nigeria's sustainability revolution with expert guidance every step of the way.</p>
+        <a href="#contact" class="cta-button cta-white">Schedule a Consultation</a>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="partners-container">
+            <div class="partners-label">Trusted Partners</div>
+            <div class="partners-grid">
+                <div class="partner-logo" style="font-weight: 700; font-size: 1.5rem; color: var(--granite-gray);">NEOPERL</div>
+                <div class="partner-logo" style="font-weight: 700; font-size: 1.5rem; color: var(--granite-gray);">IFC | World Bank</div>
+                <div class="partner-logo" style="font-weight: 700; font-size: 1.5rem; color: var(--granite-gray);">SOLID GREEN</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

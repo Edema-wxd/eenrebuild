@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EEN Consulting - Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation (same as homepage) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(115, 193, 103, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--granite-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .mv-card {
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+        }
+        
+        .mv-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mv-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .mv-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--granite-gray);
+        }
+        
+        /* Story Section */
+        .our-story {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.03) 0%, rgba(115, 193, 103, 0.03) 100%);
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .story-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+        
+        .story-text h2 span {
+            color: var(--mantis-green);
+        }
+        
+        .story-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+            line-height: 1.8;
+        }
+        
+        .story-highlight {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--mantis-green);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .story-highlight p {
+            font-style: italic;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .story-visual {
+            position: relative;
+        }
+        
+        .story-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-stats {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--battery-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Values Section */
+        .our-values {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.1) 0%, rgba(115, 193, 103, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover .value-icon {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            color: white;
+        }
+        
+        .value-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .value-card p {
+            color: var(--granite-gray);
+            line-height: 1.6;
+        }
+        
+        /* Team Section */
+        .our-team {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.03) 0%, rgba(115, 193, 103, 0.03) 100%);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: 800;
+        }
+        
+        .member-info {
+            padding: 2rem;
+        }
+        
+        .member-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .member-title {
+            color: var(--battery-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .member-info p {
+            color: var(--granite-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .member-contact {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            color: var(--granite-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: var(--battery-blue);
+            color: white;
+        }
+        
+        /* CTA Section */
+        .about-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .about-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .about-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--battery-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#about" class="active">About</a>
+                <a href="#services">Services</a>
+                <a href="#edge">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>About EEN Consulting</h1>
+        <p>Leading Nigeria's transformation to sustainable buildings through innovation, expertise, and passion.</p>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">🎯</div>
+                    <h2>Our Mission</h2>
+                    <p>To provide world-class consulting and implementation of energy efficiency interventions for the Nigerian Market, making sustainable development accessible and achievable for all.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">🌟</div>
+                    <h2>Our Vision</h2>
+                    <p>To ensure that energy is efficiently implemented and used in the Nigerian market while boosting economic growth and creating a sustainable future for generations to come.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Building a <span>Sustainable Future</span> for Nigeria</h2>
+                    <p>EEN Consulting is a young and vibrant energy consulting and implementation company whose partners have vast experience in the built environment, supply chain, project management, and medical fields.</p>
+                    <p>We are passionate about driving sustainability in the Nigerian built environment. We believe that for the future to thrive, living life needs to be sustainable, and sustainability should start in our homes, our offices, our schools, and our hospitals.</p>
+                    <div class="story-highlight">
+                        <p>"If we build sustainably, then we begin to live sustainably, and we give the future a chance."</p>
+                    </div>
+                    <p>As West Africa's exclusive distributor of Neoperl products and certified EDGE experts, we bring international best practices and cutting-edge solutions to the Nigerian market, ensuring our clients achieve their sustainability goals efficiently and cost-effectively.</p>
+                </div>
+                <div class="story-visual">
+                    <div class="story-image">
+                        <div style="text-align: center; color: white;">
+                            <h3 style="font-size: 2rem; margin-bottom: 1rem;">10+ Years</h3>
+                            <p style="font-size: 1.2rem;">of Excellence</p>
+                        </div>
+                    </div>
+                    <div class="story-stats">
+                        <div class="stat">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50M+</div>
+                            <div class="stat-label">Liters Water Saved</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-label">Average Energy Reduction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="our-values">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide every project, every decision, and every relationship we build.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sustainability First</h3>
+                    <p>Every solution we provide is designed to create lasting positive impact on the environment and economy.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek and implement cutting-edge technologies and methodologies to deliver superior results.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Partnership</h3>
+                    <p>We work closely with our clients, treating their goals as our own and their success as our mission.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⭐</div>
+                    <h3>Excellence</h3>
+                    <p>We maintain the highest standards in everything we do, from consultation to implementation and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="our-team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Leadership</h2>
+                <p>Certified EDGE Experts passionate about Nigeria's sustainable development.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">OU</div>
+                    <div class="member-info">
+                        <h3>Obinna Ukwa</h3>
+                        <div class="member-title">Co-Founder / Managing Director</div>
+                        <p>Certified EDGE Expert with a background in Mechanical & Civil Engineering. Obinna brings deep technical expertise and a passion for sustainable building solutions to every project.</p>
+                        <div class="member-contact">
+                            <a href="mailto:obinna@eenconsult.com.ng" class="contact-link">✉</a>
+                            <a href="tel:+2348099719533" class="contact-link">📞</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">UG</div>
+                    <div class="member-info">
+                        <h3>Unoma Grant</h3>
+                        <div class="member-title">Co-Founder / Chief Executive Officer</div>
+                        <p>Certified EDGE Expert with a background in Mechanical Engineering & Business Management. Unoma combines technical knowledge with strategic business acumen to drive EEN's growth.</p>
+                        <div class="member-contact">
+                            <a href="mailto:unoma@eenconsult.com.ng" class="contact-link">✉</a>
+                            <a href="tel:+2348094563216" class="contact-link">📞</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta">
+        <h2>Ready to Join Nigeria's Green Revolution?</h2>
+        <p>Let's work together to create sustainable, efficient, and profitable buildings.</p>
+        <a href="#contact" class="cta-button cta-white">Start a Conversation</a>
+    </section>
+</body>
+</html>

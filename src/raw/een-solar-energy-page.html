@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Systems - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --solar-orange: #FFA500;
+            --solar-yellow: #FFD700;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .solar-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 165, 0, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solar-hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .power-badge {
+            display: inline-block;
+            background: var(--solar-orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--solar-orange);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--solar-orange);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .secondary-button:hover {
+            background: var(--solar-orange);
+            color: white;
+        }
+        
+        .power-stats {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .power-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .power-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--solar-orange);
+            margin-bottom: 0.5rem;
+        }
+        
+        .power-label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Solar Visual */
+        .solar-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .solar-animation {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        
+        .sun-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--solar-yellow) 0%, var(--solar-orange) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .energy-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .energy-ring:nth-child(2) {
+            width: 280px;
+            height: 280px;
+            animation-delay: 0.5s;
+        }
+        
+        .energy-ring:nth-child(3) {
+            width: 360px;
+            height: 360px;
+            animation-delay: 1s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        /* Problem Section */
+        .power-challenge {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .challenge-card {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .challenge-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .challenge-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .challenge-stat {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--solar-orange);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Solutions Section */
+        .solar-solutions {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .solutions-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .tab-button {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--granite-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .tab-button:hover {
+            border-color: var(--solar-orange);
+        }
+        
+        .solutions-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .solution-details h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--granite-gray);
+        }
+        
+        .feature-content p {
+            color: var(--granite-gray);
+            font-size: 0.95rem;
+        }
+        
+        .solution-visual {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .package-card {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .package-card.featured {
+            border-color: var(--solar-orange);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 165, 0, 0.05) 100%);
+        }
+        
+        .package-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .package-power {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--solar-orange);
+            margin-bottom: 1rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            text-align: left;
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        .package-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        /* Technology Section */
+        .solar-technology {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .tech-card {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tech-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+        }
+        
+        .tech-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .tech-specs {
+            list-style: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .tech-specs li {
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+        
+        .spec-label {
+            color: var(--granite-gray);
+        }
+        
+        .spec-value {
+            font-weight: 600;
+            color: var(--solar-orange);
+        }
+        
+        /* Process Section */
+        .installation-process {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 165, 0, 0.03) 100%);
+        }
+        
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .timeline-connector {
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            z-index: 0;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .step-icon {
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1);
+        }
+        
+        .step-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .step-duration {
+            font-size: 0.85rem;
+            color: var(--solar-orange);
+            font-weight: 600;
+        }
+        
+        /* Benefits Section */
+        .solar-benefits {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .benefits-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .benefits-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .savings-calculator {
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(255, 165, 0, 0.3);
+        }
+        
+        .calc-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .calc-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .calc-label {
+            font-weight: 500;
+        }
+        
+        .calc-value {
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        
+        .calc-total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-align: center;
+        }
+        
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .benefit-content h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        /* CTA Section */
+        .solar-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--solar-orange) 0%, var(--solar-yellow) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .solar-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .solar-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--solar-orange);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="#edge">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="solar-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="power-badge">24/7 Reliable Power</div>
+                <h1>Harness the Power of the <span>Nigerian Sun</span></h1>
+                <p>Professional solar installations with premium components and up to 5-year warranty, giving you energy independence and massive savings.</p>
+                <div class="hero-buttons">
+                    <a href="#packages" class="cta-button">View Solar Packages</a>
+                    <a href="#calculator" class="secondary-button">Calculate Your Savings</a>
+                </div>
+                <div class="power-stats">
+                    <div class="power-stat">
+                        <div class="power-value">45%</div>
+                        <div class="power-label">Nigerians with Grid Access</div>
+                    </div>
+                    <div class="power-stat">
+                        <div class="power-value">₦50k+</div>
+                        <div class="power-label">Monthly Generator Costs</div>
+                    </div>
+                    <div class="power-stat">
+                        <div class="power-value">95%</div>
+                        <div class="power-label">Energy Independence</div>
+                    </div>
+                </div>
+            </div>
+            <div class="solar-visual">
+                <div class="solar-animation">
+                    <div class="energy-ring"></div>
+                    <div class="energy-ring"></div>
+                    <div class="energy-ring"></div>
+                    <div class="sun-icon">☀️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Power Challenge Section -->
+    <section class="power-challenge">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nigeria's Power Challenge</h2>
+                <p>With unreliable grid supply and rising fuel costs, solar power is no longer a luxury—it's a necessity for homes and businesses.</p>
+            </div>
+            <div class="challenge-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">⚡</div>
+                    <h3>Grid Instability</h3>
+                    <div class="challenge-stat">4-8 hrs</div>
+                    <p>Average daily power supply in many areas</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">⛽</div>
+                    <h3>Fuel Costs</h3>
+                    <div class="challenge-stat">₦850+</div>
+                    <p>Per liter of diesel, increasing monthly</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">🏭</div>
+                    <h3>Carbon Emissions</h3>
+                    <div class="challenge-stat">2.5 tons</div>
+                    <p>CO2 per year from average generator use</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solar-solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tailored Solar Solutions</h2>
+                <p>From residential homes to large commercial facilities, we design and install systems that meet your specific power needs.</p>
+            </div>
+            
+            <div class="solutions-tabs">
+                <button class="tab-button active">Residential</button>
+                <button class="tab-button">Commercial</button>
+                <button class="tab-button">Industrial</button>
+            </div>
+            
+            <div class="solutions-content">
+                <div class="solution-details">
+                    <h3>Residential Solar Systems</h3>
+                    <p>Complete home solar solutions designed to eliminate dependency on generators and provide 24/7 clean power.</p>
+                    <div class="solution-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🏠</div>
+                            <div class="feature-content">
+                                <h4>Whole Home Coverage</h4>
+                                <p>Power all appliances including ACs, refrigerators, and electronics</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔋</div>
+                            <div class="feature-content">
+                                <h4>Battery Backup</h4>
+                                <p>Lithium-ion batteries for overnight power and cloudy days</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-content">
+                                <h4>Smart Monitoring</h4>
+                                <p>Track energy production and consumption via mobile app</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#quote" class="cta-button">Get Free Home Assessment</a>
+                </div>
+                
+                <div class="solution-visual">
+                    <div class="package-card featured">
+                        <div class="package-name">Popular Home Package</div>
+                        <div class="package-power">5kVA</div>
+                        <ul class="package-features">
+                            <li>8 x 450W Solar Panels</li>
+                            <li>5kVA Hybrid Inverter</li>
+                            <li>4 x 200Ah Lithium Batteries</li>
+                            <li>Complete Installation</li>
+                            <li>5 Year Warranty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="solar-technology">
+        <div class="container">
+            <div class="section-header">
+                <h2>Premium Components</h2>
+                <p>We use only top-tier components to ensure maximum efficiency and longevity of your solar investment.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">☀️</div>
+                    <h3>Solar Panels</h3>
+                    <p>High-efficiency monocrystalline panels with 25-year performance warranty</p>
+                    <ul class="tech-specs">
+                        <li>
+                            <span class="spec-label">Efficiency</span>
+                            <span class="spec-value">21%+</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Power Output</span>
+                            <span class="spec-value">450W-550W</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Warranty</span>
+                            <span class="spec-value">25 Years</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">⚡</div>
+                    <h3>Hybrid Inverters</h3>
+                    <p>Smart inverters that seamlessly switch between solar, battery, and grid power</p>
+                    <ul class="tech-specs">
+                        <li>
+                            <span class="spec-label">Types</span>
+                            <span class="spec-value">Basic & Hybrid</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Capacity</span>
+                            <span class="spec-value">1kVA-100kVA</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Warranty</span>
+                            <span class="spec-value">5 Years</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <div class="tech-icon">🔋</div>
+                    <h3>Battery Storage</h3>
+                    <p>Advanced battery systems for reliable power storage and overnight usage</p>
+                    <ul class="tech-specs">
+                        <li>
+                            <span class="spec-label">Types</span>
+                            <span class="spec-value">Lithium & Gel</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Lifespan</span>
+                            <span class="spec-value">5,000+ Cycles</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">DOD</span>
+                            <span class="spec-value">80-95%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Process -->
+    <section class="installation-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Installation Process</h2>
+                <p>From assessment to commissioning, our certified team ensures a smooth installation experience.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-connector"></div>
+                <div class="process-step">
+                    <div class="step-icon">📋</div>
+                    <div class="step-title">Site Assessment</div>
+                    <div class="step-duration">Day 1</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">📐</div>
+                    <div class="step-title">System Design</div>
+                    <div class="step-duration">Days 2-3</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🚚</div>
+                    <div class="step-title">Equipment Delivery</div>
+                    <div class="step-duration">Day 5</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">🔧</div>
+                    <div class="step-title">Installation</div>
+                    <div class="step-duration">Days 6-8</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">✅</div>
+                    <div class="step-title">Commissioning</div>
+                    <div class="step-duration">Day 9</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="solar-benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Solar Advantage</h2>
+                <p>Investing in solar power transforms your energy costs into long-term savings and independence.</p>
+            </div>
+            <div class="benefits-showcase">
+                <div class="benefits-visual">
+                    <div class="savings-calculator">
+                        <h3 class="calc-title">Typical Monthly Savings</h3>
+                        <div class="calc-item">
+                            <span class="calc-label">Generator Fuel</span>
+                            <span class="calc-value">₦60,000</span>
+                        </div>
+                        <div class="calc-item">
+                            <span class="calc-label">Maintenance</span>
+                            <span class="calc-value">₦15,000</span>
+                        </div>
+                        <div class="calc-item">
+                            <span class="calc-label">Grid Bills</span>
+                            <span class="calc-value">₦25,000</span>
+                        </div>
+                        <div class="calc-total">
+                            Total Savings: ₦100,000/month
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-content">
+                            <h4>Immediate Cost Savings</h4>
+                            <p>Eliminate generator fuel costs and reduce electricity bills by up to 95% from day one.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔇</div>
+                        <div class="benefit-content">
+                            <h4>Silent Operation</h4>
+                            <p>Enjoy peaceful, noise-free power generation unlike traditional generators.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌍</div>
+                        <div class="benefit-content">
+                            <h4>Environmental Impact</h4>
+                            <p>Reduce carbon footprint by 2.5 tons annually while contributing to a cleaner Nigeria.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-content">
+                            <h4>Property Value Increase</h4>
+                            <p>Solar installations increase property value by 15-20% on average.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="solar-cta">
+        <h2>Start Your Solar Journey Today</h2>
+        <p>Join thousands of Nigerians already enjoying reliable, clean, and cost-effective solar power.</p>
+        <a href="#contact" class="cta-button cta-white">Get Your Free Solar Assessment</a>
+    </section>
+</body>
+</html>

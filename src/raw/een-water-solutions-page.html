@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Solutions - Neoperl Products | EEN Consulting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --water-blue: #00A8E8;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation (same as homepage) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .water-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(0, 168, 232, 0.05) 0%, rgba(26, 163, 221, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .water-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 168, 232, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            color: var(--water-blue);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--mantis-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--water-blue);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--water-blue);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .secondary-button:hover {
+            background: var(--water-blue);
+            color: white;
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .water-animation {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flow-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            height: 100%;
+        }
+        
+        .flow-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .flow-visual {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .water-drop {
+            width: 4px;
+            height: 20px;
+            background: var(--water-blue);
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            opacity: 0;
+            animation: waterDrop 2s linear infinite;
+        }
+        
+        .standard-flow .water-drop:nth-child(1) { left: 45%; animation-delay: 0s; }
+        .standard-flow .water-drop:nth-child(2) { left: 50%; animation-delay: 0.2s; }
+        .standard-flow .water-drop:nth-child(3) { left: 55%; animation-delay: 0.4s; }
+        .standard-flow .water-drop:nth-child(4) { left: 47%; animation-delay: 0.6s; }
+        .standard-flow .water-drop:nth-child(5) { left: 53%; animation-delay: 0.8s; }
+        
+        .neoperl-flow .water-drop:nth-child(1) { left: 48%; animation-delay: 0s; }
+        .neoperl-flow .water-drop:nth-child(2) { left: 52%; animation-delay: 0.5s; }
+        
+        @keyframes waterDrop {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        .flow-label {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .flow-rate {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--water-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .flow-cost {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Problem Solution Section */
+        .problem-solution {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .problem-card {
+            background: linear-gradient(135deg, rgba(0, 168, 232, 0.05) 0%, rgba(26, 163, 221, 0.05) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .problem-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .problem-stat {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--water-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Product Categories */
+        .product-categories {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, var(--water-blue) 0%, var(--battery-blue) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .flow-range {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .category-body {
+            padding: 2rem;
+        }
+        
+        .savings-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+        
+        .savings-label {
+            font-weight: 600;
+            color: var(--granite-gray);
+        }
+        
+        .savings-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--mantis-green);
+        }
+        
+        .category-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .category-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--mantis-green);
+            font-weight: bold;
+        }
+        
+        /* Technology Showcase */
+        .technology-showcase {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .tech-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tech-visual {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(0, 168, 232, 0.1) 0%, rgba(26, 163, 221, 0.1) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .tech-card p {
+            color: var(--granite-gray);
+            line-height: 1.6;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(115, 193, 103, 0.05) 0%, rgba(26, 163, 221, 0.05) 100%);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--mantis-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-label {
+            font-weight: 600;
+            color: var(--granite-gray);
+        }
+        
+        /* Case Studies Preview */
+        .case-studies {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .case-card {
+            background: var(--light-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .case-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--water-blue) 0%, var(--battery-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .case-content {
+            padding: 2rem;
+        }
+        
+        .case-type {
+            color: var(--water-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .case-metrics {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric {
+            flex: 1;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--mantis-green);
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--granite-gray);
+        }
+        
+        /* CTA Section */
+        .water-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--water-blue) 0%, var(--battery-blue) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .water-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .water-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--water-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="#services" class="active">Services</a>
+                <a href="#edge">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="water-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge">West Africa Exclusive Distributor</div>
+                <h1>Save Up to <span>70% Water</span> Without Compromising Performance</h1>
+                <p>Premium Neoperl® flow regulators and aerators delivering exceptional water savings while maintaining superior user experience.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="cta-button">View Products</a>
+                    <a href="#calculator" class="secondary-button">Calculate Your Savings</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="water-animation">
+                    <div class="flow-comparison">
+                        <div class="flow-item">
+                            <div class="flow-label">Standard Tap</div>
+                            <div class="flow-visual standard-flow">
+                                <div class="water-drop"></div>
+                                <div class="water-drop"></div>
+                                <div class="water-drop"></div>
+                                <div class="water-drop"></div>
+                                <div class="water-drop"></div>
+                            </div>
+                            <div>
+                                <div class="flow-rate">15 L/min</div>
+                                <div class="flow-cost">₦450/month</div>
+                            </div>
+                        </div>
+                        <div class="flow-item">
+                            <div class="flow-label">With Neoperl</div>
+                            <div class="flow-visual neoperl-flow">
+                                <div class="water-drop"></div>
+                                <div class="water-drop"></div>
+                            </div>
+                            <div>
+                                <div class="flow-rate">4.5 L/min</div>
+                                <div class="flow-cost">₦135/month</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Solution Section -->
+    <section class="problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Water Challenge in Nigeria</h2>
+                <p>With increasing water scarcity and rising pumping costs, efficient water management is no longer optional—it's essential for sustainable development.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">💧</div>
+                    <h3>Water Scarcity</h3>
+                    <div class="problem-stat">60%</div>
+                    <p>of Nigerians lack access to safe drinking water</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <h3>Pumping Costs</h3>
+                    <div class="problem-stat">₦25k+</div>
+                    <p>Monthly pumping costs for average commercial building</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🏢</div>
+                    <h3>Building Efficiency</h3>
+                    <div class="problem-stat">70%</div>
+                    <p>Potential water savings with proper flow management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="product-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Water-Saving Solutions</h2>
+                <p>Tailored flow rates for every application, ensuring optimal performance and maximum savings.</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon">🚿</div>
+                        <h3>Washbasin Solutions</h3>
+                        <div class="flow-range">2.0 L/min</div>
+                    </div>
+                    <div class="category-body">
+                        <div class="savings-indicator">
+                            <span class="savings-label">Water Savings</span>
+                            <span class="savings-value">Up to 85%</span>
+                        </div>
+                        <ul class="category-features">
+                            <li>Public washrooms</li>
+                            <li>Office buildings</li>
+                            <li>Hotels & restaurants</li>
+                            <li>Healthcare facilities</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="width: 100%; text-align: center;">Explore Products</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon">🍴</div>
+                        <h3>Kitchen Solutions</h3>
+                        <div class="flow-range">4.0 - 6.0 L/min</div>
+                    </div>
+                    <div class="category-body">
+                        <div class="savings-indicator">
+                            <span class="savings-label">Water Savings</span>
+                            <span class="savings-value">Up to 60%</span>
+                        </div>
+                        <ul class="category-features">
+                            <li>Commercial kitchens</li>
+                            <li>Residential homes</li>
+                            <li>Restaurant prep areas</li>
+                            <li>Staff pantries</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="width: 100%; text-align: center;">Explore Products</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon">🚿</div>
+                        <h3>Shower Solutions</h3>
+                        <div class="flow-range">8.0 - 10.0 L/min</div>
+                    </div>
+                    <div class="category-body">
+                        <div class="savings-indicator">
+                            <span class="savings-label">Water Savings</span>
+                            <span class="savings-value">Up to 40%</span>
+                        </div>
+                        <ul class="category-features">
+                            <li>Hotel bathrooms</li>
+                            <li>Gym facilities</li>
+                            <li>Residential showers</li>
+                            <li>Hospital rooms</li>
+                        </ul>
+                        <a href="#" class="cta-button" style="width: 100%; text-align: center;">Explore Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Showcase -->
+    <section class="technology-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Advanced Neoperl Technologies</h2>
+                <p>Innovative flow technologies that deliver exceptional water savings without compromising user experience.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-visual">
+                        <div style="font-size: 3rem;">🌊</div>
+                    </div>
+                    <h3>MIKADO</h3>
+                    <p>Creates a visually enchanting water stream that turns hand washing into a premium experience while saving water.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-visual">
+                        <div style="font-size: 3rem;">💨</div>
+                    </div>
+                    <h3>AERATED</h3>
+                    <p>Introduces air into the water stream making it soft to touch and non-splashing for comfortable use.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-visual">
+                        <div style="font-size: 3rem;">🚿</div>
+                    </div>
+                    <h3>SPRAY</h3>
+                    <p>Produces a miniature shower pattern providing full hand coverage during washing with minimal water use.</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-visual">
+                        <div style="font-size: 3rem;">💧</div>
+                    </div>
+                    <h3>ATOMIZED</h3>
+                    <p>Disperses water into tiny droplets for extremely low flow rates while maintaining washing effectiveness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Neoperl Advantage</h2>
+                <p>Proven benefits that transform your water usage and bottom line.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">💧</div>
+                    <div class="benefit-value">70%</div>
+                    <div class="benefit-label">Water Savings</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-value">₦2.5M+</div>
+                    <div class="benefit-label">Annual Savings</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-value">30%</div>
+                    <div class="benefit-label">Energy Reduction</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔧</div>
+                    <div class="benefit-value">5 Min</div>
+                    <div class="benefit-label">Installation Time</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🌍</div>
+                    <div class="benefit-value">20%</div>
+                    <div class="benefit-label">EDGE Points</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-value">18 Mo</div>
+                    <div class="benefit-label">ROI Period</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Preview -->
+    <section class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Real results from Nigerian businesses saving water and money with Neoperl solutions.</p>
+            </div>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-image">Access Bank HQ</div>
+                    <div class="case-content">
+                        <div class="case-type">Commercial Office</div>
+                        <h3>Access Bank Headquarters</h3>
+                        <p>Complete retrofit of 250+ water points across corporate headquarters.</p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <div class="metric-value">65%</div>
+                                <div class="metric-label">Water Saved</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">₦3.2M</div>
+                                <div class="metric-label">Annual Savings</div>
+                            </div>
+                        </div>
+                        <a href="#" class="secondary-button" style="width: 100%; text-align: center;">Read Case Study</a>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-image">Paelon Hospital</div>
+                    <div class="case-content">
+                        <div class="case-type">Healthcare</div>
+                        <h3>Paelon Memorial Hospital</h3>
+                        <p>Water-saving implementation across patient rooms and public areas.</p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <div class="metric-value">58%</div>
+                                <div class="metric-label">Water Saved</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">₦2.1M</div>
+                                <div class="metric-label">Annual Savings</div>
+                            </div>
+                        </div>
+                        <a href="#" class="secondary-button" style="width: 100%; text-align: center;">Read Case Study</a>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-image">Sterling Bank</div>
+                    <div class="case-content">
+                        <div class="case-type">Banking</div>
+                        <h3>Sterling Bank Branches</h3>
+                        <p>Nationwide rollout across 85 branch locations for consistency.</p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <div class="metric-value">70%</div>
+                                <div class="metric-label">Water Saved</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">₦15M+</div>
+                                <div class="metric-label">Total Savings</div>
+                            </div>
+                        </div>
+                        <a href="#" class="secondary-button" style="width: 100%; text-align: center;">Read Case Study</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="cta-button">View All Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="water-cta">
+        <h2>Start Saving Water Today</h2>
+        <p>Join leading Nigerian organizations already benefiting from Neoperl's premium water-saving technology.</p>
+        <a href="#contact" class="cta-button cta-white">Get Your Free Water Audit</a>
+    </section>
+</body>
+</html>

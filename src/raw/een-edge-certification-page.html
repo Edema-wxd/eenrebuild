@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDGE Green Building Certification - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --edge-green: #00A651;
+            --edge-blue: #0072CE;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+
+        /* Section Navigation */
+        .section-nav {
+            position: sticky;
+            top: 80px;
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 900;
+        }
+
+        .section-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .section-nav a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .section-nav a:hover {
+            background: var(--light-gray);
+            color: var(--edge-green);
+        }
+
+        .section-nav a.active {
+            background: linear-gradient(135deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .edge-hero {
+            padding: 12rem 0 5rem;
+            background: linear-gradient(135deg, rgba(0, 166, 81, 0.05) 0%, rgba(0, 114, 206, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .edge-hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 166, 81, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .certification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--edge-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--edge-green);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--edge-green);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .secondary-button:hover {
+            background: var(--edge-green);
+            color: white;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .edge-animation {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .building-icon {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 60px rgba(0, 166, 81, 0.3);
+        }
+
+        .efficiency-ring {
+            position: absolute;
+            border: 3px solid rgba(0, 166, 81, 0.2);
+            border-radius: 50%;
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+
+        .efficiency-ring:nth-child(1) {
+            width: 250px;
+            height: 250px;
+            animation-delay: 0s;
+        }
+
+        .efficiency-ring:nth-child(2) {
+            width: 320px;
+            height: 320px;
+            animation-delay: 1s;
+        }
+
+        .efficiency-ring:nth-child(3) {
+            width: 390px;
+            height: 390px;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .efficiency-metrics {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        .metric-1 {
+            top: 20px;
+            right: 20px;
+            color: var(--edge-green);
+        }
+
+        .metric-2 {
+            bottom: 20px;
+            left: 20px;
+            color: var(--edge-blue);
+        }
+
+        .metric-3 {
+            bottom: 20px;
+            right: 20px;
+            color: var(--mantis-green);
+        }
+
+        /* What is EDGE Section */
+        .what-is-edge {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .edge-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .edge-description h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+
+        .edge-description p {
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+
+        .edge-standards {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .standard-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .standard-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .edge-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .edge-feature-card {
+            background: linear-gradient(135deg, rgba(0, 166, 81, 0.05) 0%, rgba(0, 114, 206, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .edge-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .edge-feature-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+
+        /* Building Types */
+        .building-types {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .building-types h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+
+        .building-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .building-type {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .building-type:hover {
+            border-color: var(--edge-green);
+            transform: translateY(-3px);
+        }
+
+        .building-type-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Certification Process */
+        .certification-process {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            transform: translateX(-50%);
+        }
+
+        .process-stage {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process-stage:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .stage-content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-stage:nth-child(odd) .stage-content {
+            margin-right: 3rem;
+            text-align: right;
+        }
+
+        .process-stage:nth-child(even) .stage-content {
+            margin-left: 3rem;
+        }
+
+        .stage-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 4px solid var(--edge-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stage-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+
+        .stage-content p {
+            color: var(--granite-gray);
+            margin-bottom: 1rem;
+        }
+
+        .stage-duration {
+            display: inline-block;
+            background: var(--edge-green);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Benefits & ROI */
+        .benefits-roi {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .benefits-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .roi-calculator {
+            background: linear-gradient(135deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0, 166, 81, 0.3);
+        }
+
+        .roi-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .roi-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .roi-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .roi-label {
+            font-weight: 500;
+        }
+
+        .roi-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .roi-summary {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        .roi-summary-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 166, 81, 0.1) 0%, rgba(0, 114, 206, 0.1) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+
+        /* BEEC Compliance */
+        .beec-compliance {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 166, 81, 0.03) 0%, rgba(0, 114, 206, 0.03) 100%);
+        }
+
+        .beec-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .beec-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+
+        .compliance-paths {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .path-option {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .path-option:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .path-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--edge-green);
+        }
+
+        .path-description {
+            color: var(--granite-gray);
+            margin-bottom: 1rem;
+        }
+
+        .path-benefits {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .path-benefits li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .path-benefits li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--edge-green);
+            font-weight: bold;
+        }
+
+        .edge-advantage {
+            background: linear-gradient(135deg, rgba(115, 193, 103, 0.1) 0%, rgba(26, 163, 221, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .edge-advantage h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+
+        /* CTA Section */
+        .edge-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--edge-green) 0%, var(--edge-blue) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .edge-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .edge-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-white {
+            background: white;
+            color: var(--edge-green);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="edge.html" class="active">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <div class="section-nav-container">
+            <a href="#what-is-edge">What is EDGE?</a>
+            <a href="#certification-process">Certification Process</a>
+            <a href="#benefits-roi">Benefits & ROI</a>
+            <a href="#beec-compliance">BEEC Compliance</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="edge-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="certification-badge">
+                    <span>🏆</span>
+                    <span>Certified EDGE Experts</span>
+                </div>
+                <h1>Transform Your Building with <span>EDGE Certification</span></h1>
+                <p>The world's fastest and most affordable green building certification designed specifically for emerging markets. Achieve 20%+ savings in energy, water, and materials.</p>
+                <div class="hero-buttons">
+                    <a href="#assessment" class="cta-button">Start Your EDGE Journey</a>
+                    <a href="#calculator" class="secondary-button">Calculate Savings</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="edge-animation">
+                    <div class="efficiency-ring"></div>
+                    <div class="efficiency-ring"></div>
+                    <div class="efficiency-ring"></div>
+                    <div class="building-icon">🏢</div>
+                    <div class="efficiency-metrics metric-1">20% Energy</div>
+                    <div class="efficiency-metrics metric-2">20% Water</div>
+                    <div class="efficiency-metrics metric-3">20% Materials</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is EDGE Section -->
+    <section class="what-is-edge" id="what-is-edge">
+        <div class="container">
+            <div class="section-header">
+                <h2>What is EDGE?</h2>
+                <p>Excellence in Design for Greater Efficiencies - a green building certification system created by IFC, a member of the World Bank Group.</p>
+            </div>
+            
+            <div class="edge-intro">
+                <div class="edge-description">
+                    <h3>Green Building Made Simple</h3>
+                    <p>EDGE is a measurable way for builders to optimize their designs, leading to more investment-worthy and marketable buildings. By keeping certification fast and inexpensive, EDGE keeps pace with the momentum that developers need to stay at the forefront of the green building trend.</p>
+                    <p>Unlike other certification systems, EDGE has been specifically designed for emerging markets like Nigeria, taking into account local challenges and providing achievable standards based on your national average.</p>
+                    
+                    <div class="edge-standards">
+                        <div class="standard-item">
+                            <div class="standard-icon">⚡</div>
+                            <div>
+                                <strong>20% Energy Efficiency</strong>
+                                <p>Reduce energy consumption through smart design and efficient systems</p>
+                            </div>
+                        </div>
+                        <div class="standard-item">
+                            <div class="standard-icon">💧</div>
+                            <div>
+                                <strong>20% Water Efficiency</strong>
+                                <p>Lower water usage with efficient fixtures and smart management</p>
+                            </div>
+                        </div>
+                        <div class="standard-item">
+                            <div class="standard-icon">🏗️</div>
+                            <div>
+                                <strong>20% Embodied Energy in Materials</strong>
+                                <p>Choose sustainable materials with lower environmental impact</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="edge-visual-info">
+                    <div class="edge-features-grid">
+                        <div class="edge-feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h4>SMART</h4>
+                            <p>Powerful engine that understands local climatic conditions</p>
+                        </div>
+                        <div class="edge-feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h4>FAST</h4>
+                            <p>Discover ideal measures for best ROI within minutes</p>
+                        </div>
+                        <div class="edge-feature-card">
+                            <div class="feature-icon">💰</div>
+                            <h4>AFFORDABLE</h4>
+                            <p>Free software with certification at modest cost</p>
+                        </div>
+                        <div class="edge-feature-card">
+                            <div class="feature-icon">🌍</div>
+                            <h4>INCLUSIVE</h4>
+                            <p>Green buildings available to all, not just premium projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="building-types">
+                <h3>EDGE Certifies All Building Types</h3>
+                <div class="building-grid">
+                    <div class="building-type">
+                        <div class="building-type-icon">🏠</div>
+                        <p>Homes</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🏨</div>
+                        <p>Hotels</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🏢</div>
+                        <p>Offices</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🛍️</div>
+                        <p>Retail</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🏥</div>
+                        <p>Healthcare</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🎓</div>
+                        <p>Education</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🏭</div>
+                        <p>Industrial</p>
+                    </div>
+                    <div class="building-type">
+                        <div class="building-type-icon">🏗️</div>
+                        <p>Mixed Use</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Process -->
+    <section class="certification-process" id="certification-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>The EDGE Certification Process</h2>
+                <p>A streamlined approach from design to certification, with EEN's expert guidance every step of the way.</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="process-stage">
+                    <div class="stage-content">
+                        <h3>Design Stage</h3>
+                        <p>Enter project details into EDGE software and select green options to achieve 20% improvements. Our EDGE experts help optimize your design for maximum efficiency and cost-effectiveness.</p>
+                        <span class="stage-duration">2-3 weeks</span>
+                    </div>
+                    <div class="stage-icon">📐</div>
+                </div>
+                
+                <div class="process-stage">
+                    <div class="stage-content">
+                        <h3>Project Registration</h3>
+                        <p>Register your project for certification once the EDGE standard is achieved. We handle all documentation and submission requirements.</p>
+                        <span class="stage-duration">1 week</span>
+                    </div>
+                    <div class="stage-icon">📋</div>
+                </div>
+                
+                <div class="process-stage">
+                    <div class="stage-content">
+                        <h3>Design Review</h3>
+                        <p>EDGE-trained auditors review documentation at design stage. We ensure all requirements are met for smooth approval.</p>
+                        <span class="stage-duration">2-3 weeks</span>
+                    </div>
+                    <div class="stage-icon">🔍</div>
+                </div>
+                
+                <div class="process-stage">
+                    <div class="stage-content">
+                        <h3>Construction & Site Audit</h3>
+                        <p>Documentation submitted during construction with on-site audit performed to verify implementation of green measures.</p>
+                        <span class="stage-duration">During construction</span>
+                    </div>
+                    <div class="stage-icon">🏗️</div>
+                </div>
+                
+                <div class="process-stage">
+                    <div class="stage-content">
+                        <h3>EDGE Certification</h3>
+                        <p>Projects meeting the EDGE standard receive certification confirming predicted performance. Your building is now officially green!</p>
+                        <span class="stage-duration">2 weeks</span>
+                    </div>
+                    <div class="stage-icon">🏆</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits & ROI -->
+    <section class="benefits-roi" id="benefits-roi">
+        <div class="container">
+            <div class="section-header">
+                <h2>Benefits & Return on Investment</h2>
+                <p>EDGE certification delivers immediate financial benefits while positioning your property for long-term success.</p>
+            </div>
+            
+            <div class="benefits-showcase">
+                <div class="roi-calculator">
+                    <h3 class="roi-title">Typical ROI for Office Building</h3>
+                    <div class="roi-metrics">
+                        <div class="roi-item">
+                            <span class="roi-label">Certification Cost</span>
+                            <span class="roi-value">₦2.5M</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Annual Energy Savings</span>
+                            <span class="roi-value">₦4.8M</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Annual Water Savings</span>
+                            <span class="roi-value">₦1.2M</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Property Value Increase</span>
+                            <span class="roi-value">15%</span>
+                        </div>
+                    </div>
+                    <div class="roi-summary">
+                        <div class="roi-summary-value">5 Months</div>
+                        <p>Average Payback Period</p>
+                    </div>
+                </div>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-content">
+                            <h4>Lower Operating Costs</h4>
+                            <p>Reduce utility bills by 20-30% through efficient design and systems, providing immediate cash flow improvements.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-content">
+                            <h4>Higher Property Values</h4>
+                            <p>EDGE-certified buildings command premium rents and sale prices, with faster lease-up rates.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌍</div>
+                        <div class="benefit-content">
+                            <h4>ESG Compliance</h4>
+                            <p>Meet international sustainability standards and attract ESG-conscious investors and tenants.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🏆</div>
+                        <div class="benefit-content">
+                            <h4>Market Differentiation</h4>
+                            <p>Stand out in Nigeria's competitive real estate market with internationally recognized green certification.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEEC Compliance -->
+    <section class="beec-compliance" id="beec-compliance">
+        <div class="container">
+            <div class="section-header">
+                <h2>BEEC Compliance Made Easy</h2>
+                <p>Nigeria's Building Energy Efficiency Code compliance through EDGE certification - the smart path to regulatory compliance.</p>
+            </div>
+            
+            <div class="beec-content">
+                <div class="beec-info">
+                    <h3>What is BEEC?</h3>
+                    <p>The Nigerian Building Energy Efficiency Code is a set of guidelines outlining minimum energy efficiency standards for buildings in Nigeria. Developed by the Federal Ministry of Power, Works and Housing with GIZ assistance, BEEC is moving from voluntary to mandatory compliance.</p>
+                    
+                    <div class="edge-advantage">
+                        <h4>Why EDGE for BEEC Compliance?</h4>
+                        <ul class="path-benefits">
+                            <li>No past experience needed - user-friendly interface</li>
+                            <li>Free software for all calculations</li>
+                            <li>Quick, real-time simulations</li>
+                            <li>User error eliminated through guided process</li>
+                            <li>Accepted by regulatory authorities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="compliance-paths">
+                    <h3>BEEC Compliance Paths</h3>
+                    
+                    <div class="path-option">
+                        <h4 class="path-title">Prescriptive Path</h4>
+                        <p class="path-description">Meet all prescriptive requirements of the building code including specific insulation values, window ratios, and equipment efficiencies.</p>
+                        <ul class="path-benefits">
+                            <li>Fixed requirements for all buildings</li>
+                            <li>No flexibility in design choices</li>
+                            <li>May not be optimal for your project</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="path-option">
+                        <h4 class="path-title">Performance Path (with EDGE)</h4>
+                        <p class="path-description">Demonstrate compliance through energy modeling showing your building performs better than the baseline.</p>
+                        <ul class="path-benefits">
+                            <li>Design flexibility to optimize for your needs</li>
+                            <li>EDGE software handles all calculations</li>
+                            <li>Achieve compliance + international certification</li>
+                            <li>Often more cost-effective solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="edge-cta">
+        <h2>Ready to Go Green with EDGE?</h2>
+        <p>Join the growing number of Nigerian developers achieving international green building certification with local expertise.</p>
+        <a href="#contact" class="cta-button cta-white">Start Your EDGE Certification</a>
+    </section>
+</body>
+</html>

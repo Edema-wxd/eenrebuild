@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Partners - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --neoperl-blue: #0066CC;
+            --ifc-blue: #002F6C;
+            --solid-green: #00A651;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .partners-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .partners-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 163, 221, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .partners-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(115, 193, 103, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--granite-gray);
+            margin-bottom: 3rem;
+        }
+        
+        .partnership-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--battery-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Key Partners Section */
+        .key-partners {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .partners-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        
+        .partner-card {
+            background: var(--light-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .partner-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            min-height: 300px;
+        }
+        
+        .partner-card:nth-child(even) .partner-content {
+            grid-template-columns: 2fr 1fr;
+        }
+        
+        .partner-card:nth-child(even) .partner-logo-section {
+            order: 2;
+        }
+        
+        .partner-card:nth-child(even) .partner-info {
+            order: 1;
+        }
+        
+        .partner-logo-section {
+            background: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .partner-logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+        }
+        
+        .partner-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .neoperl-logo {
+            color: var(--neoperl-blue);
+        }
+        
+        .ifc-logo {
+            color: var(--ifc-blue);
+        }
+        
+        .solid-green-logo {
+            color: var(--solid-green);
+        }
+        
+        .partner-tagline {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .partner-info {
+            padding: 3rem;
+        }
+        
+        .partner-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .neoperl-badge {
+            background: var(--neoperl-blue);
+        }
+        
+        .ifc-badge {
+            background: var(--ifc-blue);
+        }
+        
+        .solid-green-badge {
+            background: var(--solid-green);
+        }
+        
+        .partner-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .partner-info p {
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .partner-benefits {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .partner-benefits li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .partner-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--mantis-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .partner-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .neoperl-link {
+            color: var(--neoperl-blue);
+        }
+        
+        .ifc-link {
+            color: var(--ifc-blue);
+        }
+        
+        .solid-green-link {
+            color: var(--solid-green);
+        }
+        
+        .partner-link:hover {
+            transform: translateX(5px);
+        }
+        
+        /* Partnership Value Section */
+        .partnership-value {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.03) 0%, rgba(115, 193, 103, 0.03) 100%);
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .value-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .value-card p {
+            color: var(--granite-gray);
+            line-height: 1.6;
+        }
+        
+        /* Collaboration Section */
+        .collaboration {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .collaboration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .collaboration-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .collaboration-text h3 span {
+            color: var(--battery-blue);
+        }
+        
+        .collaboration-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .partnership-diagram {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        
+        .een-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 40px rgba(26, 163, 221, 0.3);
+            z-index: 2;
+        }
+        
+        .partner-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-node:hover {
+            transform: scale(1.1);
+        }
+        
+        .node-neoperl {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--neoperl-blue);
+            border: 3px solid var(--neoperl-blue);
+        }
+        
+        .node-ifc {
+            bottom: 20px;
+            right: 40px;
+            color: var(--ifc-blue);
+            border: 3px solid var(--ifc-blue);
+        }
+        
+        .node-solid {
+            bottom: 20px;
+            left: 40px;
+            color: var(--solid-green);
+            border: 3px solid var(--solid-green);
+        }
+        
+        .connection-line {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.1);
+            height: 2px;
+            transform-origin: center;
+        }
+        
+        .line-1 {
+            width: 100px;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+        }
+        
+        .line-2 {
+            width: 120px;
+            bottom: 110px;
+            right: 110px;
+            transform: rotate(-45deg);
+        }
+        
+        .line-3 {
+            width: 120px;
+            bottom: 110px;
+            left: 110px;
+            transform: rotate(45deg);
+        }
+        
+        /* CTA Section */
+        .partners-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .partners-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .partners-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--battery-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+        
+        .cta-outline {
+            background: transparent;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border: 2px solid white;
+        }
+        
+        .cta-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="edge.html">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="partners.html" class="active">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="partners-hero">
+        <div class="hero-content">
+            <h1>Global Partnerships, <span>Local Excellence</span></h1>
+            <p>Through strategic partnerships with world-leading organizations, we bring international best practices and cutting-edge technology to Nigeria's sustainability market.</p>
+            <div class="partnership-stats">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">International Partners</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">140+</div>
+                    <div class="stat-label">Countries Reached</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Years Combined Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Partners Section -->
+    <section class="key-partners">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Strategic Partners</h2>
+                <p>Collaborating with industry leaders to deliver comprehensive sustainability solutions.</p>
+            </div>
+            
+            <div class="partners-showcase">
+                <!-- Neoperl Partnership -->
+                <div class="partner-card">
+                    <div class="partner-content">
+                        <div class="partner-logo-section">
+                            <div class="partner-logo neoperl-logo">NEOPERL®</div>
+                            <p class="partner-tagline">Flow • Stop • Go</p>
+                        </div>
+                        <div class="partner-info">
+                            <span class="partner-badge neoperl-badge">West Africa Exclusive Distributor</span>
+                            <h3>Premium Water Technology from Germany</h3>
+                            <p>As the exclusive distributor of authentic Neoperl® products in West Africa, EEN brings world-class German engineering to Nigerian buildings. Neoperl is a leading technology company offering innovative solutions for drinking water management.</p>
+                            <ul class="partner-benefits">
+                                <li>Up to 70% water savings without compromising performance</li>
+                                <li>25-year proven track record of quality and innovation</li>
+                                <li>Complete range of flow regulators and aerators</li>
+                                <li>German-Swiss precision engineering</li>
+                            </ul>
+                            <a href="water-solutions.html" class="partner-link neoperl-link">
+                                Explore Neoperl Solutions →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IFC/World Bank Partnership -->
+                <div class="partner-card">
+                    <div class="partner-content">
+                        <div class="partner-logo-section">
+                            <div class="partner-logo ifc-logo">IFC | World Bank</div>
+                            <p class="partner-tagline">Creating Markets, Creating Opportunities</p>
+                        </div>
+                        <div class="partner-info">
+                            <span class="partner-badge ifc-badge">EDGE Certification Partner</span>
+                            <h3>International Green Building Standards</h3>
+                            <p>Through our partnership with IFC (International Finance Corporation), a member of the World Bank Group, we deliver EDGE green building certification - the world's fastest and most affordable certification designed specifically for emerging markets.</p>
+                            <ul class="partner-benefits">
+                                <li>Access to global green building standards</li>
+                                <li>Free EDGE software and technical resources</li>
+                                <li>International recognition for certified buildings</li>
+                                <li>Direct support from World Bank sustainability experts</li>
+                            </ul>
+                            <a href="edge.html" class="partner-link ifc-link">
+                                Learn About EDGE →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solid Green Partnership -->
+                <div class="partner-card">
+                    <div class="partner-content">
+                        <div class="partner-logo-section">
+                            <div class="partner-logo solid-green-logo">SOLID GREEN</div>
+                            <p class="partner-tagline">Sustainable Building Consultants</p>
+                        </div>
+                        <div class="partner-info">
+                            <span class="partner-badge solid-green-badge">Technology Partner</span>
+                            <h3>Award-Winning Sustainability Expertise</h3>
+                            <p>In partnership with Solid Green Consulting in South Africa, we offer advanced smart metering solutions and sustainability consulting services. Solid Green has received numerous awards for their Green Star certification work and brings decades of African market experience.</p>
+                            <ul class="partner-benefits">
+                                <li>Advanced smart metering technology</li>
+                                <li>Real-time energy monitoring platforms</li>
+                                <li>African market expertise and insights</li>
+                                <li>Proven track record in emerging markets</li>
+                            </ul>
+                            <a href="smart-metering.html" class="partner-link solid-green-link">
+                                Discover Smart Solutions →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Value Section -->
+    <section class="partnership-value">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Power of Partnership</h2>
+                <p>Our strategic alliances enable us to deliver unmatched value to Nigerian businesses and property developers.</p>
+            </div>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Global Standards</h3>
+                    <p>Access internationally recognized certifications and technologies that meet global sustainability benchmarks while addressing local needs.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔧</div>
+                    <h3>Technical Excellence</h3>
+                    <p>Leverage world-class engineering and technical expertise from partners with decades of innovation in their respective fields.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Local Implementation</h3>
+                    <p>International solutions adapted for Nigerian conditions, ensuring practical and effective sustainability outcomes.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Continuous Support</h3>
+                    <p>Ongoing training, technical assistance, and knowledge transfer from our partners keeps us at the forefront of sustainability.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📈</div>
+                    <h3>Market Leadership</h3>
+                    <p>Exclusive partnerships position EEN as Nigeria's premier sustainability consultant with unique access to premium solutions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏆</div>
+                    <h3>Proven Success</h3>
+                    <p>Our partners' global track records translate into guaranteed results for Nigerian projects, backed by international warranties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration">
+        <div class="container">
+            <div class="section-header">
+                <h2>Integrated Solutions Ecosystem</h2>
+                <p>Our partnerships create a comprehensive sustainability ecosystem that addresses every aspect of green building.</p>
+            </div>
+            
+            <div class="collaboration-content">
+                <div class="collaboration-text">
+                    <h3>Creating <span>Synergy</span> Through Collaboration</h3>
+                    <p>Our partnerships aren't just about individual products or services - they work together to create comprehensive solutions:</p>
+                    <ul class="partner-benefits">
+                        <li><strong>Neoperl + EDGE:</strong> Water-saving products contribute directly to EDGE certification points</li>
+                        <li><strong>Smart Metering + Solar:</strong> Monitor and optimize renewable energy generation and consumption</li>
+                        <li><strong>EDGE + BEEC:</strong> International certification ensures Nigerian code compliance</li>
+                        <li><strong>All Partners:</strong> Combined expertise delivers turnkey sustainability transformations</li>
+                    </ul>
+                    <p>This integrated approach ensures our clients receive holistic solutions that maximize efficiency, savings, and environmental impact.</p>
+                </div>
+                <div class="collaboration-visual">
+                    <div class="partnership-diagram">
+                        <div class="connection-line line-1"></div>
+                        <div class="connection-line line-2"></div>
+                        <div class="connection-line line-3"></div>
+                        <div class="partner-node node-neoperl">Neoperl</div>
+                        <div class="partner-node node-ifc">IFC</div>
+                        <div class="partner-node node-solid">Solid<br>Green</div>
+                        <div class="een-center">EEN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="partners-cta">
+        <h2>Experience the Advantage</h2>
+        <p>Benefit from our world-class partnerships and transform your building into a beacon of sustainability.</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="cta-button cta-white">Start Your Project</a>
+            <a href="services.html" class="cta-button cta-outline">Explore Solutions</a>
+        </div>
+    </section>
+</body>
+</html>

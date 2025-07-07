@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .services-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(26, 163, 221, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .services-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(115, 193, 103, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--granite-gray);
+            margin-bottom: 3rem;
+        }
+        
+        /* Service Stats */
+        .service-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--battery-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Services Grid */
+        .services-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .service-card {
+            background: var(--light-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-header {
+            padding: 3rem;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .service-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .service-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            line-height: 1.6;
+        }
+        
+        .service-body {
+            padding: 2rem 3rem 3rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex: 1;
+        }
+        
+        .service-features li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--granite-gray);
+            font-weight: 500;
+        }
+        
+        .service-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--mantis-green);
+            font-weight: bold;
+        }
+        
+        .service-highlight {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .highlight-label {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        .highlight-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--mantis-green);
+        }
+        
+        .service-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .learn-more {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: var(--battery-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .learn-more:hover {
+            background: var(--mantis-green);
+        }
+        
+        .quick-quote {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: transparent;
+            color: var(--battery-blue);
+            text-decoration: none;
+            border: 2px solid var(--battery-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-quote:hover {
+            background: var(--battery-blue);
+            color: white;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.03) 0%, rgba(115, 193, 103, 0.03) 100%);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            margin-top: 3rem;
+        }
+        
+        .process-connector {
+            position: absolute;
+            top: 40px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            z-index: 0;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--battery-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .step-number {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1);
+        }
+        
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--granite-gray);
+        }
+        
+        /* Why Choose Section */
+        .why-choose {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .choose-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .choose-content h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--granite-gray);
+        }
+        
+        .choose-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .choose-point {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .point-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(115, 193, 103, 0.1) 0%, rgba(26, 163, 221, 0.1) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .point-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .point-content p {
+            color: var(--granite-gray);
+            line-height: 1.6;
+        }
+        
+        .choose-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .visual-card {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .visual-card h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .visual-card p {
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        /* CTA Section */
+        .services-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            text-align: center;
+            color: white;
+        }
+        
+        .services-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .services-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-white {
+            background: white;
+            color: var(--battery-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-white:hover {
+            background: var(--light-gray);
+        }
+        
+        .cta-outline {
+            background: transparent;
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border: 2px solid white;
+        }
+        
+        .cta-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="#edge">EDGE</a>
+                <a href="#resources">Resources</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="hero-content">
+            <h1>Comprehensive <span>Green Solutions</span> for Nigerian Buildings</h1>
+            <p>From water conservation to renewable energy, we provide end-to-end sustainability solutions that reduce costs and environmental impact.</p>
+            <div class="service-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">💧</div>
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Water Savings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number">50%</div>
+                    <div class="stat-label">Energy Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">Cost Savings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-number">20%</div>
+                    <div class="stat-label">EDGE Points</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Water Solutions -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">💧</div>
+                        <h3>Water Solutions</h3>
+                        <p>Premium Neoperl® flow regulators and aerators as West Africa's exclusive distributor.</p>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-highlight">
+                            <span class="highlight-label">Potential Savings</span>
+                            <span class="highlight-value">Up to 70%</span>
+                        </div>
+                        <ul class="service-features">
+                            <li>Flow regulators for all applications</li>
+                            <li>Washbasin, kitchen & shower solutions</li>
+                            <li>5-minute retrofit installation</li>
+                            <li>German engineering quality</li>
+                            <li>EDGE certification compliant</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="water-solutions.html" class="learn-more">Learn More</a>
+                            <a href="#" class="quick-quote">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solar Energy -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">☀️</div>
+                        <h3>Solar Energy Systems</h3>
+                        <p>Complete solar installations with battery backup for reliable, clean power.</p>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-highlight">
+                            <span class="highlight-label">Energy Independence</span>
+                            <span class="highlight-value">Up to 95%</span>
+                        </div>
+                        <ul class="service-features">
+                            <li>Residential & commercial installations</li>
+                            <li>Hybrid inverters with 5-year warranty</li>
+                            <li>Lithium & gel battery options</li>
+                            <li>24/7 power availability</li>
+                            <li>Professional maintenance plans</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#" class="learn-more">Learn More</a>
+                            <a href="#" class="quick-quote">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Metering -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📊</div>
+                        <h3>Smart Metering</h3>
+                        <p>Advanced monitoring systems for real-time energy consumption tracking.</p>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-highlight">
+                            <span class="highlight-label">Visibility Increase</span>
+                            <span class="highlight-value">100%</span>
+                        </div>
+                        <ul class="service-features">
+                            <li>Real-time consumption monitoring</li>
+                            <li>Mobile app integration</li>
+                            <li>Automated alerts & reporting</li>
+                            <li>Identify wastage patterns</li>
+                            <li>Solid Green technology partnership</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#" class="learn-more">Learn More</a>
+                            <a href="#" class="quick-quote">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDGE Certification -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🏆</div>
+                        <h3>EDGE Certification</h3>
+                        <p>Expert guidance through IFC EDGE green building certification process.</p>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-highlight">
+                            <span class="highlight-label">Certification Success</span>
+                            <span class="highlight-value">100%</span>
+                        </div>
+                        <ul class="service-features">
+                            <li>Complete certification management</li>
+                            <li>BEEC compliance assessment</li>
+                            <li>Energy modeling & analysis</li>
+                            <li>ROI financial calculations</li>
+                            <li>Post-certification support</li>
+                        </ul>
+                        <div class="service-cta">
+                            <a href="#" class="learn-more">Learn More</a>
+                            <a href="#" class="quick-quote">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Proven Process</h2>
+                <p>From initial assessment to ongoing support, we ensure your sustainability journey is smooth and successful.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-connector"></div>
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Assessment</h3>
+                    <p class="step-description">Comprehensive audit of your current systems and efficiency</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Planning</h3>
+                    <p class="step-description">Custom solutions designed for your specific needs and budget</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Implementation</h3>
+                    <p class="step-description">Professional installation with minimal disruption</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Support</h3>
+                    <p class="step-description">Ongoing maintenance and optimization services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="choose-grid">
+                <div class="choose-content">
+                    <h3>Why Choose EEN Consulting?</h3>
+                    <div class="choose-points">
+                        <div class="choose-point">
+                            <div class="point-icon">🎖️</div>
+                            <div class="point-content">
+                                <h4>Certified EDGE Experts</h4>
+                                <p>Our entire engineering team is EDGE certified, ensuring expert guidance through your green building journey.</p>
+                            </div>
+                        </div>
+                        <div class="choose-point">
+                            <div class="point-icon">🤝</div>
+                            <div class="point-content">
+                                <h4>Exclusive Partnerships</h4>
+                                <p>As West Africa's exclusive Neoperl distributor, we bring world-class German engineering to Nigeria.</p>
+                            </div>
+                        </div>
+                        <div class="choose-point">
+                            <div class="point-icon">📈</div>
+                            <div class="point-content">
+                                <h4>Proven ROI</h4>
+                                <p>Our solutions typically pay for themselves within 18-24 months through reduced utility costs.</p>
+                            </div>
+                        </div>
+                        <div class="choose-point">
+                            <div class="point-icon">🛠️</div>
+                            <div class="point-content">
+                                <h4>End-to-End Service</h4>
+                                <p>From initial consultation to ongoing maintenance, we handle every aspect of your sustainability transformation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="choose-visual">
+                    <div class="visual-card">
+                        <h3>10+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="services-cta">
+        <h2>Ready to Transform Your Building?</h2>
+        <p>Let's work together to create a more sustainable and profitable future for your property.</p>
+        <div class="cta-buttons">
+            <a href="#contact" class="cta-button cta-white">Schedule Free Consultation</a>
+            <a href="#calculator" class="cta-button cta-outline">Calculate Your Savings</a>
+        </div>
+    </section>
+</body>
+</html>

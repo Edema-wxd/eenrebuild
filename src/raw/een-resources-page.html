@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources & Downloads - EEN Consulting | Energy Efficiency Nigeria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --battery-blue: #1AA3DD;
+            --mantis-green: #73C167;
+            --granite-gray: #606163;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--granite-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--battery-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--granite-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--battery-blue);
+        }
+        
+        .cta-button {
+            background: var(--battery-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(115, 193, 103, 0.3);
+        }
+        
+        /* Hero Section */
+        .resources-hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(26, 163, 221, 0.05) 0%, rgba(115, 193, 103, 0.05) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resources-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 163, 221, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--granite-gray);
+        }
+        
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--granite-gray);
+            margin-bottom: 3rem;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--battery-blue);
+            box-shadow: 0 0 0 3px rgba(26, 163, 221, 0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--battery-blue);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--mantis-green);
+        }
+        
+        /* Resource Categories */
+        .resource-categories {
+            padding: 3rem 0 5rem;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .category-tab {
+            padding: 0.75rem 2rem;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            color: var(--granite-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-tab:hover {
+            border-color: var(--battery-blue);
+            color: var(--battery-blue);
+        }
+        
+        .category-tab.active {
+            background: var(--battery-blue);
+            color: white;
+            border-color: var(--battery-blue);
+        }
+        
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-header {
+            padding: 2rem;
+            background: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resource-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+        }
+        
+        .resource-type {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--battery-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-body {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .resource-description {
+            color: var(--granite-gray);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--granite-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .file-size {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .download-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--battery-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .download-button:hover {
+            background: var(--mantis-green);
+            transform: translateY(-2px);
+        }
+        
+        /* Featured Resources */
+        .featured-resources {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(115, 193, 103, 0.05) 0%, rgba(26, 163, 221, 0.05) 100%);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--granite-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .featured-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .featured-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .featured-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--granite-gray);
+        }
+        
+        .featured-card p {
+            color: var(--granite-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 20px;
+            color: white;
+        }
+        
+        .newsletter-container h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-container p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            background: transparent;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .newsletter-button {
+            padding: 0.75rem 2rem;
+            background: white;
+            color: var(--battery-blue);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-button:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+        
+        /* Resources by Service */
+        .service-resources {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+        
+        .service-tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-tab-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .service-tab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-tab-card.active {
+            border-color: var(--battery-blue);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--battery-blue) 0%, var(--mantis-green) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-tab-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--granite-gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .category-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">EEN</div>
+                CONSULTING
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="edge.html">EDGE</a>
+                <a href="resources.html" class="active">Resources</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="resources-hero">
+        <div class="hero-content">
+            <h1>Knowledge Center & <span>Resources</span></h1>
+            <p>Download product catalogs, technical guides, and educational materials to support your sustainability journey.</p>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search resources...">
+                <button class="search-button">🔍</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Categories -->
+    <section class="resource-categories">
+        <div class="container">
+            <div class="category-tabs">
+                <button class="category-tab active">All Resources</button>
+                <button class="category-tab">Product Catalogs</button>
+                <button class="category-tab">Technical Guides</button>
+                <button class="category-tab">Case Studies</button>
+                <button class="category-tab">EDGE Resources</button>
+                <button class="category-tab">Certifications</button>
+            </div>
+            
+            <div class="resources-grid">
+                <!-- Neoperl Product Catalog -->
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-type">Product Catalog</span>
+                        <div class="resource-icon">💧</div>
+                    </div>
+                    <div class="resource-body">
+                        <h3 class="resource-title">Neoperl Product Catalog 2025</h3>
+                        <p class="resource-description">Complete catalog of water-saving flow regulators and aerators with technical specifications and installation guides.</p>
+                        <div class="resource-meta">
+                            <span class="file-size">📄 PDF • 12.5 MB</span>
+                            <span>Updated: Jan 2025</span>
+                        </div>
+                        <a href="#" class="download-button">
+                            Download <span>⬇</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EDGE Certification Guide -->
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-type">EDGE Resources</span>
+                        <div class="resource-icon">🏆</div>
+                    </div>
+                    <div class="resource-body">
+                        <h3 class="resource-title">EDGE Certification Guide for Nigeria</h3>
+                        <p class="resource-description">Step-by-step guide to achieving EDGE certification for your building project, including BEEC compliance tips.</p>
+                        <div class="resource-meta">
+                            <span class="file-size">📄 PDF • 8.3 MB</span>
+                            <span>Updated: Dec 2024</span>
+                        </div>
+                        <a href="#" class="download-button">
+                            Download <span>⬇</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Solar Installation Manual -->
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-type">Technical Guide</span>
+                        <div class="resource-icon">☀️</div>
+                    </div>
+                    <div class="resource-body">
+                        <h3 class="resource-title">Solar System Design Manual</h3>
+                        <p class="resource-description">Comprehensive technical guide for designing and sizing solar installations for Nigerian conditions.</p>
+                        <div class="resource-meta">
+                            <span class="file-size">📄 PDF • 15.2 MB</span>
+                            <span>Updated: Jan 2025</span>
+                        </div>
+                        <a href="#" class="download-button">
+                            Download <span>⬇</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Water Savings Calculator Guide -->
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-type">Technical Guide</span>
+                        <div class="resource-icon">💰</div>
+                    </div>
+                    <div class="resource-body">
+                        <h3 class="resource-title">Water Savings Calculation Guide</h3>
+                        <p class="resource-description">Learn how to calculate potential water and cost savings for your building using Neoperl products.</p>
+                        <div class="resource-meta">
+                            <span class="file-size">📄 PDF • 4.7 MB</span>
+                            <span>Updated: Nov 2024</span>
+                        </div>
+                        <a href="#" class="download-button">
+                            Download <span>⬇</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Access Bank Case Study -->
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-type">Case Study</span>
+                        <div class="resource-icon">🏢</div>
+                    </div>
+                    <div class="resource-body">
+                        <h3 class="resource-title">Access Bank HQ Retrofit Project</h3>
+                        <p class="resource-description">How Access Bank achieved 65% water savings and EDGE certification through comprehensive retrofitting.</p>
+                        <div class="resource-meta">
+                            <span class="file-size">📄 PDF • 6.8 MB</span>
+                            <span>Updated: Oct 2024</span>
+                        </div>
+                        <a href="#" class="download-button">
+                            Download <span>⬇</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Smart Metering Whitepaper -->
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <span class="resource-type">Whitepaper</span>
+                        <div class="resource-icon">📊</div>
+                    </div>
+                    <div class="resource-body">
+                        <h3 class="resource-title">Smart Metering ROI in Nigeria</h3>
+                        <p class="resource-description">Research paper on the financial benefits of implementing smart metering systems in commercial buildings.</p>
+                        <div class="resource-meta">
+                            <span class="file-size">📄 PDF • 3.2 MB</span>
+                            <span>Updated: Sep 2024</span>
+                        </div>
+                        <a href="#" class="download-button">
+                            Download <span>⬇</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Resources -->
+    <section class="featured-resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Resources</h2>
+                <p>Essential downloads to get started with your sustainability project.</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-icon">📐</div>
+                    <h3>Project Planning Kit</h3>
+                    <p>Templates and checklists for planning your green building project from start to finish.</p>
+                    <a href="#" class="cta-button">Download Kit</a>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">💡</div>
+                    <h3>Energy Efficiency Guide</h3>
+                    <p>Best practices for reducing energy consumption in Nigerian buildings.</p>
+                    <a href="#" class="cta-button">Get Guide</a>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">🎓</div>
+                    <h3>EDGE Training Materials</h3>
+                    <p>Educational resources to understand EDGE certification requirements and process.</p>
+                    <a href="#" class="cta-button">Access Materials</a>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-icon">🏗️</div>
+                    <h3>BEEC Compliance Toolkit</h3>
+                    <p>Everything you need to ensure your building meets Nigerian energy efficiency codes.</p>
+                    <a href="#" class="cta-button">Download Toolkit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service-Specific Resources -->
+    <section class="service-resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resources by Service</h2>
+                <p>Find specific resources for each of our sustainability solutions.</p>
+            </div>
+            <div class="service-tabs">
+                <div class="service-tab-card active">
+                    <div class="service-icon">💧</div>
+                    <h4>Water Solutions</h4>
+                </div>
+                <div class="service-tab-card">
+                    <div class="service-icon">☀️</div>
+                    <h4>Solar Energy</h4>
+                </div>
+                <div class="service-tab-card">
+                    <div class="service-icon">📊</div>
+                    <h4>Smart Metering</h4>
+                </div>
+                <div class="service-tab-card">
+                    <div class="service-icon">🏆</div>
+                    <h4>EDGE Certification</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <h3>Stay Updated with New Resources</h3>
+                <p>Get notified when we publish new guides, case studies, and technical resources.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
