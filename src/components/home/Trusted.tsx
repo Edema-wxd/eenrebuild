@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -10,7 +12,7 @@ const partners = [
   },
   {
     name: "IFC | World Bank",
-    logo: "/logos/een-logo.svg", // Replace with correct logo if available
+    logo: "/logos/ifc.png", // Replace with correct logo if available
     alt: "IFC | World Bank Logo",
   },
   {
@@ -64,6 +66,7 @@ function Trusted() {
               alt={partner.alt}
               className="h-12 w-auto mb-2 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
               loading="lazy"
+              unoptimized={true}
               width={100}
               height={100}
             />
