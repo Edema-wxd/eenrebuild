@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const processSteps = [
   {
@@ -40,22 +41,63 @@ export default function WhyEdge() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="bg-gradient-to-br from-[#f8fcfa] via-[#f8fcfa] to-[#e6f6f2] py-12 px-4">
+    <motion.section
+      className="bg-gradient-to-br from-[#f8fcfa] via-[#f8fcfa] to-[#e6f6f2] py-12 px-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-start">
         {/* Left: Text */}
-        <div className="flex-1 min-w-[320px]">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-4">
+        <motion.div
+          className="flex-1 min-w-[320px]"
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-4"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             Why EDGE <br /> Certification?
-          </h2>
-          <p className="text-gray-600 text-lg mb-8 max-w-xl">
+          </motion.h2>
+          <motion.p
+            className="text-gray-600 text-lg mb-8 max-w-xl"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             EDGE (Excellence in Design for Greater Efficiencies) is the green
             building certification designed specifically for emerging markets.
             As certified EDGE experts, we guide you through the entire process.
-          </p>
-          <ul className="space-y-6">
+          </motion.p>
+          <motion.ul
+            className="space-y-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
             {features.map((f, i) => (
-              <li key={i} className="flex items-start gap-4">
-                <span className="flex-shrink-0 mt-1">
+              <motion.li
+                key={i}
+                className="flex items-start gap-4"
+                initial={{ x: -30, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <motion.span
+                  className="flex-shrink-0 mt-1"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <svg width="32" height="32" fill="none">
                     <rect width="32" height="32" rx="10" fill="#4ECB71" />
                     <path
@@ -66,28 +108,50 @@ export default function WhyEdge() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </span>
+                </motion.span>
                 <div>
                   <span className="block font-bold text-gray-800 text-lg">
                     {f.title}
                   </span>
                   <p className="text-gray-600">{f.desc}</p>
                 </div>
-              </li>
+              </motion.li>
             ))}
-          </ul>
-        </div>
+          </motion.ul>
+        </motion.div>
         {/* Right: Process Card */}
-        <div className="flex-1 min-w-[320px] mx-auto my-auto flex justify-center">
-          <div className="bg-white rounded-3xl shadow-xl px-8 py-10 w-full max-w-md text-center relative">
-            <h3 className="text-xl font-bold text-gray-800 mb-8">
+        <motion.div
+          className="flex-1 min-w-[320px] mx-auto my-auto flex justify-center"
+          initial={{ x: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className="bg-white rounded-3xl shadow-xl px-8 py-10 w-full max-w-md text-center relative"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.h3
+              className="text-xl font-bold text-gray-800 mb-8"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               EDGE Certification Process
-            </h3>
+            </motion.h3>
             <div className="flex items-center justify-between relative">
               {processSteps.map((step, idx) => (
                 <React.Fragment key={step.label}>
-                  <div className="relative flex flex-col items-center group">
-                    <button
+                  <motion.div
+                    className="relative flex flex-col items-center group"
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <motion.button
                       className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-2xl transition-all duration-200
                         ${
                           hovered === idx
@@ -99,21 +163,30 @@ export default function WhyEdge() {
                       onMouseLeave={() => setHovered(null)}
                       aria-label={step.label}
                       tabIndex={0}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       {idx + 1}
-                    </button>
-                    <span className="mt-2 text-gray-700 font-medium text-base">
+                    </motion.button>
+                    <motion.span
+                      className="mt-2 text-gray-700 font-medium text-base"
+                      initial={{ y: 10, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: 0.6 + idx * 0.1 }}
+                      viewport={{ once: true }}
+                    >
                       {step.label}
-                    </span>
+                    </motion.span>
                     {/* Animated image on hover */}
-                    <div
-                      className={`absolute -top-28 left-1/2 -translate-x-1/2 transition-all duration-300
-                        ${
-                          hovered === idx
-                            ? "opacity-100 scale-100"
-                            : "opacity-0 scale-95 pointer-events-none"
-                        }
-                        z-20`}
+                    <motion.div
+                      className={`absolute -top-28 left-1/2 -translate-x-1/2 z-20`}
+                      initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                      animate={{
+                        opacity: hovered === idx ? 1 : 0,
+                        scale: hovered === idx ? 1 : 0.8,
+                        y: hovered === idx ? 0 : 10,
+                      }}
+                      transition={{ duration: 0.3 }}
                     >
                       <div className="bg-white rounded-xl shadow-lg p-2">
                         <Image
@@ -124,17 +197,23 @@ export default function WhyEdge() {
                           className="rounded-lg"
                         />
                       </div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                   {idx < processSteps.length - 1 && (
-                    <span className="w-8 h-1 bg-gray-200 mx-2 rounded-full" />
+                    <motion.span
+                      className="w-8 h-1 bg-gray-200 mx-2 rounded-full"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ duration: 0.6, delay: 0.7 + idx * 0.1 }}
+                      viewport={{ once: true }}
+                    />
                   )}
                 </React.Fragment>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

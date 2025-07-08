@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 //import { FaCode } from "react-icons/fa";
 
 const services = [
@@ -39,6 +42,26 @@ const services = [
 ];
 
 function Services() {
+  // Animation variants for the container and cards
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring" as const, stiffness: 60, damping: 12 },
+    },
+    hover: { scale: 1.04, boxShadow: "0 8px 24px rgba(26,163,221,0.10)" },
+  };
+
   return (
     <div className="flex flex-col items-center gap-10 py-10 justify-center">
       <div className="flex flex-col items-center gap-4 justify-center">
@@ -54,27 +77,33 @@ function Services() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 p-4 w-full mx-auto ">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 p-4 w-full mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {services.map((service) => (
-          <div
-            className="flex flex-col items-start justify-start gap-4 bg-white p-4 rounded-lg shadow-md transition-transform duration-200 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+          <motion.div
+            className="flex flex-col items-start justify-start gap-4 bg-white p-4 rounded-lg shadow-md transition-transform duration-200 hover:shadow-lg cursor-pointer"
             key={service.title}
+            variants={cardVariants}
+            whileHover="hover"
           >
             <div>{service.icon}</div>
             <h4 className="text-xl font-bold text-[#606163]">
               {service.title}
             </h4>
             <p className="text-[#606163] text-sm">{service.description}</p>
-
             <Link
               href={service.link}
               className="text-[#1aa3dd] text-sm font-bold"
             >
               {service.linkText}
             </Link>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
