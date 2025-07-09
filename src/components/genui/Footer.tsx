@@ -27,12 +27,7 @@ function Footer() {
           >
             Services
           </Link>
-          <Link
-            href="/resources"
-            className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-white rounded"
-          >
-            Resources
-          </Link>
+         
           <Link
             href="/partners"
             className="text-white hover:underline focus:outline-none focus:ring-2 focus:ring-white rounded"

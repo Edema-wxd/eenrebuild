@@ -60,7 +60,6 @@ function Header() {
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
     { href: "/edge-building", label: "EDGE" },
-    { href: "/resources", label: "Resources" },
     { href: "/partners", label: "Partners" },
   ];
 

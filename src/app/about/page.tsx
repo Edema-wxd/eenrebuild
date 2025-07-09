@@ -16,7 +16,12 @@ function page() {
       <Building />
       <Team />
 
-      <CTA />
+      <CTA
+        title="Ready to Join Nigeria's Green Revolution?"
+        description="Let's work together to create sustainable, efficient, and profitable buildings."
+        buttonText="Start a Conversation"
+        buttonLink="/contact-us"
+      />
     </div>
   );
 }

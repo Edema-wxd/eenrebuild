@@ -11,7 +11,12 @@ export default function Home() {
       <Services />
       <WhyEdge />
       <Trusted />
-      <CTA />
+      <CTA
+        title="Ready to Build Green?"
+        description="Join Nigeria's sustainability revolution with expert guidance every step of the way."
+        buttonText="Schedule a Consultation"
+        buttonLink="/contact-us"
+      />
     </div>
   );
 }
