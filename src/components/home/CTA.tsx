@@ -22,7 +22,12 @@ const item = {
   },
 };
 
-function CTA() {
+interface CTAProps {
+  mode?: "partner" | "blue";
+}
+
+function CTA({ mode }: CTAProps) {
+  
   return (
     <motion.section
       className="w-full bg-gradient-to-r from-sky-400 to-green-400 py-12 px-4 flex flex-col items-center justify-center text-center"
@@ -34,7 +39,7 @@ function CTA() {
         className="text-3xl md:text-4xl font-bold text-white mb-4"
         variants={item}
       >
-        Ready to Build Green?
+        {mode === "partner" ? "Ready to Build Green?" : "Ready to Build Green?"}
       </motion.h2>
       <motion.p
         className="text-white text-base md:text-lg mb-8 max-w-2xl"

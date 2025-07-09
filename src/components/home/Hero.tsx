@@ -106,7 +106,7 @@ function Hero() {
                   <div className=" w-3 h-3 bg-blue-500 rounded-full animate-pulse animation-delay-1000"></div>
                   <p className=" flex-col flex text-sm text-gray-600 font-medium">
                     <span className="text-2xl text-green-600 font-bold">
-                      5+
+                      7+
                     </span>{" "}
                     Years of Excellence
                   </p>
