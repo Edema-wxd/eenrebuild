@@ -58,7 +58,7 @@ function Trusted() {
             key={partner.name}
             className="flex flex-col items-center group cursor-pointer"
             variants={itemVariants}
-            whileHover={{ scale: 1.08, rotate: -2 }}
+            whileHover={{ scale: 1.08 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <Image

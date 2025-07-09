@@ -19,7 +19,7 @@ const services = [
     title: "EDGE Certification",
     description:
       "Expert guidance through the IFC EDGE green building certification process, ensuring 20%+ resource efficiency.",
-    link: "/services/edge-certification",
+    link: "/edge-building",
     linkText: "Get Certified →",
   },
   {
