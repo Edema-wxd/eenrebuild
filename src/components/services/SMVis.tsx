@@ -14,29 +14,6 @@ export default function VisibilityProblem() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <div className="p-8 rounded-2xl border-2 border-red-100 bg-gradient-to-br from-red-100/20 to-red-200/10 text-center animate-fadeInUp">
-            <div className="text-4xl mb-4">🚫</div>
-            <h3 className="text-xl font-bold mb-4 text-gray-700">
-              Without Smart Metering
-            </h3>
-            <ul className="text-left text-sm space-y-2">
-              {[
-                "Monthly bill surprises",
-                "No idea when peak usage occurs",
-                "Equipment failures go unnoticed",
-                "Can't identify energy vampires",
-                "No data for cost reduction",
-                "Reactive maintenance only",
-              ].map((item) => (
-                <li key={item} className="relative pl-6">
-                  <span className="absolute left-0 text-red-500 font-bold">
-                    ✗
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
           <div className="p-8 rounded-2xl border-2 border-green-200 bg-gradient-to-br from-green-100/20 to-blue-100/10 text-center animate-fadeInUp">
             <div className="text-4xl mb-4">✅</div>
             <h3 className="text-xl font-bold mb-4 text-gray-700">
@@ -54,6 +31,29 @@ export default function VisibilityProblem() {
                 <li key={item} className="relative pl-6">
                   <span className="absolute left-0 text-green-600 font-bold">
                     ✓
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div> 
+          <div className="p-8 rounded-2xl border-2 border-red-100 bg-gradient-to-br from-red-100/20 to-red-200/10 text-center animate-fadeInUp">
+            <div className="text-4xl mb-4">🚫</div>
+            <h3 className="text-xl font-bold mb-4 text-gray-700">
+              Without Smart Metering
+            </h3>
+            <ul className="text-left text-sm space-y-2">
+              {[
+                "Monthly bill surprises",
+                "No idea when peak usage occurs",
+                "Equipment failures go unnoticed",
+                "Can't identify energy vampires",
+                "No data for cost reduction",
+                "Reactive maintenance only",
+              ].map((item) => (
+                <li key={item} className="relative pl-6">
+                  <span className="absolute left-0 text-red-500 font-bold">
+                    ✗
                   </span>
                   {item}
                 </li>
