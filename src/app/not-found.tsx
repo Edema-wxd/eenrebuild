@@ -1,20 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function NotFound() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,7 +22,7 @@ export default function NotFound() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -44,7 +33,7 @@ export default function NotFound() {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
@@ -55,7 +44,7 @@ export default function NotFound() {
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
@@ -153,8 +142,8 @@ export default function NotFound() {
               Page Not Found
             </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-md mx-auto">
-              Looks like this energy-efficient page has gone offline. Let's get
-              you back to sustainable solutions!
+              Looks like this energy-efficient page has gone offline. Let&apos;s
+              get you back to sustainable solutions!
             </p>
           </motion.div>
 
