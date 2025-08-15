@@ -134,6 +134,9 @@ function Hero() {
                     src="/images/hero.jpg"
                     alt="Hero Image"
                     width={600}
+                    quality={100}
+                    priority
+                    loading="eager"
                     height={600}
                     className="w-full h-full object-cover"
                   />
