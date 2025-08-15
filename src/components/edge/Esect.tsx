@@ -96,8 +96,8 @@ function Esect() {
           {/* Visual Info / Features */}
           <div>
             <div className="grid sm:grid-cols-2 gap-8 mt-8 md:mt-0">
-              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="mx-auto mb-2">  
+              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col items-center justify-center">
+                <div className="mx-auto mb-2">
                   <GiOnTarget className="text-4xl text-[#1aa3dd]" />
                 </div>
                 <h4 className="text-lg font-bold mb-1 text-gray-700">SMART</h4>
@@ -105,7 +105,7 @@ function Esect() {
                   Powerful engine that understands local climatic conditions
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col items-center justify-center">
                 <div className="mx-auto mb-2">
                   <GiElectric className="text-4xl text-[#1aa3dd]" />
                 </div>
@@ -114,7 +114,7 @@ function Esect() {
                   Discover ideal measures for best ROI within minutes
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col items-center justify-center">
                 <div className="mx-auto mb-2">
                   <GiMoneyStack className="text-4xl text-[#1aa3dd]" />
                 </div>
@@ -125,7 +125,7 @@ function Esect() {
                   Free software with certification at modest cost
                 </p>
               </div>
-              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col items-center justify-center">
                 <div className="mx-auto mb-2">
                   <GiWorld className="text-4xl text-[#1aa3dd]" />
                 </div>
