@@ -9,6 +9,7 @@ import {
   validateHoneypot,
   checkSubmissionSpeed,
 } from "@/utils/formValidation";
+import { GiPin, GiEnvelope, GiPhone, GiAlarmClock } from "react-icons/gi";
 
 export default function ContactUsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -365,7 +366,7 @@ export default function ContactUsPage() {
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600">📍</span>
+                    <GiPin className="text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Address</h3>
@@ -379,7 +380,7 @@ export default function ContactUsPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-green-600">📧</span>
+                    <GiEnvelope className="text-green-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
@@ -396,7 +397,7 @@ export default function ContactUsPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-purple-600">📞</span>
+                    <GiPhone className="text-purple-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
@@ -413,7 +414,7 @@ export default function ContactUsPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-yellow-600">🕒</span>
+                    <GiAlarmClock className="text-yellow-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">

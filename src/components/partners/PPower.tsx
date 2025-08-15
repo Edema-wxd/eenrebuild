@@ -2,40 +2,48 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  GiWorld,
+  GiWrench,
+  GiLightBulb,
+  GiShakingHands,
+  GiTrophy,
+  GiChart,
+} from "react-icons/gi";
 
 const pfeatures = [
   {
-    icon: "🌍",
+    icon: <GiWorld className="text-4xl text-[#1aa3dd]" />,
     title: "Global Standards",
     description:
       "Access internationally recognized certifications and technologies that meet global sustainability benchmarks while addressing local needs.",
   },
   {
-    icon: "🔧",
+    icon: <GiWrench className="text-4xl text-[#1aa3dd]" />,
     title: "Technical Excellence",
     description:
       "Leverage world-class engineering and technical expertise from partners with decades of innovation in their respective fields.",
   },
   {
-    icon: "💡",
+    icon: <GiLightBulb className="text-4xl text-[#1aa3dd]" />,
     title: "Local Implementation",
     description:
       "International solutions adapted for Nigerian conditions, ensuring practical and effective sustainability outcomes.",
   },
   {
-    icon: "🤝",
+    icon: <GiShakingHands className="text-4xl text-[#1aa3dd]" />,
     title: "Continuous Support",
     description:
       "Ongoing training, technical assistance, and knowledge transfer from our partners keeps us at the forefront of sustainability.",
   },
   {
-    icon: "📈",
+    icon: <GiTrophy className="text-4xl text-[#1aa3dd]" />,
     title: "Market Leadership",
     description:
       "Exclusive partnerships position EEN as Nigeria's sustainability consultant with unique access to premium solutions.",
   },
   {
-    icon: "🏆",
+    icon: <GiChart  className="text-4xl text-[#1aa3dd]" />,
     title: "Proven Success",
     description:
       "Our partners' global track records translate into guaranteed results for Nigerian projects, backed by international warranties.",
@@ -54,11 +62,6 @@ const containerVariants = {
   },
 };
 
-
-
-
-
-
 function PPower() {
   return (
     <motion.div
@@ -68,17 +71,11 @@ function PPower() {
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
-      <motion.div
-        className="flex flex-col items-center gap-4 sm:gap-6 justify-center max-w-4xl mx-auto"
-      >
-        <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-800 leading-tight"
-        >
+      <motion.div className="flex flex-col items-center gap-4 sm:gap-6 justify-center max-w-4xl mx-auto">
+        <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-800 leading-tight">
           The Power of Partnership
         </motion.h1>
-        <motion.p
-          className="text-base sm:text-lg md:text-xl text-center text-gray-600 max-w-3xl leading-relaxed"
-        >
+        <motion.p className="text-base sm:text-lg md:text-xl text-center text-gray-600 max-w-3xl leading-relaxed">
           Our strategic alliances enable us to deliver unmatched value to
           Nigerian businesses and property developers.
         </motion.p>
@@ -95,9 +92,7 @@ function PPower() {
             whileHover="hover"
             custom={index}
           >
-            <motion.div
-              className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-[#1e90ff] to-[#7ed957] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-xl sm:text-2xl lg:text-3xl text-white shadow-lg"
-            >
+            <motion.div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white border-2 border-[#73C167] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-xl sm:text-2xl lg:text-3xl text-white shadow-lg">
               {feature.icon}
             </motion.div>
             <motion.h3
