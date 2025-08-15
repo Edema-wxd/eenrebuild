@@ -1,23 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const processSteps = [
   {
     label: "Design",
-    img: "/step-design.png", // Place your image in /public
     alt: "Design Step",
   },
   {
     label: "Audit",
-    img: "/step-audit.png",
     alt: "Audit Step",
   },
   {
     label: "Certify",
-    img: "/step-certify.png",
     alt: "Certify Step",
   },
 ];
@@ -187,17 +183,7 @@ export default function WhyEdge() {
                         y: hovered === idx ? 0 : 10,
                       }}
                       transition={{ duration: 0.3 }}
-                    >
-                      <div className="bg-white rounded-xl shadow-lg p-2">
-                        <Image
-                          src={step.img}
-                          alt={step.alt}
-                          width={80}
-                          height={80}
-                          className="rounded-lg"
-                        />
-                      </div>
-                    </motion.div>
+                    ></motion.div>
                   </motion.div>
                   {idx < processSteps.length - 1 && (
                     <motion.span

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { MdElectricBolt, MdOutlineRecycling } from "react-icons/md";
-import { GiCrane } from "react-icons/gi";
+import Image from "next/image";
 
 function Hero() {
   return (
@@ -130,17 +130,13 @@ function Hero() {
               <div className="relative bg-white rounded-2xl p-2 shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
                 <div className="w-full max-w-[600px] h-[400px] sm:h-[500px] lg:h-[600px] rounded-xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center relative overflow-hidden">
                   {/* Placeholder content */}
-                  <div className="text-center space-y-4 p-8">
-                    <div className="text-6xl mb-4">
-                      <GiCrane />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-800">
-                      Sustainable Building Solutions
-                    </h3>
-                    <p className="text-gray-600">
-                      Energy-efficient technologies for a greener future
-                    </p>
-                  </div>
+                  <Image
+                    src="/images/hero.jpg"
+                    alt="Hero Image"
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-cover"
+                  />
 
                   {/* Decorative elements */}
                   <div className="absolute top-4 right-4 w-16 h-16 bg-green-200 rounded-full opacity-60"></div>
