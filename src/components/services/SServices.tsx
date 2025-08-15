@@ -2,10 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  GiWaterDrop,
+  GiSpeedometer,
+  GiTrophyCup,
+  GiSolarPower,
+} from "react-icons/gi";
 
 const services = [
   {
-    icon: "💧",
+    icon: <GiWaterDrop className="text-7xl text-[#ffffff]" />,
     title: "Water Solutions",
     desc: "Premium Neoperl® flow regulators and aerators as West Africa's exclusive distributor.",
     highlightLabel: "Potential Savings",
@@ -22,7 +28,7 @@ const services = [
     quoteLabel: "Get Quote",
   },
   {
-    icon: "☀️",
+    icon: <GiSolarPower className="text-7xl text-[#ffffff]" />,
     title: "Solar Energy Systems",
     desc: "Complete solar installations with battery backup for reliable, clean power.",
     highlightLabel: "Energy Independence",
@@ -39,7 +45,7 @@ const services = [
     quoteLabel: "Get Quote",
   },
   {
-    icon: "📊",
+    icon: <GiSpeedometer className="text-7xl text-[#ffffff]" />,
     title: "Smart Metering",
     desc: "Advanced monitoring systems for real-time energy consumption tracking.",
     highlightLabel: "Visibility Increase",
@@ -56,7 +62,7 @@ const services = [
     quoteLabel: "Get Quote",
   },
   {
-    icon: "🏆",
+    icon: <GiTrophyCup className="text-7xl text-[#ffffff]" />,
     title: "EDGE Certification",
     desc: "Expert guidance through IFC EDGE green building certification process.",
     highlightLabel: "Certification Success",
@@ -93,7 +99,7 @@ function SServices() {
                 {/* Gradient bar */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#1aa3dd] to-[#73c167]" />
                 {/* Icon */}
-                <div className="w-20 h-20 bg-gradient-to-br from-[#1aa3dd] to-[#73c167] rounded-xl flex items-center justify-center text-white text-3xl mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#1aa3dd] to-[#73c167] rounded-xl flex items-center justify-center text-white text-3xl mb-6 transition-transform duration-300 group-hover:scale-110 ">
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-700">

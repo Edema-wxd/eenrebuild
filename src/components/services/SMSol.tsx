@@ -1,20 +1,22 @@
 "use client";
 
 import React from "react";
+import { GiSolarPower, GiBatteryPack, GiChart } from "react-icons/gi";
+import { PiBuildingOffice } from "react-icons/pi";
 
 const benefits = [
   {
-    icon: "☀️",
+    icon: <GiSolarPower className="text-7xl text-[#1aa3dd]" />,
     title: "Solar Production Tracking",
     desc: "Monitor real-time solar generation and see exactly how much grid power you're offsetting.",
   },
   {
-    icon: "🔋",
+    icon: <GiBatteryPack className="text-7xl text-[#1aa3dd]" />,
     title: "Battery Performance",
     desc: "Track battery charge levels, cycles, and health to optimize storage utilization.",
   },
   {
-    icon: "💰",
+    icon: <GiChart className="text-7xl text-[#1aa3dd]" />,
     title: "ROI Calculations",
     desc: "See real-time savings from solar and calculate exact payback periods with accurate data.",
   },
@@ -46,7 +48,7 @@ export default function SolarIntegration() {
             <div className="flex flex-col gap-6 mb-6">
               {benefits.map((b) => (
                 <div key={b.title} className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl bg-gradient-to-br from-yellow-400 to-yellow-200 text-white flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl bg-white flex-shrink-0">
                     {b.icon}
                   </div>
                   <div>
@@ -77,33 +79,47 @@ export default function SolarIntegration() {
             */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-4 mb-4">
               <div className="flex-1 w-full text-center mb-4 md:mb-0">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-400 to-yellow-200 rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl text-white mb-2">
-                  ☀️
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-500 to-yellow-400 rounded  flex items-center justify-center mx-auto text-xl md:text-2xl text-white mb-2">
+                  <GiSolarPower className="text-7xl text-white" />
                 </div>
-                <p className="text-xs md:text-xs text-gray-500">Solar Generation</p>
-                <strong className="block text-base md:text-lg text-gray-700">8.5 kW</strong>
+                <p className="text-xs md:text-xs text-gray-500">
+                  Solar Generation
+                </p>
+                <strong className="block text-base md:text-lg text-gray-700">
+                  8.5 kW
+                </strong>
               </div>
-              <div className="hidden md:block text-2xl text-[#6B46C1] animate-flow">→</div>
+              <div className="hidden md:block text-2xl text-[#6B46C1] animate-flow">
+                →
+              </div>
               {/* Mobile arrow */}
-              <div className="block md:hidden text-xl text-[#6B46C1] animate-flow mb-4">↓</div>
+              <div className="block md:hidden text-xl text-[#6B46C1] animate-flow mb-4">
+                ↓
+              </div>
               <div className="flex-1 w-full text-center mb-4 md:mb-0">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#6B46C1] to-[#0066CC] rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl text-white mb-2">
-                  📊
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#6B46C1] to-[#0066CC] rounded flex items-center justify-center mx-auto text-xl md:text-2xl text-white mb-2">
+                  <GiChart className="text-7xl text-white" />
                 </div>
                 <p className="text-xs md:text-xs text-gray-500">Smart Meter</p>
                 <strong className="block text-base md:text-lg text-gray-700">
                   Monitoring
                 </strong>
               </div>
-              <div className="hidden md:block text-2xl text-[#6B46C1] animate-flow">→</div>
+              <div className="hidden md:block text-2xl text-[#6B46C1] animate-flow">
+                →
+              </div>
               {/* Mobile arrow */}
-              <div className="block md:hidden text-xl text-[#6B46C1] animate-flow mb-4">↓</div>
+              <div className="block md:hidden text-xl text-[#6B46C1] animate-flow mb-4">
+                ↓
+              </div>
               <div className="flex-1 w-full text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#73C167] to-[#1AA3DD] rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl text-white mb-2">
-                  🏢
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#73C167] to-[#1AA3DD] rounded flex items-center justify-center mx-auto text-xl md:text-2xl text-white mb-2">
+                  <PiBuildingOffice className="text-7xl text-white" />
                 </div>
                 <p className="text-xs md:text-xs text-gray-500">Consumption</p>
-                <strong className="block text-base md:text-lg text-gray-700">6.2 kW</strong>
+                <strong className="block text-base md:text-lg text-gray-700">
+                  6.2 kW
+                </strong>
               </div>
             </div>
             <p className="mt-4 md:mt-6 text-xs md:text-sm text-gray-600">

@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
+import { GiMoneyStack, GiWorld } from "react-icons/gi";
 
 const benefits = [
   {
-    icon: "💰",
+    icon: <GiMoneyStack className="text-7xl text-[#73C167]" />,
     title: "Cost Reduction",
     desc: "Identify and eliminate energy waste, optimize usage patterns, and reduce peak demand charges.",
     metrics: [
@@ -11,7 +13,7 @@ const benefits = [
     ],
   },
   {
-    icon: "🛡️",
+    icon: <GiWorld className="text-7xl text-[#73C167]" />,
     title: "Equipment Protection",
     desc: "Detect electrical anomalies early, prevent equipment failures, and extend asset lifespans.",
     metrics: [
@@ -45,7 +47,7 @@ export default function SMBen() {
               }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#6B46C1] to-[#0066CC] rounded-xl flex items-center justify-center text-2xl text-white">
+                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-2xl text-white">
                   {b.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-700">{b.title}</h3>

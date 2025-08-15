@@ -2,11 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { FaSolarPanel } from "react-icons/fa";
+import { GiMoneyStack } from "react-icons/gi";
+  import { GiWaterDrop } from "react-icons/gi";
+
 
 const stats = [
-  { icon: "💧", number: "70%", label: "Water Savings" },
-  { icon: "⚡", number: "50%", label: "Energy Reduction" },
-  { icon: "💰", number: "30%", label: "Cost Savings" },
+  { icon: <GiWaterDrop className="text-7xl text-[#1aa3dd]" />, number: "70%", label: "Water Savings" },
+  { icon: <FaSolarPanel className="text-7xl text-[#4ECB71]" />, number: "50%", label: "Energy Reduction" },
+  { icon: <GiMoneyStack className="text-7xl text-[#1aa3dd]" />, number: "30%", label: "Cost Savings" },
+
 ];
 
 const containerVariants = {

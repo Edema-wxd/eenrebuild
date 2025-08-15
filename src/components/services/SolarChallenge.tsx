@@ -1,25 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { GiElectric, GiGasPump, GiNuclearPlant } from "react-icons/gi";
 
 const challenges = [
   {
-    icon: "⚡",
+    icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
     title: "Grid Instability",
     stat: "4-8 hrs",
     desc: "Average daily power supply in many areas",
   },
   {
-    icon: "⛽",
+    icon: <GiGasPump className="text-7xl text-[#1aa3dd]" />,
     title: "Fuel Costs",
     stat: "₦850+",
     desc: "Per liter of diesel, increasing monthly",
   },
   {
-    icon: "🏭",
+    icon: <GiNuclearPlant className="text-7xl text-[#1aa3dd]" />,
     title: "Carbon Emissions",
     stat: "2.5 tons",
-    desc: "CO2 per year from average generator use",
+    desc: "CO2 per year from average building use",
   },
 ];
 
@@ -74,7 +75,7 @@ export default function SolarChallenge() {
               }}
             >
               {/* Icon with enhanced animation */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-2xl sm:text-3xl shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 animate-bounceIn">
+              <div className="w-fit h-fit p-4  bg-white rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-2xl sm:text-3xl shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 animate-bounceIn">
                 {c.icon}
               </div>
 

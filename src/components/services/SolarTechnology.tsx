@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { GiSolarPower, GiBatteryPack, GiElectric } from "react-icons/gi";
 
 const technologies = [
   {
-    icon: "☀️",
+    icon: <GiSolarPower className="text-7xl text-[#1aa3dd]" />,
     title: "Solar Panels",
     desc: "High-efficiency monocrystalline panels with 25-year performance warranty",
     specs: [
@@ -14,7 +15,7 @@ const technologies = [
     ],
   },
   {
-    icon: "⚡",
+    icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
     title: "Hybrid Inverters",
     desc: "Smart inverters that seamlessly switch between solar, battery, and grid power",
     specs: [
@@ -24,7 +25,7 @@ const technologies = [
     ],
   },
   {
-    icon: "🔋",
+    icon: <GiBatteryPack className="text-7xl text-[#1aa3dd]" />,
     title: "Battery Storage",
     desc: "Advanced battery systems for reliable power storage and overnight usage",
     specs: [

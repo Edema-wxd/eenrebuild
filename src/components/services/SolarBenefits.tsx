@@ -1,25 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { GiMoneyStack, GiElectric, GiChart, GiWorld } from "react-icons/gi";
 
 const benefits = [
   {
-    icon: "💰",
+    icon: <GiMoneyStack className="text-7xl bg-none text-[#1aa3dd]" />,
     title: "Immediate Cost Savings",
     desc: "Eliminate generator fuel costs and reduce electricity bills by up to 95% from day one.",
   },
   {
-    icon: "🔇",
+    icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
     title: "Silent Operation",
     desc: "Enjoy peaceful, noise-free power generation unlike traditional generators.",
   },
   {
-    icon: "🌍",
+    icon: <GiWorld className="text-7xl text-[#1aa3dd]" />,
     title: "Environmental Impact",
     desc: "Reduce carbon footprint by 2.5 tons annually while contributing to a cleaner Nigeria.",
   },
   {
-    icon: "📈",
+    icon: <GiChart className="text-7xl text-[#1aa3dd]" />,
     title: "Property Value Increase",
     desc: "Solar installations increase property value by 15-20% on average.",
   },
@@ -123,7 +124,7 @@ export default function SolarBenefits() {
             {benefits.map((b, i) => (
               <div
                 key={b.title}
-                className={`flex items-start gap-4 group animate-fadeInUp transition-all duration-700 ${
+                className={`flex rounded items-start gap-4 group animate-fadeInUp transition-all duration-700 ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
@@ -133,7 +134,7 @@ export default function SolarBenefits() {
                   animationFillMode: "both",
                 }}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-100/20 to-yellow-100/20 rounded-lg flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 animate-bounceIn">
+                <div className="w-10 h-10 m-0.5 sm:w-12 sm:h-12  rounded-lg flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 group-hover:scale-110 transition-all duration-300 animate-bounceIn">
                   {b.icon}
                 </div>
                 <div>

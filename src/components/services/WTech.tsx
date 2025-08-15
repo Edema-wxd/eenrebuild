@@ -1,24 +1,43 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 const techs = [
   {
-    icon: "🌊",
+    icon: (
+      <Image src="/images/mikado.webp" alt="Mikado" width={335} height={188} />
+    ),
     title: "MIKADO",
     desc: "Creates a visually enchanting water stream that turns hand washing into a premium experience while saving water.",
   },
   {
-    icon: "💨",
+    icon: (
+      <Image
+        src="/images/aerated.webp"
+        alt="Aerated"
+        width={335}
+        height={188}
+      />
+    ),
     title: "AERATED",
     desc: "Introduces air into the water stream making it soft to touch and non-splashing for comfortable use.",
   },
   {
-    icon: "🚿",
+    icon: (
+      <Image src="/images/spray.webp" alt="Spray" width={335} height={188} />
+    ),
     title: "SPRAY",
     desc: "Produces a miniature shower pattern providing full hand coverage during washing with minimal water use.",
   },
   {
-    icon: "💧",
+    icon: (
+      <Image
+        src="/images/Atomizer.webp"
+        alt="Atomized"
+        width={335}
+        height={188}
+      />
+    ),
     title: "ATOMIZED",
     desc: "Disperses water into tiny droplets for extremely low flow rates while maintaining washing effectiveness.",
   },
@@ -49,7 +68,7 @@ function WTech() {
                 animationFillMode: "both",
               }}
             >
-              <div className="w-28 h-28 bg-gradient-to-br from-[#00a8e81a] to-[#1aa3dd1a] rounded-full mx-auto mb-6 flex items-center justify-center text-5xl">
+              <div className="w-fit h-fit p-4  bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl  ">
                 {tech.icon}
               </div>
               <h3 className="text-lg font-bold mb-2 text-gray-700">

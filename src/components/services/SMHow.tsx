@@ -1,23 +1,31 @@
+"use client";
+
 import React from "react";
+import {
+  GiMagnifyingGlass,
+  GiPencilRuler,
+  GiTruck,
+  GiSmartphone,
+} from "react-icons/gi";
 
 const steps = [
   {
-    icon: "🔍",
+    icon: <GiMagnifyingGlass className=" text-[#1aa3dd]" />,
     title: "Site Assessment",
     desc: "Evaluate your electrical infrastructure and identify monitoring points",
   },
   {
-    icon: "📐",
+    icon: <GiPencilRuler className=" text-[#1aa3dd]" />,
     title: "System Design",
     desc: "Custom monitoring solution designed for your specific needs",
   },
   {
-    icon: "🔧",
+    icon: <GiTruck className="  text-[#1aa3dd]" />,
     title: "Installation",
     desc: "Professional installation with minimal disruption to operations",
   },
   {
-    icon: "📱",
+    icon: <GiSmartphone className="  text-[#1aa3dd]" />,
     title: "Go Live",
     desc: "System activation, app setup, and training for your team",
   },

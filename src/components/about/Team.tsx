@@ -3,53 +3,44 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Dummy data for leaders
+import { FaPhone, FaEnvelope } from "react-icons/fa";
+
 const leaders = [
   {
-    initials: "OU",
-    name: "Obinna Ukwa",
-    title: "Co-Founder / Managing Director",
-    titleColor: "text-sky-600",
-    description:
-      "Certified EDGE Expert with a background in Mechanical & Civil Engineering. Obinna brings deep technical expertise and a passion for sustainable building solutions to every project.",
-    email: "#",
-    phone: "#",
-  },
-  {
     initials: "UG",
+    image: "/images/unoma.jpg",
     name: "Unoma Grant",
     title: "Co-Founder / Chief Executive Officer",
     titleColor: "text-sky-600",
     description:
-      "Certified EDGE Expert with a background in Mechanical Engineering & Business Management. Unoma combines technical knowledge with strategic business acumen to drive EEN's growth.",
-    email: "#",
-    phone: "#",
+      "Certified EDGE Expert with a background in Mechanical Engineering and Business Management, combining technical expertise with strategic insight to drive EEN's growth.",
+    email: "unoma@eenconsult.com.ng",
+    phone: "+2348094563216",
+  },
+  {
+    initials: "OU",
+    image: "/images/obinna.jpg",
+    name: "Obinna Ukwa",
+    title: "Co-Founder / Managing Director",
+    titleColor: "text-sky-600",
+    description:
+      "Certified EDGE Expert in Mechanical and Civil Engineering, delivering sustainable building solutions with technical precision and passion.",
+    email: "obinna@eenconsult.com.ng",
+    phone: "+2348099719533",
+  },
+
+  {
+    initials: "FW",
+    image: "/images/francis.jpg",
+    name: "Francis Woods",
+    title: "Sustainablity Implementation Engineer",
+    titleColor: "text-sky-600",
+    description:
+      "Civil Engineer and Sustainability Implementation Engineer, integrating green building strategies to meet EDGE standards and maximize project impact.",
+    email: "francis@eenconsult.com.ng",
+    phone: "+2348127576854",
   },
 ];
-
-// Simple icon SVGs
-const MailIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-  >
-    <path d="M21 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2m18 0v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0-9 6-9-6" />
-  </svg>
-);
-const PhoneIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-  >
-    <path d="M3 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm0 14a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2zm14-14a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V5zm0 14a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v2z" />
-  </svg>
-);
 
 function Team() {
   return (
@@ -63,12 +54,9 @@ function Team() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            Meet Our Leadership
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">Meet Our Team</h2>
           <p className="text-gray-600 text-lg">
-            Certified EDGE Experts passionate about Nigeria&apos;s sustainable
-            development.
+            Our team is passionate about Nigeria&apos;s sustainable development.
           </p>
         </motion.div>
 
@@ -100,18 +88,18 @@ function Team() {
                 <p className="text-gray-600 mb-4">{leader.description}</p>
                 <div className="flex gap-3 mt-auto">
                   <a
-                    href={leader.email}
+                    href={`mailto:${leader.email}`}
                     className="rounded-full border border-gray-200 p-2 hover:bg-gray-100 transition"
                     aria-label="Email"
                   >
-                    <MailIcon />
+                    <FaEnvelope />
                   </a>
                   <a
-                    href={leader.phone}
+                    href={`tel:${leader.phone}`}
                     className="rounded-full border border-gray-200 p-2 hover:bg-gray-100 transition"
                     aria-label="Phone"
                   >
-                    <PhoneIcon />
+                    <FaPhone />
                   </a>
                 </div>
               </div>

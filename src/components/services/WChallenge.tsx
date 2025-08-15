@@ -1,22 +1,23 @@
 "use client";
 
 import React from "react";
+import { GiWaterDrop, GiElectric, GiCapitol } from "react-icons/gi";
 
 const problems = [
   {
-    icon: "💧",
+    icon: <GiWaterDrop className="text-7xl text-[#1aa3dd]" />,
     title: "Water Scarcity",
     stat: "60%",
     desc: "of Nigerians lack access to safe drinking water",
   },
   {
-    icon: "⚡",
+    icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
     title: "Pumping Costs",
     stat: "₦25k+",
     desc: "Monthly pumping costs for average commercial building",
   },
   {
-    icon: "🏢",
+    icon: <GiCapitol className="text-7xl text-[#1aa3dd]" />,
     title: "Building Efficiency",
     stat: "70%",
     desc: "Potential water savings with proper flow management",
@@ -49,7 +50,7 @@ function WChallenge() {
                 animationFillMode: "both",
               }}
             >
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-lg">
+              <div className="w-fit h-fit p-4  bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl shadow-lg">
                 {p.icon}
               </div>
               <h3 className="text-lg font-bold mb-2 text-gray-700">

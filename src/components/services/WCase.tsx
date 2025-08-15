@@ -1,9 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
 const cases = [
   {
-    image: "Access Bank HQ",
-    type: "Commercial Office",
+    image: <Image src="/images/access.png" alt="Access Bank HQ" width={500} height={500} />,
+    type: "Commercial",
     title: "Access Bank Headquarters",
     desc: "Complete retrofit of 250+ water points across corporate headquarters.",
     metrics: [
@@ -11,6 +12,17 @@ const cases = [
       { value: "₦3.2M", label: "Annual Savings" },
     ],
   },
+  {
+    image: <Image src="/images/sterling.png" alt="Sterling Bank HQ" width={500} height={500} />,
+    type: "Commercial",
+    title: "Sterling Bank Headquarters",
+    desc: "Complete retrofit of 120+ water points across corporate headquarters.",
+    metrics: [
+      { value: "25%", label: "Water Saved" },
+      { value: "₦1.2M", label: "Annual Savings" },
+    ],
+  },
+ 
   {
     image: "Paelon Hospital",
     type: "Healthcare",
@@ -48,7 +60,7 @@ function WCase() {
                 animationFillMode: "both",
               }}
             >
-              <div className="h-48 flex items-center justify-center bg-gradient-to-br from-[#00A8E8] to-[#1aa3dd] text-white text-xl font-bold">
+              <div className="h-fit flex items-center justify-center bg-gradient-to-br from-[#4ecb71] to-[#1aa3dd] text-white text-xl font-bold">
                 {c.image}
               </div>
               <div className="p-8">

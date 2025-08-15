@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { GiMoneyStack, GiChart, GiWorld, GiTrophyCup } from "react-icons/gi";
 
 const roiMetrics = [
   { label: "Certification Cost", value: "₦2.5M" },
@@ -9,25 +11,25 @@ const roiMetrics = [
 
 const benefits = [
   {
-    icon: "💰",
+    icon: <GiMoneyStack className="text-4xl text-[#1aa3dd]" />,
     title: "Lower Operating Costs",
     description:
       "Reduce utility bills by 20-30% through efficient design and systems, providing immediate cash flow improvements.",
   },
   {
-    icon: "📈",
+    icon: <GiChart className="text-4xl text-[#1aa3dd]" />,
     title: "Higher Property Values",
     description:
       "EDGE-certified buildings command premium rents and sale prices, with faster lease-up rates.",
   },
   {
-    icon: "🌍",
+    icon: <GiWorld className="text-4xl text-[#1aa3dd]" />,
     title: "ESG Compliance",
     description:
       "Meet international sustainability standards and attract ESG-conscious investors and tenants.",
   },
   {
-    icon: "🏆",
+    icon: <GiTrophyCup className="text-4xl text-[#1aa3dd]" />,
     title: "Market Differentiation",
     description:
       "Stand out in Nigeria's competitive real estate market with internationally recognized green certification.",
@@ -65,7 +67,7 @@ function EBenefits() {
               ))}
             </div>
             <div className="mt-8 pt-4 text-center">
-              <div className="text-4xl font-extrabold mb-2">5 Months</div>
+              <div className="text-4xl font-extrabold mb-2">10-14 Month</div>
               <p className="text-lg">Average Payback Period</p>
             </div>
           </div>

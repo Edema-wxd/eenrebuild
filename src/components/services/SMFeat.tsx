@@ -1,33 +1,41 @@
 import React from "react";
+import {
+  GiChart,
+  GiSmartphone,
+  GiOnTarget,
+  GiElectric,
+  GiRingingBell,
+} from "react-icons/gi";
+
 
 const features = [
   {
-    icon: "📊",
+    icon: <GiChart className="text-7xl text-[#1aa3dd]" />,
     title: "Real-Time Analytics",
     desc: "Monitor electricity usage as it happens with second-by-second updates and instant notifications for unusual consumption.",
   },
   {
-    icon: "📱",
+    icon: <GiSmartphone className="text-7xl text-[#1aa3dd]" />,
     title: "Mobile App Access",
     desc: "Check your energy usage from anywhere, anytime. Get alerts, view reports, and control systems remotely.",
   },
   {
-    icon: "🎯",
+    icon: <GiOnTarget className="text-7xl text-[#1aa3dd]" />,
     title: "Automated Reporting",
     desc: "Receive daily, weekly, and monthly reports showing consumption patterns, costs, and optimization opportunities.",
   },
   {
-    icon: "⚡",
+    icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
     title: "Circuit-Level Monitoring",
     desc: "Track individual circuits and equipment to identify exactly where energy is being consumed in your facility.",
   },
   {
-    icon: "🔔",
+    icon: <GiRingingBell className="text-7xl text-[#1aa3dd]" />,
     title: "Smart Alerts",
     desc: "Set custom thresholds and receive immediate notifications for overconsumption, equipment issues, or unusual patterns.",
   },
   {
-    icon: "📈",
+      icon: <GiChart className="text-7xl text-[#1aa3dd]" />,
     title: "Predictive Analytics",
     desc: "AI-powered insights predict future consumption and identify opportunities for energy and cost savings.",
   },

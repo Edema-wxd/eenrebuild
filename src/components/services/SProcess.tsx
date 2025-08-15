@@ -82,7 +82,7 @@ function SProcess() {
                   group-hover:bg-gradient-to-br group-hover:from-[#1aa3dd] group-hover:to-[#73c167]
                   group-hover:text-white group-hover:border-transparent
                   group-hover:scale-110
-                  shadow-md
+                  shadow-md hover:rounded-full
                 "
               >
                 {idx + 1}

@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
+import { GiWaterDrop, GiKitchenTap, GiShower } from "react-icons/gi";
 
 const categories = [
   {
-    icon: "🚿",
+    icon: <GiWaterDrop className="text-7xl text-[#ffffff]" />,
     title: "Washbasin Solutions",
     flow: "2.0 L/min",
     savings: "Up to 85%",
@@ -16,7 +17,7 @@ const categories = [
     ],
   },
   {
-    icon: "🍴",
+    icon: <GiKitchenTap className="text-7xl text-[#ffffff]" />,
     title: "Kitchen Solutions",
     flow: "4.0 - 6.0 L/min",
     savings: "Up to 60%",
@@ -28,7 +29,7 @@ const categories = [
     ],
   },
   {
-    icon: "🚿",
+    icon: <GiShower className="text-7xl text-[#ffffff]" />,
     title: "Shower Solutions",
     flow: "8.0 - 10.0 L/min",
     savings: "Up to 40%",
@@ -67,7 +68,7 @@ function WSol() {
               }}
             >
               {/* Card Header */}
-              <div className="bg-gradient-to-br from-[#00A8E8] to-[#1aa3dd] text-white px-8 py-8 text-center">
+              <div className=" flex flex-col items-center justify-center bg-gradient-to-br from-[#00A8E8] to-[#1aa3dd] text-white px-8 py-8 text-center rounded-t-2xl">
                 <div className="text-4xl mb-2">{cat.icon}</div>
                 <h3 className="text-lg font-bold mb-1">{cat.title}</h3>
                 <div className="text-sm opacity-90">{cat.flow}</div>
@@ -92,7 +93,6 @@ function WSol() {
                     </li>
                   ))}
                 </ul>
-              
               </div>
             </div>
           ))}

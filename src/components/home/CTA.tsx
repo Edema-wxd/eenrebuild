@@ -49,7 +49,7 @@ function CTA({ title, description, buttonText, buttonLink }: CTAProps) {
       >
         {description}
       </motion.p>
-      <Link href={buttonLink} passHref legacyBehavior>
+      <Link href={buttonLink} passHref>
         <motion.a
           className="inline-block bg-white text-sky-600 font-semibold rounded-full px-8 py-3 shadow-md transition hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
           variants={item}

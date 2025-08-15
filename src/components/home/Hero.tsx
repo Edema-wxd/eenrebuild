@@ -3,6 +3,9 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import { MdElectricBolt, MdOutlineRecycling } from "react-icons/md";
+import { GiCrane } from "react-icons/gi";
+
 function Hero() {
   return (
     <motion.section
@@ -128,7 +131,9 @@ function Hero() {
                 <div className="w-full max-w-[600px] h-[400px] sm:h-[500px] lg:h-[600px] rounded-xl bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center relative overflow-hidden">
                   {/* Placeholder content */}
                   <div className="text-center space-y-4 p-8">
-                    <div className="text-6xl mb-4">🏗️</div>
+                    <div className="text-6xl mb-4">
+                      <GiCrane />
+                    </div>
                     <h3 className="text-2xl font-bold text-gray-800">
                       Sustainable Building Solutions
                     </h3>
@@ -148,12 +153,12 @@ function Hero() {
             {/* Floating elements */}
             <div className="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg animate-bounce">
               <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">♻️</span>
+                <MdOutlineRecycling className="text-white text-sm" />
               </div>
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white rounded-full p-3 shadow-lg animate-bounce animation-delay-1000">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">⚡</span>
+                <MdElectricBolt className="text-white text-sm" />
               </div>
             </div>
           </motion.div>

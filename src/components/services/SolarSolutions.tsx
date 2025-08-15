@@ -1,6 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import {
+  GiHomeGarage,
+  GiBatteryPack,
+  GiDesk,
+  GiMoneyStack,
+  GiNuclearPlant,
+  GiElectric,
+  GiBoltShield,
+  GiChart,
+} from "react-icons/gi";
+import { PiBuildingOffice } from "react-icons/pi";
 
 const tabs = [
   { id: "residential", label: "Residential" },
@@ -14,17 +25,17 @@ const solutions = {
     desc: "Complete home solar solutions designed to eliminate dependency on generators and provide 24/7 clean power.",
     features: [
       {
-        icon: "🏠",
+        icon: <GiHomeGarage className="text-7xl text-[#1aa3dd]" />,
         title: "Whole Home Coverage",
         desc: "Power all appliances including ACs, refrigerators, and electronics",
       },
       {
-        icon: "🔋",
+        icon: <GiBatteryPack className="text-7xl text-[#1aa3dd]" />,
         title: "Battery Backup",
         desc: "Lithium-ion batteries for overnight power and cloudy days",
       },
       {
-        icon: "📱",
+        icon: <GiDesk className="text-7xl text-[#1aa3dd]" />,
         title: "Smart Monitoring",
         desc: "Track energy production and consumption via mobile app",
       },
@@ -46,17 +57,17 @@ const solutions = {
     desc: "Scalable solutions for businesses, offices, and commercial facilities.",
     features: [
       {
-        icon: "🏢",
+        icon: <PiBuildingOffice className="text-7xl text-[#1aa3dd]" />,
         title: "Business Continuity",
         desc: "Ensure uninterrupted operations with reliable solar power",
       },
       {
-        icon: "💰",
+        icon: <GiMoneyStack className="text-7xl text-[#1aa3dd]" />,
         title: "Cost Reduction",
         desc: "Significantly reduce operational costs and improve profitability",
       },
       {
-        icon: "📊",
+        icon: <GiChart className="text-7xl text-[#1aa3dd]" />,
         title: "Energy Analytics",
         desc: "Detailed monitoring and reporting for energy optimization",
       },
@@ -78,17 +89,17 @@ const solutions = {
     desc: "Large-scale installations for factories, warehouses, and industrial facilities.",
     features: [
       {
-        icon: "🏭",
+        icon: <GiNuclearPlant className="text-7xl text-[#1aa3dd]" />,
         title: "High Capacity",
         desc: "Multi-megawatt systems for heavy industrial loads",
       },
       {
-        icon: "⚡",
+        icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
         title: "Peak Shaving",
         desc: "Reduce peak demand charges and optimize energy costs",
       },
       {
-        icon: "🛡️",
+        icon: <GiBoltShield className="text-7xl text-[#1aa3dd]" />,
         title: "Grid Stability",
         desc: "Advanced systems with grid support capabilities",
       },
@@ -150,7 +161,7 @@ export default function SolarSolutions() {
             <div className="space-y-6 mb-8">
               {currentSolution.features.map((f) => (
                 <div key={f.title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-[#FFA500] to-[#FFD700] rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                  <div className="w-16 h-16  p-2 bg-white rounded-lg flex items-center justify-center text-white flex-shrink-0">
                     {f.icon}
                   </div>
                   <div>

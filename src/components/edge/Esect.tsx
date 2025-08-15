@@ -1,4 +1,14 @@
+"use client";
+
 import React from "react";
+import {
+  GiElectric,
+  GiWaterDrop,
+  GiCrane,
+  GiOnTarget,
+  GiMoneyStack,
+  GiWorld,
+} from "react-icons/gi";
 
 function Esect() {
   return (
@@ -41,7 +51,7 @@ function Esect() {
             <div className="flex flex-col gap-4 bg-gray-100 p-8 rounded-xl mt-8">
               <div className="flex flex-col sm:flex-row items-center gap-4 ">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0">
-                  ⚡
+                  <GiElectric className="text-2xl text-white" />
                 </div>
                 <div>
                   <strong className="block text-gray-800">
@@ -55,7 +65,7 @@ function Esect() {
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-4 ">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0">
-                  💧
+                  <GiWaterDrop className="text-2xl text-white" />
                 </div>
                 <div>
                   <strong className="block text-gray-800">
@@ -67,9 +77,9 @@ function Esect() {
                   </p>
                 </div>
               </div>
-                <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl flex-shrink-0">
-                  🏗️
+                  <GiCrane className="text-2xl text-white" />
                 </div>
                 <div>
                   <strong className="block text-gray-800">
@@ -87,21 +97,27 @@ function Esect() {
           <div>
             <div className="grid sm:grid-cols-2 gap-8 mt-8 md:mt-0">
               <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="text-3xl mb-2">🎯</div>
+                <div className="mx-auto mb-2">  
+                  <GiOnTarget className="text-4xl text-[#1aa3dd]" />
+                </div>
                 <h4 className="text-lg font-bold mb-1 text-gray-700">SMART</h4>
                 <p className="text-gray-700">
                   Powerful engine that understands local climatic conditions
                 </p>
               </div>
               <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="text-3xl mb-2">⚡</div>
+                <div className="mx-auto mb-2">
+                  <GiElectric className="text-4xl text-[#1aa3dd]" />
+                </div>
                 <h4 className="text-lg font-bold mb-1 text-gray-700">FAST</h4>
                 <p className="text-gray-700">
                   Discover ideal measures for best ROI within minutes
                 </p>
               </div>
               <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="text-3xl mb-2">💰</div>
+                <div className="mx-auto mb-2">
+                  <GiMoneyStack className="text-4xl text-[#1aa3dd]" />
+                </div>
                 <h4 className="text-lg font-bold mb-1 text-gray-700">
                   AFFORDABLE
                 </h4>
@@ -110,7 +126,9 @@ function Esect() {
                 </p>
               </div>
               <div className="bg-gradient-to-br from-green-600/5 to-blue-600/5 p-8 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="text-3xl mb-2">🌍</div>
+                <div className="mx-auto mb-2">
+                  <GiWorld className="text-4xl text-[#1aa3dd]" />
+                </div>
                 <h4 className="text-lg font-bold mb-1 text-gray-700">
                   INCLUSIVE
                 </h4>

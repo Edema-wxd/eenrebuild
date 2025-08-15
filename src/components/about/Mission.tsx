@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
+import { GiOnTarget, GiPolarStar } from "react-icons/gi";
 function Mission() {
   return (
     <motion.section
@@ -35,7 +35,7 @@ function Mission() {
             aria-label="Our Mission"
           >
             <span className="text-3xl mb-2" role="img" aria-label="Mission">
-              🎯
+              <GiOnTarget className="text-7xl text-[#4ECB71]" />
             </span>
             <h2 className="text-xl sm:text-2xl font-bold text-[#1aa3dd] mb-3">
               Our Mission
@@ -71,7 +71,7 @@ function Mission() {
             aria-label="Our Vision"
           >
             <span className="text-3xl mb-2" role="img" aria-label="Vision">
-              🌟
+              <GiPolarStar className="text-7xl text-[#1aa3dd]" />
             </span>
             <h2 className="text-xl sm:text-2xl font-bold text-[#4ECB71] mb-3">
               Our Vision

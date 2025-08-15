@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
+import { GiBarbedSun } from "react-icons/gi";
+
 export default function SolarHero() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -87,7 +89,7 @@ export default function SolarHero() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <a
+              {/* <a
                 href="#packages"
                 className="bg-[#1AA3DD] text-white font-semibold px-6 sm:px-8 py-3 rounded-full shadow-lg hover:bg-[#73C167] hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center"
               >
@@ -98,7 +100,7 @@ export default function SolarHero() {
                 className="border-2 border-[#FFA500] text-[#FFA500] font-semibold px-6 sm:px-8 py-3 rounded-full hover:bg-[#FFA500] hover:text-white transform hover:scale-105 transition-all duration-300 text-center"
               >
                 Calculate Your Savings
-              </a>
+              </a> */}
             </div>
 
             {/* Stats with staggered animation */}
@@ -157,8 +159,8 @@ export default function SolarHero() {
               />
 
               {/* Sun icon with enhanced animation */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-full flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl text-white shadow-2xl animate-float hover:scale-110 transition-transform duration-300 cursor-pointer">
-                ☀️
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-white rounded-full flex items-center justify-center text-2xl sm:text-3xl lg:text-4xl shadow-2xl animate-float hover:scale-110 transition-transform duration-300 cursor-pointer ">
+                <GiBarbedSun className="text-[120px]  text-orange-500 rounded-full bg-transparent" />
               </div>
 
               {/* Additional floating particles */}

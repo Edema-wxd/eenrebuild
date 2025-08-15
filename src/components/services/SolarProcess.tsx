@@ -1,30 +1,38 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import {
+  GiMagnifyingGlass,
+  GiCheckMark,
+  GiPencilRuler,
+  GiTruck,
+  GiSpanner,
+  GiAlarmClock,
+} from "react-icons/gi";
 
 const steps = [
   {
-    icon: "🔍",
+    icon: <GiMagnifyingGlass className="text-5xl text-[#1aa3dd]" />,
     title: "Site Assessment",
     duration: "Day 1",
   },
   {
-    icon: "📐",
+    icon: <GiPencilRuler className="text-5xl text-[#1aa3dd]" />,
     title: "System Design",
     duration: "Days 2-3",
   },
   {
-    icon: "🚚",
+    icon: <GiTruck className="text-5xl text-[#1aa3dd]" />,
     title: "Equipment Delivery",
     duration: "Day 5",
   },
   {
-    icon: "🔧",
+    icon: <GiSpanner className="text-5xl text-[#1aa3dd]" />,
     title: "Installation",
     duration: "Days 6-8",
   },
   {
-    icon: "✅",
+    icon: <GiCheckMark className="text-5xl text-[#1aa3dd]" />,
     title: "Commissioning",
     duration: "Day 9",
   },
@@ -84,7 +92,7 @@ export default function SolarProcess() {
               }}
             >
               {/* Step Icon with enhanced animation */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white border-4 border-[#f5f5f5] rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#FFA500] group-hover:to-[#FFD700] group-hover:text-white group-hover:border-transparent group-hover:scale-110 shadow-lg animate-bounceIn">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white border-4 border-[#f5f5f5] rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300   group-hover:text-white group-hover:border-transparent group-hover:scale-110 shadow-lg animate-bounceIn">
                 <span className="text-xl sm:text-2xl group-hover:animate-pulse">
                   {step.icon}
                 </span>
@@ -105,7 +113,7 @@ export default function SolarProcess() {
 
               {/* Duration with scale animation */}
               <div
-                className={`text-xs sm:text-sm text-[#FFA500] font-semibold animate-scaleIn transition-all duration-700 delay-${
+                className={`text-xs sm:text-sm   font-semibold animate-scaleIn transition-all duration-700 delay-${
                   1 + i * 0.1
                 }s ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
@@ -124,7 +132,9 @@ export default function SolarProcess() {
           }`}
         >
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 px-6 py-3 rounded-full shadow-lg">
-            <span className="text-orange-600 font-semibold">⚡</span>
+            <span className="text-orange-600 font-semibold">
+              <GiAlarmClock className="text-2xl" />
+            </span>
             <span className="text-sm sm:text-base text-gray-700 font-medium">
               Complete installation in just 9 days
             </span>

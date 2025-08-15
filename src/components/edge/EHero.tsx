@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
+import { GiRoundStar } from "react-icons/gi";
 
 function EHero() {
   return (
@@ -22,7 +24,7 @@ function EHero() {
         {/* Left: Content */}
         <div className="flex-1 flex flex-col items-start animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 shadow">
-            <span aria-hidden>🏆</span>
+            <GiRoundStar className="text-4xl text-yellow-400 " />
             <span>Certified EDGE Experts</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-gray-800">
@@ -59,8 +61,13 @@ function EHero() {
             <div className="absolute border-2 border-green-300 rounded-full animate-[pulse-ring_3s_ease-in-out_infinite] w-[80%] h-[80%] left-[10%] top-[10%] [animation-delay:1s]" />
             <div className="absolute border-2 border-green-300 rounded-full animate-[pulse-ring_3s_ease-in-out_infinite] w-[98%] h-[98%] left-[1%] top-[1%] [animation-delay:2s]" />
             {/* Building icon */}
-            <div className="w-[120px] sm:w-[160px] md:w-[200px] h-[120px] sm:h-[160px] md:h-[200px] rounded-2xl flex items-center justify-center text-5xl sm:text-6xl md:text-7xl text-white relative z-10 shadow-xl bg-gradient-to-br from-green-600 to-blue-600">
-              🏢
+            <div className="w-[120px] p-1 sm:w-[160px] md:w-[200px] h-[120px] sm:h-[160px] md:h-[200px] rounded-2xl flex items-center justify-center text-5xl sm:text-6xl md:text-7xl text-white relative z-10 shadow-xl bg-gradient-to-br from-green-600 to-blue-600">
+              <Image
+                src="/images/skyscraper.png"
+                alt="EDGE"
+                width={500}
+                height={500}
+              />
             </div>
             {/* Efficiency metrics */}
             <div className="absolute top-2 right-2 sm:top-5 sm:right-5 bg-white/90 px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow font-bold text-xs sm:text-base text-green-600">

@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { GiTrophyCup, GiCheckMark, GiPencilRuler, GiMagnifyingGlass, GiCrane } from "react-icons/gi";
 
 const stages = [
   {
@@ -6,35 +8,35 @@ const stages = [
     description:
       "Enter project details into EDGE software and select green options to achieve 20% improvements. Our EDGE experts help optimize your design for maximum efficiency and cost-effectiveness.",
     duration: "2-3 weeks",
-    icon: "📐",
+    icon: <GiPencilRuler className="text-4xl text-[#1aa3dd]" />,
   },
   {
     title: "Project Registration",
     description:
       "Register your project for certification once the EDGE standard is achieved. We handle all documentation and submission requirements.",
     duration: "1 week",
-    icon: "📋",
+    icon: <GiCheckMark className="text-4xl text-[#1aa3dd]" />,
   },
   {
     title: "Design Review",
     description:
       "EDGE-trained auditors review documentation at design stage. We ensure all requirements are met for smooth approval.",
     duration: "2-3 weeks",
-    icon: "🔍",
+    icon: <GiMagnifyingGlass className="text-4xl text-[#1aa3dd]" />,
   },
   {
     title: "Construction & Site Audit",
     description:
       "Documentation submitted during construction with on-site audit performed to verify implementation of green measures.",
     duration: "During construction",
-    icon: "🏗️",
+    icon: <GiCrane className="text-4xl text-[#1aa3dd]" />,
   },
   {
     title: "EDGE Certification",
     description:
       "Projects meeting the EDGE standard receive certification confirming predicted performance. Your building is now officially green!",
     duration: "2 weeks",
-    icon: "🏆",
+    icon: <GiTrophyCup className="text-4xl text-[#1aa3dd]" />,
   },
 ];
 

@@ -2,6 +2,13 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import {
+  GiStarMedal,
+  GiChart,
+  GiTeamIdea,
+  GiShakingHands,
+} from "react-icons/gi";
+
 
 // Animation variants for staggered points
 const container = {
@@ -29,22 +36,22 @@ const visualCardVariant = {
 
 const points = [
   {
-    icon: "🎖️",
+    icon: <GiStarMedal className="text-7xl text-[#1aa3dd]" />,
     title: "Certified EDGE Experts",
     desc: "Our entire engineering team is EDGE certified, ensuring expert guidance through your green building journey.",
   },
   {
-    icon: "🤝",
+    icon: <GiShakingHands className="text-7xl text-[#1aa3dd]" />,
     title: "Exclusive Partnerships",
     desc: "As West Africa's exclusive Neoperl distributor, we bring world-class German engineering to Nigeria.",
   },
   {
-    icon: "📈",
+    icon: <GiChart   className="text-7xl text-[#1aa3dd]" />,
     title: "Proven ROI",
     desc: "Our solutions typically pay for themselves within 18-24 months through reduced utility costs.",
   },
   {
-    icon: "🛠️",
+    icon: <GiTeamIdea className="text-7xl text-[#1aa3dd]" />,
     title: "End-to-End Service",
     desc: "From initial consultation to ongoing maintenance, we handle every aspect of your sustainability transformation.",
   },
