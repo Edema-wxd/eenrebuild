@@ -366,7 +366,7 @@ export default function ContactUsPage() {
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <GiPin className="text-blue-600" />
+                    <GiPin className="text-2xl text-blue-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Address</h3>
@@ -380,7 +380,7 @@ export default function ContactUsPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <GiEnvelope className="text-green-600" />
+                    <GiEnvelope className="text-2xl text-green-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
@@ -397,7 +397,7 @@ export default function ContactUsPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <GiPhone className="text-purple-600" />
+                    <GiPhone className=" text-2xl text-purple-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
@@ -414,7 +414,7 @@ export default function ContactUsPage() {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <GiAlarmClock className="text-yellow-600" />
+                    <GiAlarmClock className="text-2xl text-yellow-700" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">
