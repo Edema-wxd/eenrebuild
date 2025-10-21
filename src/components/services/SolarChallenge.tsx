@@ -13,7 +13,7 @@ const challenges = [
   {
     icon: <GiGasPump className="text-7xl text-[#1aa3dd]" />,
     title: "Fuel Costs",
-    stat: "₦850+",
+    stat: "₦1450+",
     desc: "Per liter of diesel, increasing monthly",
   },
   {

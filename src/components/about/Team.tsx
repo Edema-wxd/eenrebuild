@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 
 const leaders = [
   {
     initials: "UG",
-    image: "/images/unoma.jpg",
+    image: "/images/Unoma.jpg",
     name: "Unoma Grant",
     title: "Co-Founder / Chief Executive Officer",
     titleColor: "text-sky-600",
@@ -19,7 +20,7 @@ const leaders = [
   },
   {
     initials: "OU",
-    image: "/images/obinna.jpg",
+    image: "/images/obi.png", // Image not available, will fallback to initials
     name: "Obinna Ukwa",
     title: "Co-Founder / Managing Director",
     titleColor: "text-sky-600",
@@ -31,7 +32,7 @@ const leaders = [
 
   {
     initials: "FW",
-    image: "/images/francis.jpg",
+    image: "/images/Francis.jpg",
     name: "Francis Woods",
     title: "Sustainablity Implementation Engineer",
     titleColor: "text-sky-600",
@@ -41,6 +42,47 @@ const leaders = [
     phone: "+2348127576854",
   },
 ];
+
+// Component to handle image with fallback to initials
+function TeamMemberImage({ leader }: { leader: (typeof leaders)[0] }) {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // If image failed to load, show initials
+  if (imageError || !leader.image) {
+    return (
+      <div className="flex items-center justify-center h-40 bg-gradient-to-br from-sky-500 to-green-400">
+        <span className="text-5xl font-bold text-white">{leader.initials}</span>
+      </div>
+    );
+  }
+
+  // Show image with fallback
+  return (
+    <div className="relative h-[500px] bg-gray-100">
+      <Image
+        src={leader.image}
+        alt={`${leader.name} - ${leader.title}`}
+        fill
+        className={`object-cover transition-opacity duration-300 ${
+          imageLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageError(true)}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        unoptimized // As requested, images are unoptimized
+      />
+      {/* Fallback initials overlay while loading */}
+      {!imageLoaded && !imageError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-sky-500 to-green-400">
+          <span className="text-5xl font-bold text-white">
+            {leader.initials}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function Team() {
   return (
@@ -71,12 +113,8 @@ function Team() {
               viewport={{ once: true }}
               className="rounded-2xl shadow-xl bg-white overflow-hidden flex flex-col"
             >
-              {/* Gradient Initials */}
-              <div className="flex items-center justify-center h-40 bg-gradient-to-br from-sky-500 to-green-400">
-                <span className="text-5xl font-bold text-white">
-                  {leader.initials}
-                </span>
-              </div>
+              {/* Team Member Image with Fallback */}
+              <TeamMemberImage leader={leader} />
               {/* Info */}
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-semibold text-gray-800">

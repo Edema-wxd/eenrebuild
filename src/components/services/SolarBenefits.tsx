@@ -87,7 +87,7 @@ export default function SolarBenefits() {
                   <span className="font-medium text-sm sm:text-base">
                     Generator Fuel
                   </span>
-                  <span className="font-bold text-lg sm:text-xl">₦60,000</span>
+                  <span className="font-bold text-lg sm:text-xl">₦600,000</span>
                 </div>
                 <div
                   className="flex justify-between items-center py-2 border-b border-white/20 animate-fadeIn"
@@ -96,7 +96,7 @@ export default function SolarBenefits() {
                   <span className="font-medium text-sm sm:text-base">
                     Maintenance
                   </span>
-                  <span className="font-bold text-lg sm:text-xl">₦15,000</span>
+                  <span className="font-bold text-lg sm:text-xl">₦150,000</span>
                 </div>
                 <div
                   className="flex justify-between items-center py-2 border-b border-white/20 animate-fadeIn"
@@ -105,14 +105,14 @@ export default function SolarBenefits() {
                   <span className="font-medium text-sm sm:text-base">
                     Grid Bills
                   </span>
-                  <span className="font-bold text-lg sm:text-xl">₦25,000</span>
+                  <span className="font-bold text-lg sm:text-xl">₦700,000</span>
                 </div>
                 <div
                   className="pt-4 text-center animate-scaleIn"
                   style={{ animationDelay: "1.3s" }}
                 >
                   <div className="text-xl sm:text-2xl font-bold">
-                    Total Savings: ₦100,000/month
+                    Total Savings: ₦1,550,000/month
                   </div>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function SolarBenefits() {
             {benefits.map((b, i) => (
               <div
                 key={b.title}
-                className={`flex rounded items-start gap-4 group animate-fadeInUp transition-all duration-700 ${
+                className={`flex rounded-lg items-start p-2  gap-4 group animate-fadeInUp transition-all duration-700 ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"

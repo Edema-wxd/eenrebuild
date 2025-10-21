@@ -10,7 +10,7 @@ const GradientText = ({ children }: { children: React.ReactNode }) => (
 );
 
 const stats = [
-  { value: "100+", label: "Projects Completed" },
+  { value: "100+", label: "Clients Served" },
   { value: "50M+", label: "Liters Water Saved" },
   { value: "30%", label: "Average Energy Reduction" },
 ];

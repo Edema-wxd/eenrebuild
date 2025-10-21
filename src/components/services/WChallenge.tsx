@@ -8,12 +8,12 @@ const problems = [
     icon: <GiWaterDrop className="text-7xl text-[#1aa3dd]" />,
     title: "Water Scarcity",
     stat: "60%",
-    desc: "of Nigerians lack access to safe drinking water",
+    desc: "of Nigerians lack access to clean water",
   },
   {
     icon: <GiElectric className="text-7xl text-[#1aa3dd]" />,
     title: "Pumping Costs",
-    stat: "₦25k+",
+    stat: "₦150k+",
     desc: "Monthly pumping costs for average commercial building",
   },
   {

@@ -3,9 +3,9 @@ import React from "react";
 import { GiMoneyStack, GiChart, GiWorld, GiTrophyCup } from "react-icons/gi";
 
 const roiMetrics = [
-  { label: "Certification Cost", value: "₦2.5M" },
-  { label: "Annual Energy Savings", value: "₦4.8M" },
-  { label: "Annual Water Savings", value: "₦1.2M" },
+  { label: "Certification Cost", value: "₦20M" },
+  { label: "Annual Energy Savings", value: "₦8.5M" },
+  { label: "Annual Water Savings", value: "₦2.5M" },
   { label: "Property Value Increase", value: "15%" },
 ];
 

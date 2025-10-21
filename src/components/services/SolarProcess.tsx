@@ -136,7 +136,7 @@ export default function SolarProcess() {
               <GiAlarmClock className="text-2xl" />
             </span>
             <span className="text-sm sm:text-base text-gray-700 font-medium">
-              Complete installation in just 9 days
+              Complete installation in just 9 days*
             </span>
           </div>
         </div>

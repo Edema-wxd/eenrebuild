@@ -63,7 +63,7 @@ function EHero() {
             {/* Building icon */}
             <div className="w-[120px] p-1 sm:w-[160px] md:w-[200px] h-[120px] sm:h-[160px] md:h-[200px] rounded-2xl flex items-center justify-center text-5xl sm:text-6xl md:text-7xl text-white relative z-10 shadow-xl bg-gradient-to-br from-green-600 to-blue-600">
               <Image
-                src="/images/skyscraper.png"
+                src="/images/3353.jpg"
                 alt="EDGE"
                 width={500}
                 height={500}

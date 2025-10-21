@@ -121,7 +121,7 @@ export default function SolarHero() {
               </div>
               <div className="flex flex-col items-center sm:items-start group">
                 <div className="text-2xl sm:text-3xl font-extrabold text-[#FFA500] mb-1 group-hover:scale-110 transition-transform duration-300">
-                  ₦50k+
+                  ₦900K+
                 </div>
                 <div className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
                   Monthly Generator Costs
