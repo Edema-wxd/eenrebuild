@@ -61,6 +61,7 @@ function Header() {
     { href: "/services", label: "Services" },
     { href: "/edge-building", label: "EDGE" },
     { href: "/partners", label: "Partners" },
+    { href: "/blog", label: "Blog" },
   ];
 
   const isActive = (href: string) => pathname === href;
