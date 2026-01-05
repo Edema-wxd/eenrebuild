@@ -10,6 +10,7 @@ import TableOfContents from '@/components/blog/TableOfContents'
 import ShareButtons from '@/components/blog/ShareButtons'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import CategoryBadge from '@/components/blog/CategoryBadge'
+import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
 
 interface BlogPostPageProps {
@@ -235,6 +236,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <TableOfContents headings={tableOfContents} />
               )}
             </aside>
+          </div>
+
+          {/* Newsletter CTA */}
+          <div className="mx-auto max-w-4xl">
+            <div className="my-16">
+              <NewsletterSubscribe />
+            </div>
           </div>
 
           {/* Related posts */}

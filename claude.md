@@ -1,7 +1,7 @@
 # EEN Consulting Website - Development Guide
 
-**Last Updated**: 2026-01-03
-**Version**: 1.0
+**Last Updated**: 2026-01-04
+**Version**: 1.1
 **Project Type**: Next.js 15 (App Router) - Static Export Site
 
 ---
@@ -17,9 +17,10 @@
 7. [Page Structure](#page-structure)
 8. [Features & Functionality](#features--functionality)
 9. [Blog System](#blog-system) ⭐ NEW
-10. [Development Workflow](#development-workflow)
-11. [Code Conventions](#code-conventions)
-12. [Deployment](#deployment)
+10. [Newsletter System](#newsletter-system) ⭐ NEW
+11. [Development Workflow](#development-workflow)
+12. [Code Conventions](#code-conventions)
+13. [Deployment](#deployment)
 
 ---
 
@@ -120,6 +121,7 @@
 │   │   ├── /genui/             # Layout components (Header, Footer)
 │   │   ├── /home/              # Home page components
 │   │   ├── /about/             # About page components
+│   │   ├── /blog/              # Blog components (NEW!)
 │   │   ├── /edge/              # EDGE certification components
 │   │   ├── /services/          # Service page components
 │   │   └── /partners/          # Partner components
@@ -439,8 +441,9 @@ shadow-2xl   /* Hero elements */
 - Auto-close on escape key
 
 **Footer** ([Footer.tsx](src/components/genui/Footer.tsx)):
+- Newsletter subscription form (inline variant)
 - Gradient background (blue to green)
-- Quick links, services, contact info
+- Quick links, services, contact info (includes Blog link)
 - Social media links
 - Copyright notice
 
@@ -555,6 +558,9 @@ Components are composed from smaller pieces:
 | `/services/smart-metering` | Smart meters | SMHero, SMVis, SMFeat, SMSol, SMHow, SMBen |
 | `/edge-building` | EDGE certification | EHero, ECertificate, EBenefits, Esect |
 | `/partners` | Partnerships | PHero, Pcards, PPower, PIntegrate |
+| `/blog` | Blog listing | BlogHero, BlogCard, SearchBar, CategoryFilter, Pagination |
+| `/blog/[slug]` | Individual post | BlogContent, TableOfContents, ShareButtons, RelatedPosts, NewsletterSubscribe |
+| `/blog/category/[category]` | Category pages | BlogCard, CategoryBadge |
 | `/contact-us` | Contact form | Contact form, contact info, urgent assistance |
 
 ### Page Template
@@ -1036,6 +1042,451 @@ The website now includes a fully-featured blog system powered by **Contentful CM
 
 ---
 
+## Newsletter System
+
+### Overview
+
+The website includes a newsletter subscription system that allows visitors to subscribe for email updates. The system uses **EmailJS** to send automated emails and is integrated throughout the site for maximum visibility.
+
+### Quick Setup
+
+**For complete setup instructions**, see **[NEWSLETTER_SETUP.md](NEWSLETTER_SETUP.md)**
+**For implementation summary**, see **[NEWSLETTER_SUMMARY.md](NEWSLETTER_SUMMARY.md)**
+
+### Features
+
+✅ **Dual Email System**
+- Admin notification (sent to `info@eenconsulting.ng`)
+- Welcome email (sent to subscriber)
+
+✅ **Two Display Variants**
+- Inline form (compact, for headers/footers)
+- Card variant (prominent, for content areas)
+
+✅ **Form Features**
+- Email validation
+- Loading states
+- Success/error messages
+- Auto-reset after submission
+- Consent checkbox
+- Accessible (ARIA labels, keyboard navigation)
+
+✅ **Strategic Placement**
+- Footer (all pages)
+- Individual blog posts (after content)
+- Can be added anywhere
+
+### Tech Stack
+
+```json
+{
+  "Email Service": "EmailJS (free tier, 10k emails/month)",
+  "Integration": "@emailjs/browser",
+  "List Management": "Manual, Mailchimp, ConvertKit, or Brevo",
+  "Cost": "$0/month (free tier)"
+}
+```
+
+### Component Location
+
+**Main Component**: [src/components/blog/NewsletterSubscribe.tsx](src/components/blog/NewsletterSubscribe.tsx)
+
+**Usage Locations**:
+- [src/components/genui/Footer.tsx](src/components/genui/Footer.tsx) - Inline variant
+- [src/app/blog/[slug]/page.tsx](src/app/blog/[slug]/page.tsx) - Card variant
+
+### Component Usage
+
+#### Inline Variant (Footer)
+
+```tsx
+import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
+
+export default function Footer() {
+  return (
+    <footer>
+      {/* Newsletter Section */}
+      <div className="py-12">
+        <NewsletterSubscribe variant="inline" />
+      </div>
+    </footer>
+  )
+}
+```
+
+#### Card Variant (Blog Posts)
+
+```tsx
+import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
+
+export default function BlogPost() {
+  return (
+    <article>
+      {/* Blog content */}
+
+      {/* Newsletter CTA */}
+      <div className="my-16">
+        <NewsletterSubscribe variant="card" />
+      </div>
+    </article>
+  )
+}
+```
+
+### EmailJS Configuration
+
+#### Required Templates
+
+You need to create **2 templates** in EmailJS dashboard:
+
+**1. Admin Notification Template**
+- **Template ID**: `template_newsletter`
+- **Purpose**: Notifies you when someone subscribes
+- **Sent to**: `info@eenconsulting.ng`
+- **Variables**: `{{subscriber_email}}`, `{{current_date}}`
+
+**2. Welcome Email Template**
+- **Template ID**: `template_newsletter_welcome`
+- **Purpose**: Welcomes new subscribers
+- **Sent to**: `{{subscriber_email}}` (dynamic)
+- **Content**: Welcome message, what to expect, unsubscribe info
+
+#### Setup Steps
+
+1. **Log into EmailJS**: [dashboard.emailjs.com](https://dashboard.emailjs.com)
+2. **Create templates**: Follow template specs above
+3. **Get public key**: Account → General → Copy Public Key
+4. **Update component**: Replace `YOUR_PUBLIC_KEY` in [NewsletterSubscribe.tsx](src/components/blog/NewsletterSubscribe.tsx)
+
+**Detailed instructions**: [NEWSLETTER_SETUP.md](NEWSLETTER_SETUP.md) → Steps 1-3
+
+### Email List Management
+
+#### Option A: Manual (Free)
+**Best for**: Starting out, small lists
+- Receive email notifications when people subscribe
+- Manually add emails to spreadsheet
+- Use Gmail/Outlook to send newsletters
+- **Limitations**: Gmail (500/day), Outlook (300/day)
+
+#### Option B: Email Service (Recommended)
+**Best for**: Growing lists, automation
+
+**Free Options**:
+- **Mailchimp**: 500 subscribers, 1,000 emails/month
+- **ConvertKit**: 1,000 subscribers
+- **Brevo**: Unlimited contacts, 300 emails/day
+
+**Setup**: Create account → Import subscribers from notifications → Design newsletters
+
+#### Option C: Automated (Advanced)
+**Best for**: Hands-off management
+- Use Zapier to auto-add subscribers to Mailchimp/ConvertKit
+- Trigger: Email received (subscription notification)
+- Action: Add contact to mailing list
+- **Cost**: Free tier (100 tasks/month)
+
+### Integration Points
+
+**Footer (All Pages)**:
+```tsx
+// src/components/genui/Footer.tsx
+<div className="border-b border-white/20 py-12">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="mx-auto max-w-2xl text-center">
+      <h3 className="mb-2 text-2xl font-bold text-white md:text-3xl">
+        Stay Updated on Sustainability
+      </h3>
+      <p className="mb-6 text-white/90">
+        Get expert insights, energy-saving tips, and the latest news delivered to your inbox.
+      </p>
+      <NewsletterSubscribe variant="inline" />
+    </div>
+  </div>
+</div>
+```
+
+**Blog Posts** ([src/app/blog/[slug]/page.tsx](src/app/blog/[slug]/page.tsx)):
+```tsx
+{/* Newsletter CTA */}
+<div className="mx-auto max-w-4xl">
+  <div className="my-16">
+    <NewsletterSubscribe />
+  </div>
+</div>
+```
+
+**Can Be Added To**:
+- Homepage hero section
+- About page
+- Service pages
+- Contact page
+- Anywhere you want to capture emails
+
+### Customization
+
+#### Change Colors
+
+```tsx
+// In NewsletterSubscribe.tsx
+
+// Primary button color
+className="bg-[#1AA3DD]"  // ← Change to your brand color
+
+// Success message
+className="text-green-600"  // ← Change if needed
+
+// Error message
+className="text-red-600"
+```
+
+#### Change Text
+
+```tsx
+// Footer heading
+"Stay Updated on Sustainability"
+
+// Footer description
+"Get expert insights, energy-saving tips, and the latest news..."
+
+// Card heading
+"Subscribe to Our Newsletter"
+
+// Card description
+"Join our community and receive exclusive insights on solar energy, water conservation, and sustainable building practices directly to your inbox."
+
+// Button text
+"Subscribe"
+
+// Consent text
+"I agree to receive emails from EEN Consulting"
+```
+
+#### Add More Fields
+
+Currently collects: **Email only**
+
+To add Name, Company, or Preferences:
+1. Update component state
+2. Add form fields
+3. Update EmailJS template variables
+4. Modify email sending logic
+
+### Newsletter Strategy
+
+#### Content Ideas
+
+**Weekly/Bi-weekly Newsletter**:
+- Latest blog posts (1-2)
+- Energy-saving tip of the week
+- Project highlights/case studies
+- Industry news (solar, sustainability)
+- Special offers/consultations
+
+#### Best Practices
+
+1. **Consistency**: Pick a schedule (weekly, bi-weekly, monthly) and stick to it
+2. **Value First**: Provide useful content, not just promotions
+3. **Mobile-Friendly**: 60%+ of people read emails on phones
+4. **Clear CTA**: Include 1-2 clear calls-to-action
+5. **Unsubscribe Link**: Always include (legal requirement)
+
+#### Email Template Structure
+
+```
+Subject: [Catchy Title] - EEN Newsletter
+
+Hi there,
+
+This week's highlights:
+
+📰 Latest Blog Post
+[Title]
+[Brief summary...]
+[Read More Button → links to blog post]
+
+💡 Energy-Saving Tip
+[Quick actionable tip]
+
+🎯 Featured Service
+[Brief mention with CTA]
+
+---
+Thanks for reading!
+
+Best regards,
+The EEN Consulting Team
+
+[Social Links] | [Website Link] | [Unsubscribe]
+```
+
+### Legal Compliance
+
+#### Requirements
+
+✅ **Privacy Policy**: Update to mention email collection
+✅ **Consent**: "By subscribing, you agree to receive emails" (already included)
+✅ **Unsubscribe**: Easy opt-out in every email
+✅ **Data Security**: Don't share/sell email addresses
+
+#### Privacy Policy Addition
+
+Add this section to your privacy policy:
+
+```markdown
+## Newsletter Subscriptions
+
+When you subscribe to our newsletter, we collect your email address to send you:
+- Educational content about sustainability and energy
+- Company updates and news
+- Special offers (optional)
+
+You can unsubscribe anytime by clicking the unsubscribe link in our emails
+or emailing info@eenconsulting.ng.
+
+We do not share your email with third parties for marketing purposes.
+```
+
+### Analytics & Tracking
+
+#### Basic Tracking (Free)
+
+**Count Subscribers**:
+- Track from email notifications
+- Maintain spreadsheet
+
+**Track Clicks**:
+- Use UTM parameters in newsletter links
+```
+https://eenconsulting.ng/blog/post-slug?utm_source=newsletter&utm_medium=email&utm_campaign=weekly_01
+```
+
+#### Advanced Tracking (Paid Services)
+
+**Mailchimp/ConvertKit**:
+- Open rates
+- Click-through rates
+- Engagement metrics
+- Subscriber growth
+
+**Google Analytics**:
+- Newsletter traffic
+- Conversion tracking
+- Full funnel analysis
+
+### Cost Breakdown
+
+#### Current Setup (Free)
+```
+EmailJS: Free (10,000 emails/month)
+Manual list management: Free
+Total: $0/month
+```
+
+#### With Mailchimp
+```
+EmailJS: Free
+Mailchimp (500 subs): Free
+OR
+Mailchimp (500-2,500 subs): $13/month
+```
+
+#### With Automation
+```
+EmailJS: Free
+Mailchimp: Free or $13
+Zapier: Free (100 tasks/month)
+Total: $0-13/month
+```
+
+### Troubleshooting
+
+**Issue: Emails not sending**
+- Check EmailJS service ID is `service_oeq5w9r`
+- Verify template IDs match exactly (`template_newsletter`, `template_newsletter_welcome`)
+- Confirm public key is correct
+- Ensure sender email is verified in EmailJS
+- Check browser console for errors
+
+**Issue: Welcome email not received**
+- Check subscriber's spam folder
+- Verify `template_newsletter_welcome` exists
+- Check "To Email" is set to `{{subscriber_email}}`
+- Ensure template is active in EmailJS
+
+**Issue: Form not submitting**
+- Check browser console for errors
+- Verify EmailJS service is active
+- Test with different email address
+- Clear browser cache and try again
+
+**Issue: Getting spam complaints**
+- Always include unsubscribe link
+- Only email people who subscribed
+- Send valuable content, not just promotions
+- Set clear expectations in welcome email
+
+### Newsletter Workflow
+
+#### Setup (One-time)
+1. ✅ Create EmailJS templates (15 minutes)
+2. ✅ Update public key in component
+3. ✅ Test subscription flow
+4. ✅ Update Privacy Policy
+
+#### Weekly/Bi-weekly Process
+1. **Plan content** (Monday)
+   - Select blog post to feature
+   - Write energy-saving tip
+   - Check for company updates
+
+2. **Design email** (Tuesday)
+   - Use Mailchimp/ConvertKit template
+   - Add UTM parameters to links
+   - Preview on mobile
+
+3. **Send newsletter** (Wednesday 9-11 AM WAT)
+   - Best open rates in Nigeria
+   - Schedule or send immediately
+
+4. **Track performance** (Thursday)
+   - Review open rates
+   - Check click-through rates
+   - Note what worked well
+
+### Success Metrics
+
+**Week 1**:
+- 10-20 subscribers (if you promote it)
+- 1-2 subscribers/day from blog readers
+
+**Month 1**:
+- 50-100 subscribers
+- 5-10% open rate (first few emails)
+
+**Month 3**:
+- 200-300 subscribers
+- 15-25% open rate (consistent quality)
+- 2-5% click-through rate
+
+### Next Steps
+
+1. ✅ Follow [NEWSLETTER_SETUP.md](NEWSLETTER_SETUP.md) for EmailJS configuration
+2. ✅ Choose email list management method
+3. ✅ Plan first newsletter content
+4. ✅ Set sending schedule (weekly, bi-weekly, monthly)
+5. ✅ Update Privacy Policy
+6. ✅ Promote newsletter on social media
+
+### Resources
+
+- **EmailJS Documentation**: [emailjs.com/docs](https://www.emailjs.com/docs/)
+- **Mailchimp Guide**: [mailchimp.com/help](https://mailchimp.com/help/)
+- **Newsletter Best Practices**: Search "newsletter best practices 2026"
+- **GDPR Compliance**: [gdpr.eu/email-marketing](https://gdpr.eu/email-marketing/)
+
+---
+
 ## Development Workflow
 
 ### Getting Started
@@ -1489,54 +1940,51 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ### Potential Features to Add
 
-1. **Blog/News Section**
-   - Articles on sustainability
-   - Project case studies
-   - Industry insights
-
-2. **Project Portfolio**
+1. **Project Portfolio**
    - Gallery of completed projects
    - Before/after comparisons
    - Client testimonials
 
-3. **ROI Calculator**
+2. **ROI Calculator**
    - Solar savings calculator
    - Water conservation calculator
    - EDGE certification ROI
 
-4. **Client Dashboard**
+3. **Client Dashboard**
    - Project tracking
    - Energy monitoring
    - Document access
 
-5. **Booking System**
+4. **Booking System**
    - Schedule consultations
    - Calendar integration
    - Automatic reminders
 
-6. **Multi-language Support**
+5. **Multi-language Support**
    - English (default)
    - Yoruba
    - Igbo
    - Hausa
 
-7. **Live Chat**
+6. **Live Chat**
    - Real-time support
    - AI chatbot for FAQs
    - Business hours integration
 
-8. **Analytics Dashboard**
+7. **Analytics Dashboard**
    - Website traffic
    - Lead generation metrics
    - Conversion tracking
 
 ### SEO Improvements
 
+✅ Sitemap implemented (dynamic, includes blog posts)
+✅ Open Graph tags implemented (for blog posts)
+
+**Still To Do**:
 - Add structured data (JSON-LD)
-- Implement sitemap.xml
 - Add robots.txt
-- Optimize meta descriptions
-- Add Open Graph tags
+- Optimize meta descriptions for all pages
 - Implement breadcrumbs
 
 ### Performance Optimizations

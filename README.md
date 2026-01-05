@@ -12,6 +12,7 @@ Professional website for EEN Consulting - Driving sustainability in the Nigerian
 - ✅ **Responsive Design** (mobile, tablet, desktop)
 - ✅ **SEO Optimized** (meta tags, sitemap, Open Graph)
 - ✅ **Blog System** (Contentful CMS, rich content)
+- ✅ **Newsletter Subscriptions** (EmailJS, email marketing ready)
 - ✅ **Service Pages** (Solar, Water, Smart Metering, EDGE)
 - ✅ **Contact Form** (EmailJS integration, validation, anti-spam)
 - ✅ **Smooth Animations** (Framer Motion)
@@ -29,11 +30,12 @@ Professional website for EEN Consulting - Driving sustainability in the Nigerian
   - Development workflow
   - Code conventions
 
-### Blog Documentation (NEW!)
+### Blog & Newsletter Documentation (NEW!)
 - **[QUICK_START.md](QUICK_START.md)** - Get blog running in 15 minutes ⚡
 - **[CONTENTFUL_SETUP.md](CONTENTFUL_SETUP.md)** - Detailed CMS setup guide
 - **[BLOG_DEPLOYMENT_GUIDE.md](BLOG_DEPLOYMENT_GUIDE.md)** - Build & FTP deployment
 - **[BLOG_IMPLEMENTATION_SUMMARY.md](BLOG_IMPLEMENTATION_SUMMARY.md)** - Feature overview
+- **[NEWSLETTER_SETUP.md](NEWSLETTER_SETUP.md)** - Newsletter & email marketing setup 📧
 
 ---
 
