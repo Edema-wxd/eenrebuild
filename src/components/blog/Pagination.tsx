@@ -16,6 +16,10 @@ export default function Pagination({
 }: PaginationProps) {
   if (totalPages <= 1) return null
 
+  // Path-based pages so they work with static export (query strings aren't pre-rendered)
+  const pageHref = (page: number) =>
+    page === 1 ? basePath : `${basePath}/page/${page}`
+
   const pages: (number | '...')[] = []
 
   // Always show first page
@@ -42,7 +46,7 @@ export default function Pagination({
       {/* Previous button */}
       {currentPage > 1 ? (
         <Link
-          href={currentPage === 2 ? basePath : `${basePath}?page=${currentPage - 1}`}
+          href={pageHref(currentPage - 1)}
           className="flex items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
         >
           <ChevronLeft className="h-4 w-4" />
@@ -74,7 +78,7 @@ export default function Pagination({
           return (
             <Link
               key={page}
-              href={page === 1 ? basePath : `${basePath}?page=${page}`}
+              href={pageHref(page)}
               className={`min-w-[40px] rounded-lg px-3 py-2 text-center text-sm font-medium transition-colors ${
                 isCurrentPage
                   ? 'bg-[#1AA3DD] text-white'
@@ -91,7 +95,7 @@ export default function Pagination({
       {/* Next button */}
       {currentPage < totalPages ? (
         <Link
-          href={`${basePath}?page=${currentPage + 1}`}
+          href={pageHref(currentPage + 1)}
           className="flex items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
         >
           <span className="hidden sm:inline">Next</span>

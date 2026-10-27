@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { getAllBlogPostSlugs, getAllCategorySlugs } from '@/lib/contentful/queries'
 
+export const dynamic = 'force-static'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
 

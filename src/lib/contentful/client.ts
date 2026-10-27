@@ -1,8 +1,9 @@
-import { createClient, Entry } from 'contentful'
+import { createClient } from 'contentful'
 import {
   BlogPostFields,
   CategoryFields,
   AuthorFields,
+  ContentfulEntry,
   ProcessedBlogPost,
   ProcessedCategory,
   ProcessedAuthor,
@@ -70,7 +71,7 @@ export function optimizeImageUrl(
  * Process category entry into simplified format
  */
 export function processCategory(
-  entry: Entry<CategoryFields>
+  entry: ContentfulEntry<CategoryFields>
 ): ProcessedCategory {
   return {
     id: entry.sys.id,
@@ -84,7 +85,7 @@ export function processCategory(
 /**
  * Process author entry into simplified format
  */
-export function processAuthor(entry: Entry<AuthorFields>): ProcessedAuthor {
+export function processAuthor(entry: ContentfulEntry<AuthorFields>): ProcessedAuthor {
   const avatar = entry.fields.avatar
 
   return {
@@ -110,7 +111,7 @@ export function processAuthor(entry: Entry<AuthorFields>): ProcessedAuthor {
  * Process blog post entry into full format
  */
 export function processBlogPost(
-  entry: Entry<BlogPostFields>
+  entry: ContentfulEntry<BlogPostFields>
 ): ProcessedBlogPost {
   const heroImage = entry.fields.heroImage
   const author = entry.fields.author
@@ -161,7 +162,7 @@ export function processBlogPost(
  * Process blog post entry into preview format (for listings)
  */
 export function processBlogPostPreview(
-  entry: Entry<BlogPostFields>
+  entry: ContentfulEntry<BlogPostFields>
 ): BlogPostPreview {
   // Check if entry has fields
   if (!entry.fields) {

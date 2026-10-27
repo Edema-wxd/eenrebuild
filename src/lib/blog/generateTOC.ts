@@ -1,4 +1,4 @@
-import { Document, Block, Inline } from '@contentful/rich-text-types'
+import { Document, Block, Inline, Text } from '@contentful/rich-text-types'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { TOCHeading } from '../contentful/types'
 
@@ -8,20 +8,16 @@ import { TOCHeading } from '../contentful/types'
 export function generateTableOfContents(document: Document): TOCHeading[] {
   const headings: TOCHeading[] = []
 
-  function extractText(node: Block | Inline): string {
-    if ('value' in node) {
+  function extractText(node: Block | Inline | Text): string {
+    if (node.nodeType === 'text') {
       return node.value
     }
 
-    if ('content' in node && Array.isArray(node.content)) {
-      return node.content.map(extractText).join('')
-    }
-
-    return ''
+    return node.content.map(extractText).join('')
   }
 
-  function processNode(node: Block | Inline) {
-    if (!('nodeType' in node)) return
+  function processNode(node: Block | Inline | Text) {
+    if (node.nodeType === 'text') return
 
     // Check if it's a heading
     if (
@@ -49,9 +45,7 @@ export function generateTableOfContents(document: Document): TOCHeading[] {
     }
 
     // Recursively process children
-    if ('content' in node && Array.isArray(node.content)) {
-      node.content.forEach(processNode)
-    }
+    node.content.forEach(processNode)
   }
 
   document.content.forEach(processNode)

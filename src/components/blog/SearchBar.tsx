@@ -6,7 +6,7 @@ import { BlogPostPreview } from '@/lib/contentful/types'
 import { createSearchIndex, searchPosts } from '@/lib/blog/searchIndex'
 import Link from 'next/link'
 import { formatDate } from '@/utils/formatDate'
-import FlexSearch from 'flexsearch'
+import type { Index } from 'flexsearch'
 
 interface SearchBarProps {
   posts: BlogPostPreview[]
@@ -17,7 +17,7 @@ export default function SearchBar({ posts }: SearchBarProps) {
   const [results, setResults] = useState<BlogPostPreview[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [searchIndex, setSearchIndex] = useState<{
-    index: FlexSearch.Index
+    index: Index
     posts: BlogPostPreview[]
   } | null>(null)
 

@@ -1,6 +1,8 @@
 import { getAllBlogPosts } from '@/lib/contentful/queries'
 import { Feed } from 'feed'
 
+export const dynamic = 'force-static'
+
 export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
   const posts = await getAllBlogPosts()
@@ -41,7 +43,10 @@ export async function GET() {
         name: cat.name,
       })),
       date: post.publishedDate,
-      image: post.heroImage.url,
+      // Contentful image URLs are protocol-relative (//images.ctfassets.net/...)
+      image: post.heroImage.url.startsWith('//')
+        ? `https:${post.heroImage.url}`
+        : post.heroImage.url,
     })
   })
 

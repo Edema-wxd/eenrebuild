@@ -1,16 +1,33 @@
 import { Document } from '@contentful/rich-text-types'
-import { Asset, Entry } from 'contentful'
 
 // ===== CONTENTFUL TYPES =====
+
+// Shapes of entries as returned by getEntries with `include: 2` (links resolved).
+// The SDK's skeleton generics don't model resolved links cleanly, so responses
+// are cast to these at the query layer.
+export interface ContentfulEntry<TFields> {
+  sys: { id: string }
+  fields: TFields
+}
+
+export interface ContentfulAsset {
+  fields: {
+    title?: string
+    file?: {
+      url: string
+      details?: { image?: { width: number; height: number } }
+    }
+  }
+}
 
 export interface BlogPostFields {
   title: string
   slug: string
   excerpt: string
-  heroImage: Asset
+  heroImage: ContentfulAsset
   content: Document
-  author: Entry<AuthorFields>
-  categories: Entry<CategoryFields>[]
+  author: ContentfulEntry<AuthorFields>
+  categories: ContentfulEntry<CategoryFields>[]
   tags?: string[]
   publishedDate: string
   updatedDate?: string
@@ -30,7 +47,7 @@ export interface AuthorFields {
   name: string
   slug: string
   bio?: string
-  avatar?: Asset
+  avatar?: ContentfulAsset
   email?: string
   title?: string
 }

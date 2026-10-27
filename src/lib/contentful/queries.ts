@@ -6,6 +6,7 @@ import {
   BlogPostPreview,
   ProcessedCategory,
   PaginatedBlogPosts,
+  ContentfulEntry,
 } from './types'
 import {
   processBlogPost,
@@ -13,13 +14,17 @@ import {
   processCategory,
 } from './client'
 
+function entries<TFields>(response: { items: unknown[] }) {
+  return response.items as ContentfulEntry<TFields>[]
+}
+
 // ===== BLOG POST QUERIES =====
 
 /**
  * Get all blog posts (for sitemap, RSS, search index)
  */
 export async function getAllBlogPosts(): Promise<BlogPostPreview[]> {
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     order: ['-fields.publishedDate'],
     limit: 1000, // Max limit
@@ -32,7 +37,7 @@ export async function getAllBlogPosts(): Promise<BlogPostPreview[]> {
     console.log('First blog post:', JSON.stringify(response.items[0], null, 2))
   }
 
-  return response.items.map(processBlogPostPreview)
+  return entries<BlogPostFields>(response).map(processBlogPostPreview)
 }
 
 /**
@@ -44,7 +49,7 @@ export async function getPaginatedBlogPosts(
 ): Promise<PaginatedBlogPosts> {
   const skip = (page - 1) * pageSize
 
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     order: ['-fields.publishedDate'],
     limit: pageSize,
@@ -52,7 +57,7 @@ export async function getPaginatedBlogPosts(
     include: 2, // Include linked entries (author, categories, images)
   })
 
-  const posts = response.items.map(processBlogPostPreview)
+  const posts = entries<BlogPostFields>(response).map(processBlogPostPreview)
   const total = response.total
 
   return {
@@ -72,7 +77,7 @@ export async function getPaginatedBlogPosts(
 export async function getFeaturedBlogPosts(
   limit: number = 3
 ): Promise<BlogPostPreview[]> {
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.featured': true,
     order: ['-fields.publishedDate'],
@@ -80,7 +85,7 @@ export async function getFeaturedBlogPosts(
     include: 2, // Include linked entries (author, categories, images)
   })
 
-  return response.items.map(processBlogPostPreview)
+  return entries<BlogPostFields>(response).map(processBlogPostPreview)
 }
 
 /**
@@ -89,7 +94,7 @@ export async function getFeaturedBlogPosts(
 export async function getBlogPostBySlug(
   slug: string
 ): Promise<ProcessedBlogPost | null> {
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.slug': slug,
     limit: 1,
@@ -100,20 +105,20 @@ export async function getBlogPostBySlug(
     return null
   }
 
-  return processBlogPost(response.items[0])
+  return processBlogPost(entries<BlogPostFields>(response)[0])
 }
 
 /**
  * Get all blog post slugs (for static generation)
  */
 export async function getAllBlogPostSlugs(): Promise<string[]> {
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     select: ['fields.slug'],
     limit: 1000,
   })
 
-  return response.items.map((item) => item.fields.slug)
+  return entries<BlogPostFields>(response).map((item) => item.fields.slug)
 }
 
 /**
@@ -125,7 +130,7 @@ export async function getBlogPostsByCategory(
   pageSize: number = 9
 ): Promise<PaginatedBlogPosts> {
   // First, get the category
-  const categoryResponse = await contentfulClient.getEntries<CategoryFields>({
+  const categoryResponse = await contentfulClient.getEntries({
     content_type: 'category',
     'fields.slug': categorySlug,
     limit: 1,
@@ -147,7 +152,7 @@ export async function getBlogPostsByCategory(
   const skip = (page - 1) * pageSize
 
   // Get posts that reference this category
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.categories.sys.id': categoryId,
     order: ['-fields.publishedDate'],
@@ -156,7 +161,7 @@ export async function getBlogPostsByCategory(
     include: 2, // Include linked entries (author, categories, images)
   })
 
-  const posts = response.items.map(processBlogPostPreview)
+  const posts = entries<BlogPostFields>(response).map(processBlogPostPreview)
   const total = response.total
 
   return {
@@ -181,20 +186,20 @@ export async function getRelatedBlogPosts(
 ): Promise<BlogPostPreview[]> {
   if (categories.length === 0) {
     // No categories, just get latest posts
-    const response = await contentfulClient.getEntries<BlogPostFields>({
+    const response = await contentfulClient.getEntries({
       content_type: 'blogPost',
       'sys.id[ne]': currentPostId, // Exclude current post
       order: ['-fields.publishedDate'],
       limit,
       include: 2, // Include linked entries (author, categories, images)
     })
-    return response.items.map(processBlogPostPreview)
+    return entries<BlogPostFields>(response).map(processBlogPostPreview)
   }
 
   // Get posts with at least one matching category
   const categoryIds = categories.map((cat) => cat.id)
 
-  const response = await contentfulClient.getEntries<BlogPostFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.categories.sys.id[in]': categoryIds.join(','),
     'sys.id[ne]': currentPostId, // Exclude current post
@@ -204,7 +209,7 @@ export async function getRelatedBlogPosts(
   })
 
   // Score posts by number of matching categories/tags
-  const scoredPosts = response.items.map((item) => {
+  const scoredPosts = entries<BlogPostFields>(response).map((item) => {
     let score = 0
     const postCategories = item.fields.categories || []
     const postTags = item.fields.tags || []
@@ -243,12 +248,12 @@ export async function getRelatedBlogPosts(
  * Get all categories
  */
 export async function getAllCategories(): Promise<ProcessedCategory[]> {
-  const response = await contentfulClient.getEntries<CategoryFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'category',
     order: ['fields.name'],
   })
 
-  return response.items.map(processCategory)
+  return entries<CategoryFields>(response).map(processCategory)
 }
 
 /**
@@ -257,7 +262,7 @@ export async function getAllCategories(): Promise<ProcessedCategory[]> {
 export async function getCategoryBySlug(
   slug: string
 ): Promise<ProcessedCategory | null> {
-  const response = await contentfulClient.getEntries<CategoryFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'category',
     'fields.slug': slug,
     limit: 1,
@@ -267,17 +272,17 @@ export async function getCategoryBySlug(
     return null
   }
 
-  return processCategory(response.items[0])
+  return processCategory(entries<CategoryFields>(response)[0])
 }
 
 /**
  * Get all category slugs (for static generation)
  */
 export async function getAllCategorySlugs(): Promise<string[]> {
-  const response = await contentfulClient.getEntries<CategoryFields>({
+  const response = await contentfulClient.getEntries({
     content_type: 'category',
     select: ['fields.slug'],
   })
 
-  return response.items.map((item) => item.fields.slug)
+  return entries<CategoryFields>(response).map((item) => item.fields.slug)
 }
