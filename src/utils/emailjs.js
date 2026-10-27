@@ -11,6 +11,7 @@ export const EMAIL_CONFIG = {
     AUTO_RESPONSE: "template_autoresponse",
     SOLAR: "template_solar",
     PARTNERSHIP: "template_partnership",
+    WIHCN: "template_wihcn",
   },
 };
 
