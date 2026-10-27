@@ -46,11 +46,6 @@ export default function BlogContent({ content }: BlogContentProps) {
         )
       },
 
-      // Paragraphs
-      [BLOCKS.PARAGRAPH]: (node, children) => {
-        return <p className="mb-4 leading-relaxed text-gray-700">{children}</p>
-      },
-
       // Lists
       [BLOCKS.UL_LIST]: (node, children) => {
         return <ul className="mb-4 ml-6 list-disc space-y-2 text-gray-700">{children}</ul>

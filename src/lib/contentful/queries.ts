@@ -12,7 +12,6 @@ import {
   processBlogPostPreview,
   processCategory,
 } from './client'
-import { Entry } from 'contentful'
 
 // ===== BLOG POST QUERIES =====
 

@@ -35,7 +35,6 @@ export async function GET() {
       author: [
         {
           name: post.author.name,
-          email: post.author.email || undefined,
         },
       ],
       category: post.categories.map((cat) => ({

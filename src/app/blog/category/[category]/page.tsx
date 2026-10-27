@@ -11,9 +11,10 @@ import {
 export async function generateMetadata({
   params,
 }: {
-  params: { category: string }
+  params: Promise<{ category: string }>
 }) {
-  const category = await getCategoryBySlug(params.category)
+  const { category: categorySlug } = await params
+  const category = await getCategoryBySlug(categorySlug)
 
   if (!category) {
     return {
@@ -30,21 +31,23 @@ export async function generateMetadata({
 }
 
 interface CategoryPageProps {
-  params: { category: string }
-  searchParams: { page?: string }
+  params: Promise<{ category: string }>
+  searchParams: Promise<{ page?: string }>
 }
 
 export default async function CategoryPage({
   params,
   searchParams,
 }: CategoryPageProps) {
-  const page = Number(searchParams.page) || 1
+  const { category: categorySlug } = await params
+  const { page: pageParam } = await searchParams
+  const page = Number(pageParam) || 1
   const pageSize = 9
 
   // Fetch category and posts
   const [category, paginatedData] = await Promise.all([
-    getCategoryBySlug(params.category),
-    getBlogPostsByCategory(params.category, page, pageSize),
+    getCategoryBySlug(categorySlug),
+    getBlogPostsByCategory(categorySlug, page, pageSize),
   ])
 
   if (!category) {
@@ -76,7 +79,7 @@ export default async function CategoryPage({
                   <Pagination
                     currentPage={page}
                     totalPages={totalPages}
-                    basePath={`/blog/category/${params.category}`}
+                    basePath={`/blog/category/${categorySlug}`}
                   />
                 </div>
               )}

@@ -13,11 +13,12 @@ export const metadata = {
 }
 
 interface BlogPageProps {
-  searchParams: { page?: string }
+  searchParams: Promise<{ page?: string }>
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const page = Number(searchParams.page) || 1
+  const { page: pageParam } = await searchParams
+  const page = Number(pageParam) || 1
   const pageSize = 9
 
   // Fetch paginated posts and all posts for search

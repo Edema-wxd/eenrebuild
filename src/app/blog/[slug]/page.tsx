@@ -11,14 +11,15 @@ import ShareButtons from '@/components/blog/ShareButtons'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import CategoryBadge from '@/components/blog/CategoryBadge'
 import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
-import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 
 interface BlogPostPageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug)
+  const { slug } = await params
+  const post = await getBlogPostBySlug(slug)
 
   if (!post) {
     return {
@@ -57,7 +58,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getBlogPostBySlug(params.slug)
+  const { slug } = await params
+  const post = await getBlogPostBySlug(slug)
 
   if (!post) {
     notFound()
