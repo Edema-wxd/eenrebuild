@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import { Download, FileText } from "lucide-react";
 import { EMAIL_CONFIG } from "@/utils/emailjs";
 import { checkRateLimit, recordSubmission } from "@/utils/rateLimiting";
 import {
@@ -57,7 +58,9 @@ const validateEnquiry = (formData: FormData) => {
   return { isValid: Object.keys(errors).length === 0, errors };
 };
 
-const inputClass = (hasError: boolean) =>
+const COMPANY_PROFILE_URL = "/EEN%20Company%20Profile.pdf";
+
+const inputClass =(hasError: boolean) =>
   `w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#1AA3DD] focus:border-transparent transition-colors duration-200 ${
     hasError ? "border-red-300" : "border-gray-300"
   }`;
@@ -185,6 +188,31 @@ export default function WihcnEnquiryForm() {
             }`}
           >
             {submitStatus.message}
+          </div>
+        )}
+
+        {submitStatus?.type === "success" && (
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-xl border border-[#1AA3DD]/20 bg-gradient-to-br from-blue-50 to-green-50">
+            <div className="w-12 h-12 rounded-lg bg-[#1AA3DD]/10 flex items-center justify-center flex-shrink-0">
+              <FileText className="w-6 h-6 text-[#1AA3DD]" aria-hidden="true" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">
+                Get to know EEN Consulting
+              </h3>
+              <p className="text-sm text-gray-600">
+                Download our company profile to learn about our solar, water,
+                smart metering and EDGE certification work. (PDF, 6.7 MB)
+              </p>
+            </div>
+            <a
+              href={COMPANY_PROFILE_URL}
+              download="EEN Company Profile.pdf"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#1AA3DD] text-white font-semibold hover:bg-[#1592c7] transition-colors duration-200 flex-shrink-0"
+            >
+              <Download className="w-4 h-4" aria-hidden="true" />
+              Download Profile
+            </a>
           </div>
         )}
 
