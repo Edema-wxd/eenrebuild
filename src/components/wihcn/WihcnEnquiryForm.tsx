@@ -7,7 +7,6 @@ import {
   validateName,
   validateEmail,
   validatePhone,
-  validateMessage,
   validateCompany,
   containsSuspiciousContent,
   HONEYPOT_FIELD,
@@ -15,47 +14,85 @@ import {
   checkSubmissionSpeed,
 } from "@/utils/formValidation";
 
-const ENQUIRY_TYPES = [
-  { value: "attendance", label: "Attendance / Registration" },
-  { value: "sponsorship", label: "Sponsorship" },
-  { value: "exhibition", label: "Exhibition" },
-  { value: "speaking", label: "Speaking Opportunity" },
-  { value: "partnership", label: "Partnership" },
-  { value: "media", label: "Media / Press" },
-  { value: "general", label: "General Enquiry" },
+interface Option {
+  value: string;
+  label: string;
+}
+
+const OTHER = "other";
+
+const ROLES: Option[] = [
+  { value: "owner-director", label: "Owner / Director" },
+  { value: "medical-director", label: "Medical Director" },
+  { value: "facility-manager", label: "Facility or Operations Manager" },
+  { value: "administrator", label: "Administrator" },
+  { value: "clinician", label: "Clinician" },
+  { value: OTHER, label: "Other" },
 ];
 
-const validateEnquiry = (formData: FormData) => {
-  const errors: Record<string, string> = {};
-  const get = (key: string) => (formData.get(key) as string) || "";
+const FACILITY_SIZES: Option[] = [
+  { value: "under-10", label: "Under 10" },
+  { value: "10-30", label: "10 to 30" },
+  { value: "30-100", label: "30 to 100" },
+  { value: "above-100", label: "Above 100" },
+];
 
-  if (!validateName(get("first_name"))) {
-    errors.first_name = "First name must be between 2 and 50 characters";
-  }
-  if (!validateName(get("last_name"))) {
-    errors.last_name = "Last name must be between 2 and 50 characters";
+const CONCERNS: Option[] = [
+  { value: "water-bills", label: "Water bills" },
+  { value: "diesel-power-costs", label: "Diesel / power costs" },
+  { value: "unreliable-power", label: "Unreliable power supply" },
+  { value: "sustainability-goals", label: "Sustainability goals" },
+  { value: OTHER, label: "Other" },
+];
+
+const CONTACT_TIMES: Option[] = [
+  { value: "morning", label: "Morning" },
+  { value: "afternoon", label: "Afternoon" },
+  { value: "evening", label: "Evening" },
+];
+
+const labelFor = (options: Option[], value: string) =>
+  options.find((o) => o.value === value)?.label ?? "";
+
+// Resolve a choice to its label, or the typed answer when "Other" is picked
+const answerFor = (options: Option[], value: string, other: string) =>
+  value === OTHER ? other.trim() : labelFor(options, value);
+
+const validateBooking = (formData: FormData) => {
+  const errors: Record<string, string> = {};
+  const get = (key: string) => ((formData.get(key) as string) || "").trim();
+
+  if (!validateName(get("full_name"))) {
+    errors.full_name = "Full name must be between 2 and 50 characters";
   }
   if (!validateEmail(get("from_email"))) {
     errors.from_email = "Please enter a valid email address";
   }
   if (!get("phone") || !validatePhone(get("phone"))) {
-    errors.phone = "Please enter a valid phone number";
+    errors.phone = "Please enter a valid phone / WhatsApp number";
   }
-  if (!validateCompany(get("organization"))) {
-    errors.organization = "Organization must be less than 100 characters";
+  if (!get("organisation")) {
+    errors.organisation = "Please enter your organisation";
+  } else if (!validateCompany(get("organisation"))) {
+    errors.organisation = "Organisation must be less than 100 characters";
   }
-  if (!ENQUIRY_TYPES.some((t) => t.value === get("enquiry_type"))) {
-    errors.enquiry_type = "Please select an enquiry type";
+  if (get("facility_location").length > 100) {
+    errors.facility_location = "Location must be less than 100 characters";
   }
-  const attendees = get("attendees");
-  if (attendees && (!/^\d+$/.test(attendees) || Number(attendees) < 1)) {
-    errors.attendees = "Please enter a valid number";
+  if (!ROLES.some((r) => r.value === get("role"))) {
+    errors.role = "Please select your role";
+  } else if (get("role") === OTHER && !get("role_other")) {
+    errors.role = "Please tell us your role";
   }
-  if (!validateMessage(get("message"))) {
-    errors.message = "Message must be between 10 and 1000 characters";
+  if (get("concern") === OTHER && !get("concern_other")) {
+    errors.concern = "Please tell us your main concern";
   }
-  if (containsSuspiciousContent(get("message"))) {
-    errors.message = "Message contains suspicious content";
+
+  const freeText = ["organisation", "facility_location", "role_other", "concern_other"]
+    .map(get)
+    .join(" ");
+  if (containsSuspiciousContent(freeText)) {
+    errors.organisation = "Your answers contain suspicious content";
   }
 
   return { isValid: Object.keys(errors).length === 0, errors };
@@ -65,7 +102,7 @@ const RATE_LIMIT_KEY = "een_wihcn_submissions";
 
 const COMPANY_PROFILE_URL = "/EEN%20Company%20Profile.pdf";
 
-const inputClass =(hasError: boolean) =>
+const inputClass = (hasError: boolean) =>
   `w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#1AA3DD] focus:border-transparent transition-colors duration-200 ${
     hasError ? "border-red-300" : "border-gray-300"
   }`;
@@ -77,6 +114,8 @@ export default function WihcnEnquiryForm() {
     type: "success" | "error";
     message: string;
   } | null>(null);
+  const [role, setRole] = useState("");
+  const [concern, setConcern] = useState("");
   const formStartTime = useRef(Date.now());
   const statusRef = useRef<HTMLDivElement>(null);
 
@@ -128,7 +167,7 @@ export default function WihcnEnquiryForm() {
       return;
     }
 
-    const validation = validateEnquiry(formData);
+    const validation = validateBooking(formData);
     if (!validation.isValid) {
       setErrors(validation.errors);
       return;
@@ -137,19 +176,17 @@ export default function WihcnEnquiryForm() {
     setIsSubmitting(true);
 
     try {
-      const enquiryType = formData.get("enquiry_type") as string;
+      const get = (key: string) => ((formData.get(key) as string) || "").trim();
       const templateParams = {
-        first_name: formData.get("first_name") || "",
-        last_name: formData.get("last_name") || "",
-        from_email: formData.get("from_email") || "",
-        phone: formData.get("phone") || "",
-        organization: formData.get("organization") || "",
-        job_title: formData.get("job_title") || "",
-        enquiry_type:
-          ENQUIRY_TYPES.find((t) => t.value === enquiryType)?.label ??
-          enquiryType,
-        attendees: formData.get("attendees") || "",
-        message: formData.get("message") || "",
+        full_name: get("full_name"),
+        from_email: get("from_email"),
+        phone: get("phone"),
+        organisation: get("organisation"),
+        facility_location: get("facility_location"),
+        role: answerFor(ROLES, get("role"), get("role_other")),
+        facility_size: labelFor(FACILITY_SIZES, get("facility_size")),
+        main_concern: answerFor(CONCERNS, get("concern"), get("concern_other")),
+        best_time: labelFor(CONTACT_TIMES, get("best_time")),
       };
 
       const result = await emailjs.send(
@@ -164,9 +201,11 @@ export default function WihcnEnquiryForm() {
         setSubmitStatus({
           type: "success",
           message:
-            "Thank you! Your enquiry has been sent. Our team will get back to you shortly.",
+            "Thank you! Your facility audit booking has been received. Free audits go to the first 10 bookings; we'll confirm by WhatsApp.",
         });
         form.reset();
+        setRole("");
+        setConcern("");
         formStartTime.current = Date.now();
       } else {
         throw new Error("Email sending failed");
@@ -176,7 +215,7 @@ export default function WihcnEnquiryForm() {
       setSubmitStatus({
         type: "error",
         message:
-          "Sorry, there was an error sending your enquiry. Please try again later.",
+          "Sorry, there was an error sending your booking. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
@@ -235,30 +274,17 @@ export default function WihcnEnquiryForm() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <Field label="First Name *" name="first_name" error={errors.first_name}>
-            <input
-              type="text"
-              id="first_name"
-              name="first_name"
-              required
-              autoComplete="given-name"
-              className={inputClass(!!errors.first_name)}
-              placeholder="Enter your first name"
-            />
-          </Field>
-          <Field label="Last Name *" name="last_name" error={errors.last_name}>
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              required
-              autoComplete="family-name"
-              className={inputClass(!!errors.last_name)}
-              placeholder="Enter your last name"
-            />
-          </Field>
-        </div>
+        <Field label="Full Name *" name="full_name" error={errors.full_name}>
+          <input
+            type="text"
+            id="full_name"
+            name="full_name"
+            required
+            autoComplete="name"
+            className={inputClass(!!errors.full_name)}
+            placeholder="Enter your full name"
+          />
+        </Field>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <Field label="Email Address *" name="from_email" error={errors.from_email}>
@@ -272,7 +298,7 @@ export default function WihcnEnquiryForm() {
               placeholder="you@example.com"
             />
           </Field>
-          <Field label="Phone Number *" name="phone" error={errors.phone}>
+          <Field label="Phone / WhatsApp Number *" name="phone" error={errors.phone}>
             <input
               type="tel"
               id="phone"
@@ -285,71 +311,64 @@ export default function WihcnEnquiryForm() {
           </Field>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <Field label="Organization" name="organization" error={errors.organization}>
-            <input
-              type="text"
-              id="organization"
-              name="organization"
-              autoComplete="organization"
-              className={inputClass(!!errors.organization)}
-              placeholder="Your organization"
-            />
-          </Field>
-          <Field label="Job Title" name="job_title">
-            <input
-              type="text"
-              id="job_title"
-              name="job_title"
-              autoComplete="organization-title"
-              className={inputClass(false)}
-              placeholder="Your role"
-            />
-          </Field>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <Field label="Enquiry Type *" name="enquiry_type" error={errors.enquiry_type}>
-            <select
-              id="enquiry_type"
-              name="enquiry_type"
-              required
-              defaultValue=""
-              className={inputClass(!!errors.enquiry_type)}
-            >
-              <option value="" disabled>
-                Select an enquiry type
-              </option>
-              {ENQUIRY_TYPES.map((type) => (
-                <option key={type.value} value={type.value}>
-                  {type.label}
-                </option>
-              ))}
-            </select>
-          </Field>
-          <Field label="Number of Attendees" name="attendees" error={errors.attendees}>
-            <input
-              type="number"
-              id="attendees"
-              name="attendees"
-              min={1}
-              inputMode="numeric"
-              className={inputClass(!!errors.attendees)}
-              placeholder="e.g. 2"
-            />
-          </Field>
-        </div>
-
-        <Field label="Message *" name="message" error={errors.message}>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
+        <Field label="Organisation *" name="organisation" error={errors.organisation}>
+          <input
+            type="text"
+            id="organisation"
+            name="organisation"
             required
-            className={`${inputClass(!!errors.message)} resize-none`}
-            placeholder="Tell us about your enquiry..."
+            autoComplete="organization"
+            className={inputClass(!!errors.organisation)}
+            placeholder="Hospital, clinic or company"
           />
         </Field>
+
+        <Field
+          label="Facility Location"
+          name="facility_location"
+          error={errors.facility_location}
+        >
+          <input
+            type="text"
+            id="facility_location"
+            name="facility_location"
+            autoComplete="address-level2"
+            className={inputClass(!!errors.facility_location)}
+            placeholder="e.g. Ikeja, Lagos"
+          />
+        </Field>
+
+        <ChoiceGroup
+          legend="Your Role *"
+          name="role"
+          options={ROLES}
+          value={role}
+          onChange={setRole}
+          error={errors.role}
+          otherPlaceholder="Your role"
+        />
+
+        <ChoiceGroup
+          legend="Roughly how many taps or washrooms are in the facility?"
+          name="facility_size"
+          options={FACILITY_SIZES}
+        />
+
+        <ChoiceGroup
+          legend="What is your biggest concern right now?"
+          name="concern"
+          options={CONCERNS}
+          value={concern}
+          onChange={setConcern}
+          error={errors.concern}
+          otherPlaceholder="Your main concern"
+        />
+
+        <ChoiceGroup
+          legend="Best time to reach you"
+          name="best_time"
+          options={CONTACT_TIMES}
+        />
 
         <button
           type="submit"
@@ -360,7 +379,7 @@ export default function WihcnEnquiryForm() {
               : "bg-gradient-to-r from-[#1AA3DD] to-[#73C167] hover:opacity-90"
           }`}
         >
-          {isSubmitting ? "Sending..." : "Submit Enquiry"}
+          {isSubmitting ? "Sending..." : "Book Facility Audit"}
         </button>
       </form>
     </div>
@@ -383,5 +402,63 @@ function Field({ label, name, error, children }: FieldProps) {
       {children}
       {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
     </div>
+  );
+}
+
+interface ChoiceGroupProps {
+  legend: string;
+  name: string;
+  options: Option[];
+  value?: string;
+  onChange?: (value: string) => void;
+  error?: string;
+  otherPlaceholder?: string;
+}
+
+function ChoiceGroup({
+  legend,
+  name,
+  options,
+  value,
+  onChange,
+  error,
+  otherPlaceholder,
+}: ChoiceGroupProps) {
+  return (
+    <fieldset>
+      <legend className="block text-sm font-medium text-gray-700 mb-2">
+        {legend}
+      </legend>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {options.map((option) => (
+          <label
+            key={option.value}
+            className={`flex items-center gap-3 px-4 py-3 border rounded-lg cursor-pointer transition-colors duration-200 has-[:checked]:border-[#1AA3DD] has-[:checked]:bg-[#1AA3DD]/5 hover:border-[#1AA3DD]/50 ${
+              error ? "border-red-300" : "border-gray-300"
+            }`}
+          >
+            <input
+              type="radio"
+              name={name}
+              value={option.value}
+              onChange={(e) => onChange?.(e.target.value)}
+              className="h-4 w-4 accent-[#1AA3DD]"
+            />
+            <span className="text-gray-700">{option.label}</span>
+          </label>
+        ))}
+      </div>
+      {value === OTHER && (
+        <input
+          type="text"
+          name={`${name}_other`}
+          aria-label={otherPlaceholder}
+          autoFocus
+          className={`${inputClass(!!error)} mt-2`}
+          placeholder={otherPlaceholder}
+        />
+      )}
+      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
+    </fieldset>
   );
 }
