@@ -1,9 +1,9 @@
 import WihcnEnquiryForm from "@/components/wihcn/WihcnEnquiryForm";
 
 export const metadata = {
-  title: "WIHCN Conference Enquiries | EEN Consulting",
+  title: "Free Facility Audit | WIHCN | EEN Consulting",
   description:
-    "Send an enquiry about the WIHCN conference: attendance, sponsorship, exhibition, speaking and partnership opportunities.",
+    "Book a facility audit for your hospital or clinic. Free audits go to the first 10 bookings; we'll confirm by WhatsApp.",
 };
 
 export default function WihcnPage() {
@@ -15,12 +15,11 @@ export default function WihcnPage() {
             WIHCN Conference
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Conference Enquiries
+            Facility Audit
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Interested in attending, sponsoring, exhibiting or speaking at the
-            WIHCN conference? Send us your enquiry and our team will get back
-            to you.
+            Free audits go to the first 10 bookings; we&apos;ll confirm by
+            WhatsApp.
           </p>
         </div>
 
