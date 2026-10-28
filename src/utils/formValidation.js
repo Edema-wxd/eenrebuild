@@ -42,6 +42,22 @@ export const validateService = (service) => {
   return validServices.includes(service);
 };
 
+// Basic spam detection for free-text fields
+const SUSPICIOUS_PATTERNS = [
+  /buy.*viagra/i,
+  /casino/i,
+  /loan/i,
+  /make.*money.*fast/i,
+  /click.*here/i,
+  /free.*money/i,
+  /urgent.*reply/i,
+];
+
+export const containsSuspiciousContent = (text) => {
+  const value = text?.toLowerCase() || "";
+  return SUSPICIOUS_PATTERNS.some((pattern) => pattern.test(value));
+};
+
 export const validateFormData = (formData) => {
   const errors = {};
 
@@ -82,18 +98,7 @@ export const validateFormData = (formData) => {
   }
 
   // Check for suspicious content (basic spam detection)
-  const messageText = message?.toLowerCase() || "";
-  const suspiciousPatterns = [
-    /buy.*viagra/i,
-    /casino/i,
-    /loan/i,
-    /make.*money.*fast/i,
-    /click.*here/i,
-    /free.*money/i,
-    /urgent.*reply/i,
-  ];
-
-  if (suspiciousPatterns.some((pattern) => pattern.test(messageText))) {
+  if (containsSuspiciousContent(message)) {
     errors.message = "Message contains suspicious content";
   }
 
@@ -104,13 +109,10 @@ export const validateFormData = (formData) => {
 };
 
 // Anti-spam utilities
-export const generateHoneypotField = () => {
-  const timestamp = Date.now();
-  const randomString = Math.random().toString(36).substring(2, 15);
-  return `${timestamp}_${randomString}`;
-};
+// Fixed, plausible-looking name so server-rendered HTML and the client agree
+export const HONEYPOT_FIELD = "website";
 
-export const validateHoneypot = (formData, honeypotField) => {
+export const validateHoneypot = (formData, honeypotField = HONEYPOT_FIELD) => {
   const honeypotValue = formData.get(honeypotField);
   return !honeypotValue; // Should be empty for real users
 };

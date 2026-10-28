@@ -1,6 +1,8 @@
 import { getAllBlogPosts } from '@/lib/contentful/queries'
 import { Feed } from 'feed'
 
+export const dynamic = 'force-static'
+
 export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
   const posts = await getAllBlogPosts()
@@ -35,14 +37,18 @@ export async function GET() {
       author: [
         {
           name: post.author.name,
-          email: post.author.email || undefined,
         },
       ],
       category: post.categories.map((cat) => ({
         name: cat.name,
       })),
       date: post.publishedDate,
-      image: post.heroImage.url,
+      // Pass an explicit type: `feed` would otherwise infer it from the file
+      // extension, but optimizeImageUrl serves WebP (fm=webp) by default
+      image: {
+        url: post.heroImage.url,
+        type: 'image/webp',
+      },
     })
   })
 

@@ -1,4 +1,5 @@
 import FlexSearch from 'flexsearch'
+import type { Index } from 'flexsearch'
 import { BlogPostPreview } from '../contentful/types'
 
 export interface SearchResult {
@@ -40,7 +41,7 @@ export function createSearchIndex(posts: BlogPostPreview[]) {
  */
 export function searchPosts(
   query: string,
-  index: FlexSearch.Index,
+  index: Index,
   posts: BlogPostPreview[],
   limit: number = 10
 ): SearchResult[] {

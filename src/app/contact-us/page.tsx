@@ -1,11 +1,10 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import emailjs from "@emailjs/browser";
-import { EMAIL_CONFIG } from "@/utils/emailjs";
+import emailjs, { EMAIL_CONFIG, PUBLIC_KEY } from "@/utils/emailjs";
 import { checkRateLimit, recordSubmission } from "@/utils/rateLimiting";
 import {
   validateFormData,
-  generateHoneypotField,
+  HONEYPOT_FIELD,
   validateHoneypot,
   checkSubmissionSpeed,
 } from "@/utils/formValidation";
@@ -18,7 +17,6 @@ export default function ContactUsPage() {
     type: "success" | "error";
     message: string;
   } | null>(null);
-  const [honeypotField] = useState(generateHoneypotField());
   const formStartTime = useRef(Date.now());
   const formRef = useRef(null);
 
@@ -62,7 +60,7 @@ export default function ContactUsPage() {
     }
 
     // Honeypot validation
-    if (!validateHoneypot(formData, honeypotField)) {
+    if (!validateHoneypot(formData, HONEYPOT_FIELD)) {
       setSubmitStatus({
         type: "error",
         message: "Invalid submission detected",
@@ -108,7 +106,7 @@ export default function ContactUsPage() {
         EMAIL_CONFIG.SERVICE_ID,
         EMAIL_CONFIG.TEMPLATES.CONTACT,
         templateParams,
-        "MLE4LPkEt5si2d7m0"
+        PUBLIC_KEY
       );
 
       if (result.status === 200) {
@@ -158,10 +156,11 @@ export default function ContactUsPage() {
               {/* Honeypot field for anti-spam */}
               <input
                 type="text"
-                name={honeypotField}
-                style={{ display: "none" }}
+                name={HONEYPOT_FIELD}
+                className="hidden"
                 tabIndex={-1}
                 autoComplete="off"
+                aria-hidden="true"
               />
 
               {/* Status messages */}

@@ -5,7 +5,7 @@ import {
   Options,
 } from '@contentful/rich-text-react-renderer'
 import { Document, BLOCKS, INLINES } from '@contentful/rich-text-types'
-import { generateHeadingId } from '@/lib/blog/generateTOC'
+import { getHeadingId } from '@/lib/blog/generateTOC'
 import Image from 'next/image'
 import Link from 'next/link'
 import CodeBlock from './CodeBlock'
@@ -19,8 +19,7 @@ export default function BlogContent({ content }: BlogContentProps) {
     renderNode: {
       // Headings with anchor IDs
       [BLOCKS.HEADING_2]: (node, children) => {
-        const text = (children as string[])[0] || ''
-        const id = generateHeadingId(text)
+        const id = getHeadingId(node)
         return (
           <h2 id={id} className="mb-4 mt-8 scroll-mt-20 text-3xl font-bold text-gray-900">
             {children}
@@ -28,8 +27,7 @@ export default function BlogContent({ content }: BlogContentProps) {
         )
       },
       [BLOCKS.HEADING_3]: (node, children) => {
-        const text = (children as string[])[0] || ''
-        const id = generateHeadingId(text)
+        const id = getHeadingId(node)
         return (
           <h3 id={id} className="mb-3 mt-6 scroll-mt-20 text-2xl font-bold text-gray-900">
             {children}
@@ -37,18 +35,12 @@ export default function BlogContent({ content }: BlogContentProps) {
         )
       },
       [BLOCKS.HEADING_4]: (node, children) => {
-        const text = (children as string[])[0] || ''
-        const id = generateHeadingId(text)
+        const id = getHeadingId(node)
         return (
           <h4 id={id} className="mb-2 mt-4 scroll-mt-20 text-xl font-bold text-gray-900">
             {children}
           </h4>
         )
-      },
-
-      // Paragraphs
-      [BLOCKS.PARAGRAPH]: (node, children) => {
-        return <p className="mb-4 leading-relaxed text-gray-700">{children}</p>
       },
 
       // Lists
