@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import emailjs from "@emailjs/browser";
 import { Download, FileText } from "lucide-react";
-import { EMAIL_CONFIG } from "@/utils/emailjs";
+import emailjs, { EMAIL_CONFIG, PUBLIC_KEY } from "@/utils/emailjs";
 import { checkRateLimit, recordSubmission } from "@/utils/rateLimiting";
 import {
   validateName,
@@ -10,7 +9,8 @@ import {
   validatePhone,
   validateMessage,
   validateCompany,
-  generateHoneypotField,
+  containsSuspiciousContent,
+  HONEYPOT_FIELD,
   validateHoneypot,
   checkSubmissionSpeed,
 } from "@/utils/formValidation";
@@ -54,9 +54,14 @@ const validateEnquiry = (formData: FormData) => {
   if (!validateMessage(get("message"))) {
     errors.message = "Message must be between 10 and 1000 characters";
   }
+  if (containsSuspiciousContent(get("message"))) {
+    errors.message = "Message contains suspicious content";
+  }
 
   return { isValid: Object.keys(errors).length === 0, errors };
 };
+
+const RATE_LIMIT_KEY = "een_wihcn_submissions";
 
 const COMPANY_PROFILE_URL = "/EEN%20Company%20Profile.pdf";
 
@@ -72,12 +77,24 @@ export default function WihcnEnquiryForm() {
     type: "success" | "error";
     message: string;
   } | null>(null);
-  const [honeypotField] = useState(generateHoneypotField());
   const formStartTime = useRef(Date.now());
+  const statusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     formStartTime.current = Date.now();
   }, []);
+
+  // Bring the result (and profile download) into view after submitting
+  useEffect(() => {
+    if (!submitStatus) return;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    statusRef.current?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }, [submitStatus]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -87,7 +104,7 @@ export default function WihcnEnquiryForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const rateLimitCheck = checkRateLimit();
+    const rateLimitCheck = checkRateLimit(RATE_LIMIT_KEY);
     if (!rateLimitCheck.allowed) {
       setSubmitStatus({
         type: "error",
@@ -98,7 +115,7 @@ export default function WihcnEnquiryForm() {
       return;
     }
 
-    if (!validateHoneypot(formData, honeypotField)) {
+    if (!validateHoneypot(formData, HONEYPOT_FIELD)) {
       setSubmitStatus({ type: "error", message: "Invalid submission detected" });
       return;
     }
@@ -139,11 +156,11 @@ export default function WihcnEnquiryForm() {
         EMAIL_CONFIG.SERVICE_ID,
         EMAIL_CONFIG.TEMPLATES.WIHCN,
         templateParams,
-        "MLE4LPkEt5si2d7m0"
+        PUBLIC_KEY
       );
 
       if (result.status === 200) {
-        recordSubmission();
+        recordSubmission(RATE_LIMIT_KEY);
         setSubmitStatus({
           type: "success",
           message:
@@ -172,16 +189,18 @@ export default function WihcnEnquiryForm() {
         {/* Honeypot field for anti-spam */}
         <input
           type="text"
-          name={honeypotField}
-          style={{ display: "none" }}
+          name={HONEYPOT_FIELD}
+          className="hidden"
           tabIndex={-1}
           autoComplete="off"
+          aria-hidden="true"
         />
 
         {submitStatus && (
           <div
+            ref={statusRef}
             role="status"
-            className={`p-4 rounded-lg ${
+            className={`scroll-mt-24 p-4 rounded-lg ${
               submitStatus.type === "success"
                 ? "bg-green-100 text-green-700 border border-green-200"
                 : "bg-red-100 text-red-700 border border-red-200"

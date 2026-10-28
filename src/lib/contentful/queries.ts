@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { contentfulClient } from './client'
 import {
   BlogPostFields,
@@ -18,12 +19,17 @@ function entries<TFields>(response: { items: unknown[] }) {
   return response.items as ContentfulEntry<TFields>[]
 }
 
+// Query functions are wrapped in React cache() so identical calls made during
+// the same render pass (e.g. generateMetadata + page + shared components)
+// hit Contentful only once. Functions with default parameters delegate to a
+// cached inner function so `f(1)` and `f(1, 9)` share the same cache entry.
+
 // ===== BLOG POST QUERIES =====
 
 /**
  * Get all blog posts (for sitemap, RSS, search index)
  */
-export async function getAllBlogPosts(): Promise<BlogPostPreview[]> {
+export const getAllBlogPosts = cache(async (): Promise<BlogPostPreview[]> => {
   const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     order: ['-fields.publishedDate'],
@@ -31,22 +37,23 @@ export async function getAllBlogPosts(): Promise<BlogPostPreview[]> {
     include: 2, // Include linked entries (author, categories, images)
   })
 
-  // Debug logging
-  console.log(`Fetched ${response.items.length} blog posts from Contentful`)
-  if (response.items.length > 0) {
-    console.log('First blog post:', JSON.stringify(response.items[0], null, 2))
-  }
-
   return entries<BlogPostFields>(response).map(processBlogPostPreview)
-}
+})
 
 /**
  * Get paginated blog posts for listing page
  */
-export async function getPaginatedBlogPosts(
+export function getPaginatedBlogPosts(
   page: number = 1,
   pageSize: number = 9
 ): Promise<PaginatedBlogPosts> {
+  return getPaginatedBlogPostsCached(page, pageSize)
+}
+
+const getPaginatedBlogPostsCached = cache(async (
+  page: number,
+  pageSize: number
+): Promise<PaginatedBlogPosts> => {
   const skip = (page - 1) * pageSize
 
   const response = await contentfulClient.getEntries({
@@ -69,14 +76,20 @@ export async function getPaginatedBlogPosts(
     hasNextPage: skip + pageSize < total,
     hasPrevPage: page > 1,
   }
-}
+})
 
 /**
  * Get featured blog posts (for homepage)
  */
-export async function getFeaturedBlogPosts(
+export function getFeaturedBlogPosts(
   limit: number = 3
 ): Promise<BlogPostPreview[]> {
+  return getFeaturedBlogPostsCached(limit)
+}
+
+const getFeaturedBlogPostsCached = cache(async (
+  limit: number
+): Promise<BlogPostPreview[]> => {
   const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.featured': true,
@@ -86,14 +99,14 @@ export async function getFeaturedBlogPosts(
   })
 
   return entries<BlogPostFields>(response).map(processBlogPostPreview)
-}
+})
 
 /**
  * Get single blog post by slug
  */
-export async function getBlogPostBySlug(
+export const getBlogPostBySlug = cache(async (
   slug: string
-): Promise<ProcessedBlogPost | null> {
+): Promise<ProcessedBlogPost | null> => {
   const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     'fields.slug': slug,
@@ -106,12 +119,12 @@ export async function getBlogPostBySlug(
   }
 
   return processBlogPost(entries<BlogPostFields>(response)[0])
-}
+})
 
 /**
  * Get all blog post slugs (for static generation)
  */
-export async function getAllBlogPostSlugs(): Promise<string[]> {
+export const getAllBlogPostSlugs = cache(async (): Promise<string[]> => {
   const response = await contentfulClient.getEntries({
     content_type: 'blogPost',
     select: ['fields.slug'],
@@ -119,24 +132,29 @@ export async function getAllBlogPostSlugs(): Promise<string[]> {
   })
 
   return entries<BlogPostFields>(response).map((item) => item.fields.slug)
-}
+})
 
 /**
  * Get blog posts by category
  */
-export async function getBlogPostsByCategory(
+export function getBlogPostsByCategory(
   categorySlug: string,
   page: number = 1,
   pageSize: number = 9
 ): Promise<PaginatedBlogPosts> {
-  // First, get the category
-  const categoryResponse = await contentfulClient.getEntries({
-    content_type: 'category',
-    'fields.slug': categorySlug,
-    limit: 1,
-  })
+  return getBlogPostsByCategoryCached(categorySlug, page, pageSize)
+}
 
-  if (categoryResponse.items.length === 0) {
+const getBlogPostsByCategoryCached = cache(async (
+  categorySlug: string,
+  page: number,
+  pageSize: number
+): Promise<PaginatedBlogPosts> => {
+  // Resolve the category id via the cached lookup, so callers that also
+  // fetch the category (metadata, listing header) don't trigger a second call
+  const category = await getCategoryBySlug(categorySlug)
+
+  if (!category) {
     return {
       posts: [],
       total: 0,
@@ -148,7 +166,7 @@ export async function getBlogPostsByCategory(
     }
   }
 
-  const categoryId = categoryResponse.items[0].sys.id
+  const categoryId = category.id
   const skip = (page - 1) * pageSize
 
   // Get posts that reference this category
@@ -173,7 +191,7 @@ export async function getBlogPostsByCategory(
     hasNextPage: skip + pageSize < total,
     hasPrevPage: page > 1,
   }
-}
+})
 
 /**
  * Get related blog posts (by shared categories/tags)
@@ -247,21 +265,21 @@ export async function getRelatedBlogPosts(
 /**
  * Get all categories
  */
-export async function getAllCategories(): Promise<ProcessedCategory[]> {
+export const getAllCategories = cache(async (): Promise<ProcessedCategory[]> => {
   const response = await contentfulClient.getEntries({
     content_type: 'category',
     order: ['fields.name'],
   })
 
   return entries<CategoryFields>(response).map(processCategory)
-}
+})
 
 /**
  * Get category by slug
  */
-export async function getCategoryBySlug(
+export const getCategoryBySlug = cache(async (
   slug: string
-): Promise<ProcessedCategory | null> {
+): Promise<ProcessedCategory | null> => {
   const response = await contentfulClient.getEntries({
     content_type: 'category',
     'fields.slug': slug,
@@ -273,16 +291,16 @@ export async function getCategoryBySlug(
   }
 
   return processCategory(entries<CategoryFields>(response)[0])
-}
+})
 
 /**
  * Get all category slugs (for static generation)
  */
-export async function getAllCategorySlugs(): Promise<string[]> {
+export const getAllCategorySlugs = cache(async (): Promise<string[]> => {
   const response = await contentfulClient.getEntries({
     content_type: 'category',
     select: ['fields.slug'],
   })
 
   return entries<CategoryFields>(response).map((item) => item.fields.slug)
-}
+})

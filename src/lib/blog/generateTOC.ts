@@ -3,18 +3,30 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { TOCHeading } from '../contentful/types'
 
 /**
+ * Extract the plain text of a rich text node, joining all text runs
+ * (so 'Solar **Benefits**' yields 'Solar Benefits')
+ */
+export function extractNodeText(node: Block | Inline | Text): string {
+  if (node.nodeType === 'text') {
+    return node.value
+  }
+
+  return node.content.map(extractNodeText).join('')
+}
+
+/**
+ * Get the anchor ID for a heading node. Used by both the TOC and the
+ * heading renderers so links and anchors always match.
+ */
+export function getHeadingId(node: Block | Inline | Text): string {
+  return generateHeadingId(extractNodeText(node))
+}
+
+/**
  * Extract headings from Contentful rich text document to generate Table of Contents
  */
 export function generateTableOfContents(document: Document): TOCHeading[] {
   const headings: TOCHeading[] = []
-
-  function extractText(node: Block | Inline | Text): string {
-    if (node.nodeType === 'text') {
-      return node.value
-    }
-
-    return node.content.map(extractText).join('')
-  }
 
   function processNode(node: Block | Inline | Text) {
     if (node.nodeType === 'text') return
@@ -25,7 +37,7 @@ export function generateTableOfContents(document: Document): TOCHeading[] {
       node.nodeType === BLOCKS.HEADING_3 ||
       node.nodeType === BLOCKS.HEADING_4
     ) {
-      const text = extractText(node)
+      const text = extractNodeText(node)
       const level =
         node.nodeType === BLOCKS.HEADING_2
           ? 2
@@ -33,13 +45,8 @@ export function generateTableOfContents(document: Document): TOCHeading[] {
           ? 3
           : 4
 
-      // Create URL-friendly ID
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim()
+      // Create URL-friendly ID (same derivation as BlogContent anchors)
+      const id = generateHeadingId(text)
 
       headings.push({ id, text, level })
     }

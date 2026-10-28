@@ -43,10 +43,12 @@ export async function GET() {
         name: cat.name,
       })),
       date: post.publishedDate,
-      // Contentful image URLs are protocol-relative (//images.ctfassets.net/...)
-      image: post.heroImage.url.startsWith('//')
-        ? `https:${post.heroImage.url}`
-        : post.heroImage.url,
+      // Pass an explicit type: `feed` would otherwise infer it from the file
+      // extension, but optimizeImageUrl serves WebP (fm=webp) by default
+      image: {
+        url: post.heroImage.url,
+        type: 'image/webp',
+      },
     })
   })
 

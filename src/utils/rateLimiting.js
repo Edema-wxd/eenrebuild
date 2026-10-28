@@ -1,8 +1,8 @@
-const RATE_LIMIT_KEY = "een_form_submissions";
+const DEFAULT_RATE_LIMIT_KEY = "een_form_submissions";
 const MAX_SUBMISSIONS = 3;
 const TIME_WINDOW = 60 * 60 * 1000; // 1 hour
 
-export const checkRateLimit = () => {
+export const checkRateLimit = (key = DEFAULT_RATE_LIMIT_KEY) => {
   // Check if localStorage is available (client-side only)
   if (typeof window === "undefined") {
     return { allowed: true };
@@ -10,7 +10,7 @@ export const checkRateLimit = () => {
 
   try {
     const submissions = JSON.parse(
-      localStorage.getItem(RATE_LIMIT_KEY) || "[]"
+      localStorage.getItem(key) || "[]"
     );
 
     const now = Date.now();
@@ -35,14 +35,14 @@ export const checkRateLimit = () => {
   }
 };
 
-export const recordSubmission = () => {
+export const recordSubmission = (key = DEFAULT_RATE_LIMIT_KEY) => {
   if (typeof window === "undefined") {
     return;
   }
 
   try {
     const submissions = JSON.parse(
-      localStorage.getItem(RATE_LIMIT_KEY) || "[]"
+      localStorage.getItem(key) || "[]"
     );
 
     submissions.push(Date.now());
@@ -53,19 +53,19 @@ export const recordSubmission = () => {
       (time) => now - time < TIME_WINDOW * 2
     );
 
-    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recentSubmissions));
+    localStorage.setItem(key, JSON.stringify(recentSubmissions));
   } catch (error) {
     console.error("Failed to record submission:", error);
   }
 };
 
-export const clearRateLimit = () => {
+export const clearRateLimit = (key = DEFAULT_RATE_LIMIT_KEY) => {
   if (typeof window === "undefined") {
     return;
   }
 
   try {
-    localStorage.removeItem(RATE_LIMIT_KEY);
+    localStorage.removeItem(key);
   } catch (error) {
     console.error("Failed to clear rate limit:", error);
   }

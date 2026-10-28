@@ -54,8 +54,9 @@ export function optimizeImageUrl(
 ): string {
   const { width, height, quality = 80, format = 'webp' } = options
 
-  // Ensure URL starts with //
-  const cleanUrl = url.startsWith('//') ? url : `//${url.replace(/^https?:\/\//, '')}`
+  // Normalize to an absolute https:// URL (Contentful returns protocol-relative
+  // URLs like //images.ctfassets.net/..., which break OG/Twitter/RSS consumers)
+  const cleanUrl = `https://${url.replace(/^(?:https?:)?\/\//, '')}`
 
   const params = new URLSearchParams()
   if (width) params.append('w', width.toString())
