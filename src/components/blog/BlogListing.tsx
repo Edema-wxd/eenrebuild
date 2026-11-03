@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import BlogHero from '@/components/blog/BlogHero'
 import BlogCard from '@/components/blog/BlogCard'
@@ -23,6 +24,10 @@ export default async function BlogListing({ page }: BlogListingProps) {
   ])
 
   const { posts, totalPages } = paginatedData
+
+  // Pagination routes accept any page number on Vercel (ISR), so reject
+  // pages past the end instead of rendering an empty listing
+  if (page > 1 && page > totalPages) notFound()
 
   // Separate featured posts
   const featuredPosts = posts.filter((p) => p.featured)

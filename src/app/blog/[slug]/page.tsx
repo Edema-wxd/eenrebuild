@@ -13,6 +13,10 @@ import CategoryBadge from '@/components/blog/CategoryBadge'
 import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
 
+// Regenerate at most hourly on Vercel (ISR); Contentful publishes also
+// trigger /api/revalidate. Ignored by the static export.
+export const revalidate = 3600
+
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }

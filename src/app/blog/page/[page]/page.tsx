@@ -2,7 +2,9 @@ import { notFound, redirect } from 'next/navigation'
 import BlogListing, { BLOG_PAGE_SIZE } from '@/components/blog/BlogListing'
 import { getPaginatedBlogPosts } from '@/lib/contentful/queries'
 
-export const dynamicParams = false
+// Regenerate at most hourly on Vercel (ISR); Contentful publishes also
+// trigger /api/revalidate. Ignored by the static export.
+export const revalidate = 3600
 
 interface BlogPaginatedPageProps {
   params: Promise<{ page: string }>

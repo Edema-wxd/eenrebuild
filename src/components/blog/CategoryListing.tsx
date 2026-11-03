@@ -28,6 +28,10 @@ export default async function CategoryListing({
 
   const { posts, totalPages } = paginatedData
 
+  // Pagination routes accept any page number on Vercel (ISR), so reject
+  // pages past the end instead of rendering an empty listing
+  if (page > 1 && page > totalPages) notFound()
+
   return (
     <main>
       <BlogHero
