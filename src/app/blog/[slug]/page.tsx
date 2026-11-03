@@ -8,6 +8,7 @@ import { generateTableOfContents } from '@/lib/blog/generateTOC'
 import BlogContent from '@/components/blog/BlogContent'
 import TableOfContents from '@/components/blog/TableOfContents'
 import ShareButtons from '@/components/blog/ShareButtons'
+import AskAIButtons from '@/components/blog/AskAIButtons'
 import RelatedPosts from '@/components/blog/RelatedPosts'
 import CategoryBadge from '@/components/blog/CategoryBadge'
 import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
@@ -160,13 +161,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
 
-            {/* Share buttons */}
-            <div className="mt-6 border-t border-gray-200 pt-6">
+            {/* Share and Ask AI buttons */}
+            <div className="mt-6 space-y-4 border-t border-gray-200 pt-6">
               <ShareButtons
                 title={post.title}
                 url={postUrl}
                 description={post.excerpt}
               />
+              <AskAIButtons url={postUrl} />
             </div>
           </header>
 
