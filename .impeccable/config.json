@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/components/notfound/NotFoundView.tsx"
+        ],
+        "createdAt": "2026-11-03T11:10:23.310Z",
+        "reason": "CLAUDE.md brand design system prescribes from-[#1AA3DD] to-[#73C167] text gradient"
+      }
+    ]
+  }
+}
