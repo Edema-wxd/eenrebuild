@@ -1,6 +1,10 @@
 import CategoryListing from '@/components/blog/CategoryListing'
 import { getCategoryBySlug, getAllCategorySlugs } from '@/lib/contentful/queries'
 
+// Regenerate at most hourly on Vercel (ISR); Contentful publishes also
+// trigger /api/revalidate. Ignored by the static export.
+export const revalidate = 3600
+
 export async function generateMetadata({
   params,
 }: {

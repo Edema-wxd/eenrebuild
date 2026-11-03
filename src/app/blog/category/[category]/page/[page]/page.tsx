@@ -7,7 +7,9 @@ import {
   getCategoryBySlug,
 } from '@/lib/contentful/queries'
 
-export const dynamicParams = false
+// Regenerate at most hourly on Vercel (ISR); Contentful publishes also
+// trigger /api/revalidate. Ignored by the static export.
+export const revalidate = 3600
 
 interface CategoryPaginatedPageProps {
   params: Promise<{ category: string; page: string }>

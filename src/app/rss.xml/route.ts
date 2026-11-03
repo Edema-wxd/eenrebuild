@@ -2,6 +2,9 @@ import { getAllBlogPosts } from '@/lib/contentful/queries'
 import { Feed } from 'feed'
 
 export const dynamic = 'force-static'
+// Regenerate at most hourly on Vercel (ISR); Contentful publishes also
+// trigger /api/revalidate. Ignored by the static export.
+export const revalidate = 3600
 
 export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'

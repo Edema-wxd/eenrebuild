@@ -246,6 +246,32 @@ disappear from later builds (e.g. unpublished posts).
 
 ---
 
+## Vercel (ISR)
+
+On Vercel the site is **not** a static export: `next.config.ts` drops `output: "export"`
+when `VERCEL` is set, so blog pages, `rss.xml` and `sitemap.xml` use ISR.
+
+- Pages regenerate in the background at most once an hour (`revalidate = 3600`)
+- New post slugs render on their first visit, with no redeploy needed
+- A Contentful webhook can refresh everything immediately via `/api/revalidate`
+
+### Vercel environment variables
+
+Project → **Settings** → **Environment Variables** (Production):
+- `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN` (already set)
+- `REVALIDATE_SECRET` — any long random string, e.g. `openssl rand -hex 32`
+
+### Contentful webhook (instant updates)
+
+Contentful → **Settings** → **Webhooks** → **Add webhook**
+- URL: `POST https://eenrebuild.vercel.app/api/revalidate/` (use the production domain)
+- Triggers: **Entry** → Publish, Unpublish, Delete (optionally **Asset** → Publish)
+- Header: `x-revalidate-secret`: the `REVALIDATE_SECRET` value (mark as secret)
+
+Without the webhook, changes still appear within an hour.
+
+---
+
 ## File Structure on Server
 
 After deployment, your server should have:
