@@ -8,11 +8,6 @@ const isVercel = Boolean(process.env.VERCEL);
 const nextConfig: NextConfig = {
   ...(isVercel ? {} : { output: "export" }),
   trailingSlash: true,
-  // `*.vercel.ts` files (e.g. the Contentful revalidation webhook) are only
-  // routes on Vercel, since static export can't build POST route handlers
-  pageExtensions: isVercel
-    ? ["vercel.ts", "tsx", "ts", "jsx", "js"]
-    : ["tsx", "ts", "jsx", "js"],
   images: {
     unoptimized: true,
   },
