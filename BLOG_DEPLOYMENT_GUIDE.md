@@ -202,79 +202,47 @@ rsync -avz --delete out/ username@yourdomain.com:/path/to/web/root/
 
 ---
 
-## Automated Deployment (Optional)
+## Automated Deployment
 
-### Option 1: GitHub Actions (Recommended)
+The site rebuilds and uploads itself via [.github/workflows/deploy.yml](.github/workflows/deploy.yml) on:
+- every push to `main`
+- every publish/unpublish in Contentful (via webhook)
+- manually: GitHub → **Actions** → **Build and Deploy to FTP** → **Run workflow**
 
-Create `.github/workflows/deploy.yml`:
+### 1. GitHub secrets and variables
 
-```yaml
-name: Build and Deploy to FTP
+GitHub repo → **Settings** → **Secrets and variables** → **Actions**
 
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+**Secrets** (required):
+- `CONTENTFUL_SPACE_ID` — same value as `.env.local`
+- `CONTENTFUL_ACCESS_TOKEN` — same value as `.env.local` (Delivery API token)
+- `FTP_SERVER` — e.g. `ftp.eenconsult.com.ng`
+- `FTP_USERNAME`
+- `FTP_PASSWORD`
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+**Variables** (optional, defaults shown):
+- `FTP_SERVER_DIR` — `public_html/` (web root relative to the FTP login; must end with `/`)
+- `FTP_PROTOCOL` — `ftp` (use `ftps` if your host supports it)
+- `NEXT_PUBLIC_SITE_URL` — `https://eenconsult.com.ng`
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+The FTP action keeps a `.ftp-deploy-sync-state.json` file on the server and only
+uploads changed files after the first run. It also deletes server files that
+disappear from later builds (e.g. unpublished posts).
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
+### 2. Contentful webhook
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        env:
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.SITE_URL }}
-        run: npm run build
-
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: /public_html/
-```
-
-**Setup**:
-1. Go to GitHub repo → Settings → Secrets and variables → Actions
-2. Add these secrets:
-   - `CONTENTFUL_SPACE_ID`
-   - `CONTENTFUL_ACCESS_TOKEN`
-   - `SITE_URL`
-   - `FTP_SERVER`
-   - `FTP_USERNAME`
-   - `FTP_PASSWORD`
-3. Push to `main` branch to trigger deploy
-
-**Benefits**:
-- ✅ Automatic deployment on push
-- ✅ No manual FTP upload needed
-- ✅ Build logs for debugging
-- ✅ Can trigger manually from GitHub UI
-
-### Option 2: Contentful Webhooks
-
-Set up webhooks to trigger builds when content is published:
-
-1. In Contentful: **Settings** → **Webhooks** → **Add webhook**
-2. URL: Your GitHub Actions webhook URL or deploy service
-3. Triggers: Select "Publish" and "Unpublish"
-4. Content types: Select "Blog Post"
+1. Create a GitHub fine-grained token: GitHub → **Settings** → **Developer settings** →
+   **Fine-grained tokens** → repository `Edema-wxd/eenrebuild` → permission **Contents: Read and write**
+2. In Contentful: **Settings** → **Webhooks** → **Add webhook**
+   - URL: `POST https://api.github.com/repos/Edema-wxd/eenrebuild/dispatches`
+   - Triggers: **Entry** → Publish, Unpublish, Delete (optionally **Asset** → Publish)
+   - Headers:
+     - `Authorization`: `Bearer <your GitHub token>` (mark as secret)
+     - `Accept`: `application/vnd.github+json`
+     - `User-Agent`: `contentful-webhook`
+   - Content type: `application/json`
+   - Payload: **Customize** → `{ "event_type": "contentful-publish" }`
+3. Publish a post and check the **Actions** tab — a run should start within seconds.
 
 ---
 
