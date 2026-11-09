@@ -87,14 +87,15 @@ export default function NewsletterSubscribe({
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               disabled={status === 'loading'}
-              className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 focus:border-[#1AA3DD] focus:outline-none focus:ring-2 focus:ring-[#1AA3DD]/20 disabled:bg-gray-100"
+              aria-label="Email address"
+              className="w-full rounded-lg border border-[#C9D5DC] bg-white py-2.5 pl-10 pr-4 text-[15px] text-[#1E2A31] placeholder:text-[#6B7780] focus:border-[#0A6A94] focus:outline-none focus:ring-2 focus:ring-[#0A6A94]/20 disabled:bg-gray-100"
               required
             />
           </div>
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="rounded-lg bg-[#1AA3DD] px-6 py-2 font-semibold text-white transition-colors hover:bg-[#1AA3DD]/90 disabled:bg-gray-400"
+            className="shrink-0 rounded-lg bg-[#0A6A94] px-5 py-2.5 text-[15px] font-semibold text-white transition-[background-color,transform] duration-150 ease-out hover:bg-[#085879] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A6A94] disabled:bg-gray-400"
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
           </button>
@@ -102,7 +103,7 @@ export default function NewsletterSubscribe({
         {message && (
           <div
             className={`mt-2 flex items-center gap-2 text-sm ${
-              status === 'success' ? 'text-green-600' : 'text-red-600'
+              status === 'success' ? 'text-green-700' : 'text-red-700'
             }`}
           >
             {status === 'success' ? (
