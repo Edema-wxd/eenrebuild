@@ -5,6 +5,13 @@ import WSol from "@/components/services/WSol";
 import WTech from "@/components/services/WTech";
 import CTA from "@/components/home/CTA";
 import WCase from "@/components/services/WCase";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Water Conservation Solutions | EEN Consulting",
+  description:
+    "Premium Neoperl flow regulators and aerators that cut water use without compromising performance. Supplied and installed by West Africa's exclusive Neoperl distributor.",
+};
 
 function page() {
   return (

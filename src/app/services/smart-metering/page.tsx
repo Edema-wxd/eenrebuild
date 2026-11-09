@@ -6,6 +6,13 @@ import SMSol from "@/components/services/SMSol";
 import SMHow from "@/components/services/SMHow";
 import SMBen from "@/components/services/SMBen";
 import CTA from "@/components/home/CTA";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Smart Energy Metering | EEN Consulting",
+  description:
+    "Real-time visibility into your electricity consumption, so you can make data-driven decisions that reduce costs and optimise energy use.",
+};
 
 function page() {
   return (

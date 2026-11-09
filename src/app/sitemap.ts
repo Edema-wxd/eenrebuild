@@ -6,6 +6,7 @@ import {
   getPaginatedBlogPosts,
 } from '@/lib/contentful/queries'
 import { BLOG_PAGE_SIZE } from '@/components/blog/BlogListing'
+import { SITE_URL } from '@/lib/site'
 
 export const dynamic = 'force-static'
 // Regenerate at most hourly on Vercel (ISR); Contentful publishes also
@@ -13,7 +14,7 @@ export const dynamic = 'force-static'
 export const revalidate = 3600
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
+  const siteUrl = SITE_URL
 
   // Static pages
   const staticPages = [

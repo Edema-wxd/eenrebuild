@@ -4,6 +4,13 @@ import Pcards from "@/components/partners/Pcards";
 import CTA from "@/components/home/CTA";
 import PPower from "@/components/partners/PPower";
 import PIntegrate from "@/components/partners/PIntegrate";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Partners | EEN Consulting",
+  description:
+    "EEN Consulting partners with Neoperl, EDGE (IFC | World Bank) and Solid Green to bring proven sustainability solutions to Nigeria.",
+};
 
 export default function PartnersPage() {
   return (

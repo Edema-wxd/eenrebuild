@@ -15,6 +15,8 @@ export const EMAIL_CONFIG = {
     SOLAR: "template_solar",
     PARTNERSHIP: "template_partnership",
     WIHCN: "template_wihcn",
+    NEWSLETTER: "template_newsletter",
+    NEWSLETTER_WELCOME: "template_newsletter_welcome",
   },
 };
 

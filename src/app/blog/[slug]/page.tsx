@@ -12,6 +12,7 @@ import RelatedPosts from '@/components/blog/RelatedPosts'
 import CategoryBadge from '@/components/blog/CategoryBadge'
 import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe'
 import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import { SITE_URL } from '@/lib/site'
 
 // Regenerate at most hourly on Vercel (ISR); Contentful publishes also
 // trigger /api/revalidate. Ignored by the static export.
@@ -81,8 +82,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   )
 
   // Build full URL for sharing
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
-  const postUrl = `${siteUrl}/blog/${post.slug}`
+  const postUrl = `${SITE_URL}/blog/${post.slug}`
 
   return (
     <main>

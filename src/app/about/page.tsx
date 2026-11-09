@@ -4,6 +4,13 @@ import Mission from "@/components/about/Mission";
 import Building from "@/components/about/Building";
 import CTA from "@/components/home/CTA";
 import Team from "@/components/about/Team";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | EEN Consulting",
+  description:
+    "Meet the team leading Nigeria's move to sustainable buildings: certified EDGE experts delivering energy and water efficiency for homes, offices, schools and hospitals.",
+};
 
 function page() {
   return (

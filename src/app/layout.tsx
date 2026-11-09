@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/genui/Header";
 import Footer from "@/components/genui/Footer";
+import { SITE_URL } from "@/lib/site";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -10,6 +11,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "EEN Consulting",
   description:
     "EEN Consulting - Driving sustainability in the Nigerian built environment through energy consulting and implementation. Building sustainable homes, offices, schools, and hospitals for a thriving future.",
