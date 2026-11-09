@@ -4,6 +4,13 @@ import SHero from "@/components/services/SHero";
 import SServices from "@/components/services/SServices";
 import SProcess from "@/components/services/SProcess";
 import SChoose from "@/components/services/SChoose";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | EEN Consulting",
+  description:
+    "End-to-end sustainability services in Nigeria: solar energy, Neoperl water-saving solutions, smart energy metering and EDGE green building certification.",
+};
 
 function page() {
   return (

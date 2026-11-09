@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react'
-import emailjs from '@emailjs/browser'
+import emailjs, { EMAIL_CONFIG, PUBLIC_KEY } from '@/utils/emailjs'
 
 interface NewsletterSubscribeProps {
   variant?: 'inline' | 'card'
@@ -31,27 +31,27 @@ export default function NewsletterSubscribe({
     setMessage('')
 
     try {
-      // Send to EmailJS
+      // Notify the EEN team
       await emailjs.send(
-        'service_oeq5w9r', // Your EmailJS service ID
-        'template_newsletter', // Newsletter template (you'll create this)
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATES.NEWSLETTER,
         {
           subscriber_email: email,
-          to_email: 'info@eenconsulting.ng', // Your email to receive notifications
+          to_email: 'info@eenconsult.com.ng',
           from_name: email,
         },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        PUBLIC_KEY
       )
 
       // Send auto-response to subscriber
       await emailjs.send(
-        'service_oeq5w9r',
-        'template_newsletter_welcome', // Welcome email template
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATES.NEWSLETTER_WELCOME,
         {
           to_email: email,
           subscriber_email: email,
         },
-        'YOUR_PUBLIC_KEY'
+        PUBLIC_KEY
       )
 
       setStatus('success')

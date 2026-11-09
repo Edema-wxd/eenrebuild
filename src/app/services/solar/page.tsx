@@ -6,6 +6,13 @@ import SolarTechnology from "@/components/services/SolarTechnology";
 import SolarProcess from "@/components/services/SolarProcess";
 import SolarBenefits from "@/components/services/SolarBenefits";
 import CTA from "@/components/home/CTA";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Solar Energy Solutions | EEN Consulting",
+  description:
+    "Solar power systems designed, installed and maintained for Nigerian homes and businesses. Cut grid and generator costs with reliable clean energy.",
+};
 
 export default function SolarPage() {
   return (
