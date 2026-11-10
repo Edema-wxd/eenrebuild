@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const cases = [
   {
-    image: <Image src="/images/access.png" alt="Access Bank HQ" width={500} height={500} />,
+    image: <Image src="/images/access.png" alt="Access Bank headquarters building, Lagos" width={500} height={500} />,
     type: "Commercial",
     title: "Access Bank Headquarters",
     desc: "Complete retrofit of 250+ water points across corporate headquarters.",
@@ -13,7 +13,7 @@ const cases = [
     ],
   },
   {
-    image: <Image src="/images/sterling.png" alt="Sterling Bank HQ" width={500} height={500} />,
+    image: <Image src="/images/sterling.png" alt="Sterling Bank headquarters building, Lagos" width={500} height={500} />,
     type: "Commercial",
     title: "Sterling Bank Headquarters",
     desc: "Complete retrofit of 120+ water points across corporate headquarters.",

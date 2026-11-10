@@ -72,9 +72,9 @@ function PPower() {
       variants={containerVariants}
     >
       <motion.div className="flex flex-col items-center gap-4 sm:gap-6 justify-center max-w-4xl mx-auto">
-        <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-800 leading-tight">
+        <motion.h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-800 leading-tight">
           The Power of Partnership
-        </motion.h1>
+        </motion.h2>
         <motion.p className="text-base sm:text-lg md:text-xl text-center text-gray-600 max-w-3xl leading-relaxed">
           Our strategic alliances enable us to deliver unmatched value to
           Nigerian businesses and property developers.

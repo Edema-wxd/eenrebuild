@@ -1,10 +1,12 @@
+import { pageMetadata } from "@/lib/seo/metadata";
 import WihcnEnquiryForm from "@/components/wihcn/WihcnEnquiryForm";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Free Facility Audit | WIHCN | EEN Consulting",
   description:
     "Book a facility audit for your hospital or clinic. Free audits go to the first 10 bookings; we'll confirm by WhatsApp.",
-};
+  path: "/wihcn",
+});
 
 export default function WihcnPage() {
   return (

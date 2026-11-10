@@ -128,7 +128,7 @@ function SChoose() {
                 }}
               />
               <h3 className="relative text-5xl font-extrabold mb-2 z-10">
-                10+
+                7+
               </h3>
               <p className="relative text-lg z-10">Years of Excellence</p>
             </motion.div>

@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL as siteUrl } from '@/lib/site'
 
 // Generated as /robots.txt in both the static export (FTP) and on Vercel.
 export const dynamic = 'force-static'
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsult.com.ng'
 
 // Paths with no search value. /_next/ is deliberately NOT blocked: Google
 // needs the JS/CSS bundles to render pages correctly.

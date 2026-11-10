@@ -83,7 +83,7 @@ function Header() {
           <Image
             unoptimized={true}
             src="/logos/een-logo.svg"
-            alt="EEN Logo"
+            alt="EEN Consulting logo"
             width={120}
             height={120}
             className="w-auto h-16  "

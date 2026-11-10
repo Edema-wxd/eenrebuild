@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import React from "react";
 import SolarHero from "@/components/services/SolarHero";
 import SolarChallenge from "@/components/services/SolarChallenge";
@@ -8,11 +8,12 @@ import SolarProcess from "@/components/services/SolarProcess";
 import SolarBenefits from "@/components/services/SolarBenefits";
 import CTA from "@/components/home/CTA";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Solar Energy Installation Lagos Nigeria | Residential & Commercial",
   description:
     "Solar panel installation with battery backup for homes and businesses in Lagos. Hybrid inverters, 5-year warranty, maintenance plans. Up to 95% energy independence.",
-};
+  path: "/services/solar",
+});
 
 export default function SolarPage() {
   return (

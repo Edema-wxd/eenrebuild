@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import JsonLd from "@/components/seo/JsonLd";
 import { waterServiceSchema } from "@/lib/seo/structuredData";
 import React from "react";
@@ -9,11 +9,12 @@ import WTech from "@/components/services/WTech";
 import CTA from "@/components/home/CTA";
 import WCase from "@/components/services/WCase";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Neoperl Water Saving Solutions Nigeria | Up to 70% Water Reduction",
   description:
     "Exclusive West African distributor of Neoperl flow regulators and aerators. Reduce building water consumption by up to 70%. 5-minute retrofit, German engineering.",
-};
+  path: "/services/water-solutions",
+});
 
 function page() {
   return (

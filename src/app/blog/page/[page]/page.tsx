@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation'
 import BlogListing, { BLOG_PAGE_SIZE } from '@/components/blog/BlogListing'
 import { getPaginatedBlogPosts } from '@/lib/contentful/queries'
+import { pageMetadata } from '@/lib/seo/metadata'
 
 // Regenerate at most hourly on Vercel (ISR); Contentful publishes also
 // trigger /api/revalidate. Ignored by the static export.
@@ -12,10 +13,11 @@ interface BlogPaginatedPageProps {
 
 export async function generateMetadata({ params }: BlogPaginatedPageProps) {
   const { page } = await params
-  return {
+  return pageMetadata({
     title: `Sustainability Blog - Page ${page} | EEN Consulting`,
     description: `Page ${page} of expert articles on solar energy, water conservation, EDGE certification, and sustainable building in Nigeria from EEN Consulting.`,
-  }
+    path: `/blog/page/${page}`,
+  })
 }
 
 export default async function BlogPaginatedPage({ params }: BlogPaginatedPageProps) {

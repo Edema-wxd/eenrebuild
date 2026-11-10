@@ -65,9 +65,9 @@ function Services() {
   return (
     <div className="flex flex-col items-center gap-10 py-10 justify-center">
       <div className="flex flex-col items-center gap-4 justify-center">
-        <h5 className="text-[#1aa3dd] font-semibold uppercase tracking-[2px] text-base ">
+        <p className="text-[#1aa3dd] font-semibold uppercase tracking-[2px] text-base">
           Our Services
-        </h5>
+        </p>
         <h2 className="text-4xl text-center font-bold text-[#606163]">
           Comprehensive Green Solutions
         </h2>
@@ -91,9 +91,9 @@ function Services() {
             whileHover="hover"
           >
             <div>{service.icon}</div>
-            <h4 className="text-xl font-bold text-[#606163]">
+            <h3 className="text-xl font-bold text-[#606163]">
               {service.title}
-            </h4>
+            </h3>
             <p className="text-[#606163] text-sm">{service.description}</p>
             <Link
               href={service.link}

@@ -1,8 +1,9 @@
 // Schema.org JSON-LD for the business and its services.
 // Read by search engines and AI assistants.
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://eenconsult.com.ng";
+import { CONTACT_EMAIL, SITE_URL } from "@/lib/site";
+
+export { SITE_URL };
 
 const provider = {
   "@type": "ProfessionalService",
@@ -20,7 +21,7 @@ export const businessSchema = {
     "Energy efficiency consulting and green building certification in Lagos, Nigeria. Certified EDGE experts and exclusive West African distributor of Neoperl water-saving products.",
   url: SITE_URL,
   telephone: "+234-812-757-6854",
-  email: "info@eenconsult.com.ng",
+  email: CONTACT_EMAIL,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Road 14 Adebayo Doherty",

@@ -8,17 +8,17 @@ const partners = [
   {
     name: "NEOPERL",
     logo: "/logos/neoperl-logo.svg",
-    alt: "Neoperl Logo",
+    alt: "Neoperl logo",
   },
   {
     name: "IFC | World Bank",
     logo: "/logos/ifc.png", // Replace with correct logo if available
-    alt: "IFC | World Bank Logo",
+    alt: "IFC, World Bank Group logo",
   },
   {
     name: "SOLID GREEN",
     logo: "/logos/solid-green-logo.svg",
-    alt: "Solid Green Logo",
+    alt: "Solid Green logo",
   },
 ];
 

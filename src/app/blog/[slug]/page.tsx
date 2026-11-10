@@ -36,9 +36,13 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   return {
     title: `${post.metaTitle} | EEN Consulting Blog`,
     description: post.metaDescription,
+    alternates: { canonical: `/blog/${slug}/` },
     openGraph: {
       title: post.metaTitle,
       description: post.metaDescription,
+      url: `/blog/${slug}/`,
+      siteName: 'EEN Consulting',
+      locale: 'en_NG',
       images: [
         {
           url: post.heroImage.url,

@@ -132,7 +132,7 @@ function Hero() {
                   {/* Placeholder content */}
                   <Image
                     src="/images/hero.jpg"
-                    alt="Hero Image"
+                    alt="Modern glass office tower with terraced sky gardens and cascading greenery"
                     width={600}
                     quality={100}
                     priority

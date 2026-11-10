@@ -6,6 +6,7 @@ import {
   getBlogPostsByCategory,
   getCategoryBySlug,
 } from '@/lib/contentful/queries'
+import { pageMetadata } from '@/lib/seo/metadata'
 
 // Regenerate at most hourly on Vercel (ISR); Contentful publishes also
 // trigger /api/revalidate. Ignored by the static export.
@@ -23,12 +24,13 @@ export async function generateMetadata({ params }: CategoryPaginatedPageProps) {
     return { title: 'Category Not Found | EEN Consulting' }
   }
 
-  return {
+  return pageMetadata({
     title: `${category.name} Articles - Page ${page} | EEN Consulting Blog`,
     description:
       category.description ||
       `Browse articles about ${category.name.toLowerCase()} from EEN Consulting`,
-  }
+    path: `/blog/category/${categorySlug}/page/${page}`,
+  })
 }
 
 export default async function CategoryPaginatedPage({

@@ -5,7 +5,7 @@ import Image from "next/image";
 const techs = [
   {
     icon: (
-      <Image src="/images/mikado.webp" alt="Mikado" width={335} height={188} />
+      <Image src="/images/Mikado.webp" alt="Neoperl Mikado water-saving aerator insert" width={335} height={188} />
     ),
     title: "MIKADO",
     desc: "Creates a visually enchanting water stream that turns hand washing into a premium experience while saving water.",
@@ -14,7 +14,7 @@ const techs = [
     icon: (
       <Image
         src="/images/aerated.webp"
-        alt="Aerated"
+        alt="Neoperl aerated stream aerator insert"
         width={335}
         height={188}
       />
@@ -24,7 +24,7 @@ const techs = [
   },
   {
     icon: (
-      <Image src="/images/spray.webp" alt="Spray" width={335} height={188} />
+      <Image src="/images/Spray.webp" alt="Neoperl spray stream aerator insert" width={335} height={188} />
     ),
     title: "SPRAY",
     desc: "Produces a miniature shower pattern providing full hand coverage during washing with minimal water use.",
@@ -33,7 +33,7 @@ const techs = [
     icon: (
       <Image
         src="/images/Atomizer.webp"
-        alt="Atomized"
+        alt="Neoperl atomizer insert for ultra-low-flow taps"
         width={335}
         height={188}
       />

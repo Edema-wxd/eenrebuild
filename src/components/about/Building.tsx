@@ -32,7 +32,7 @@ function Building() {
             Nigeria
           </h2>
           <p className="text-gray-700 mb-4">
-            EEN Consulting is a young and vibrant energy consulting and
+            EEN Consulting is a vibrant energy consulting and
             implementation company whose partners have vast experience in the
             built environment, supply chain, project management, and medical
             fields.
@@ -65,7 +65,7 @@ function Building() {
         >
           <div className="bg-gradient-to-br from-blue-500 to-green-400 rounded-2xl shadow-xl p-8 w-full max-w-sm flex flex-col items-center">
             <div className="text-white text-2xl md:text-3xl font-bold mb-2 text-center">
-              10+ Years
+              7+ Years
             </div>
             <div className="text-white text-lg mb-6 text-center opacity-80">
               of Excellence

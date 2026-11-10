@@ -1,5 +1,6 @@
 import CategoryListing from '@/components/blog/CategoryListing'
 import { getCategoryBySlug, getAllCategorySlugs } from '@/lib/contentful/queries'
+import { pageMetadata } from '@/lib/seo/metadata'
 
 // Regenerate at most hourly on Vercel (ISR); Contentful publishes also
 // trigger /api/revalidate. Ignored by the static export.
@@ -19,12 +20,13 @@ export async function generateMetadata({
     }
   }
 
-  return {
+  return pageMetadata({
     title: `${category.name} Articles | EEN Consulting Blog`,
     description:
       category.description ||
       `Browse articles about ${category.name.toLowerCase()} from EEN Consulting`,
-  }
+    path: `/blog/category/${categorySlug}`,
+  })
 }
 
 interface CategoryPageProps {
