@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next build",
     "deploy": "next build && node scripts/deploy-ftp.mjs",
     "deploy:upload": "node scripts/deploy-ftp.mjs",
     "deploy:check": "node scripts/deploy-ftp.mjs --check"
