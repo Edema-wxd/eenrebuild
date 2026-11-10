@@ -37,7 +37,7 @@ export default function NewsletterSubscribe({
         'template_newsletter', // Newsletter template (you'll create this)
         {
           subscriber_email: email,
-          to_email: 'info@eenconsulting.ng', // Your email to receive notifications
+          to_email: 'info@eenconsult.com.ng', // Your email to receive notifications
           from_name: email,
         },
         'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key

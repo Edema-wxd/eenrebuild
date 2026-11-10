@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   )
 
   // Build full URL for sharing
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsult.com.ng'
   const postUrl = `${siteUrl}/blog/${post.slug}`
 
   return (

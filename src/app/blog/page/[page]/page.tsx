@@ -13,9 +13,8 @@ interface BlogPaginatedPageProps {
 export async function generateMetadata({ params }: BlogPaginatedPageProps) {
   const { page } = await params
   return {
-    title: `Blog - Page ${page} | EEN Consulting`,
-    description:
-      'Expert insights on solar energy, water conservation, EDGE certification, and sustainable building practices in Nigeria',
+    title: `Sustainability Blog - Page ${page} | EEN Consulting`,
+    description: `Page ${page} of expert articles on solar energy, water conservation, EDGE certification, and sustainable building in Nigeria from EEN Consulting.`,
   }
 }
 

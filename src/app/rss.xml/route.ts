@@ -7,7 +7,7 @@ export const dynamic = 'force-static'
 export const revalidate = 3600
 
 export async function GET() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsulting.ng'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://eenconsult.com.ng'
   const posts = await getAllBlogPosts()
 
   const feed = new Feed({
@@ -25,7 +25,7 @@ export async function GET() {
     },
     author: {
       name: 'EEN Consulting',
-      email: 'info@eenconsulting.ng',
+      email: 'info@eenconsult.com.ng',
       link: siteUrl,
     },
   })

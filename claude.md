@@ -966,7 +966,7 @@ The website now includes a fully-featured blog system powered by **Contentful CM
    ```
 
 3. **Verify**:
-   - Visit `yourdomain.com/blog`
+   - Visit `eenconsult.com.ng/blog`
    - New post should appear
 
 #### Updating a Post
@@ -1056,7 +1056,7 @@ The website includes a newsletter subscription system that allows visitors to su
 ### Features
 
 ✅ **Dual Email System**
-- Admin notification (sent to `info@eenconsulting.ng`)
+- Admin notification (sent to `info@eenconsult.com.ng`)
 - Welcome email (sent to subscriber)
 
 ✅ **Two Display Variants**
@@ -1142,7 +1142,7 @@ You need to create **2 templates** in EmailJS dashboard:
 **1. Admin Notification Template**
 - **Template ID**: `template_newsletter`
 - **Purpose**: Notifies you when someone subscribes
-- **Sent to**: `info@eenconsulting.ng`
+- **Sent to**: `info@eenconsult.com.ng`
 - **Variables**: `{{subscriber_email}}`, `{{current_date}}`
 
 **2. Welcome Email Template**
@@ -1342,7 +1342,7 @@ When you subscribe to our newsletter, we collect your email address to send you:
 - Special offers (optional)
 
 You can unsubscribe anytime by clicking the unsubscribe link in our emails
-or emailing info@eenconsulting.ng.
+or emailing info@eenconsult.com.ng.
 
 We do not share your email with third parties for marketing purposes.
 ```
@@ -1358,7 +1358,7 @@ We do not share your email with third parties for marketing purposes.
 **Track Clicks**:
 - Use UTM parameters in newsletter links
 ```
-https://eenconsulting.ng/blog/post-slug?utm_source=newsletter&utm_medium=email&utm_campaign=weekly_01
+https://eenconsult.com.ng/blog/post-slug?utm_source=newsletter&utm_medium=email&utm_campaign=weekly_01
 ```
 
 #### Advanced Tracking (Paid Services)
@@ -1910,29 +1910,29 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ### Leadership Team
 
 **Unoma Grant** - Co-Founder & CEO
-- Email: unoma@eenconsulting.ng
-- Phone: +234 706 925 6000
+- Email: unoma@eenconsult.com.ng
+- Phone: +234 809 456 3216
 - Background: Mechanical Engineering + Business Administration
 - Title Color: Blue
 
 **Obinna Ukwa** - Co-Founder & Managing Director
-- Email: obinna@eenconsulting.ng
-- Phone: +234 812 345 6789
+- Email: obinna@eenconsult.com.ng
+- Phone: +234 809 971 9533
 - Background: Mechanical Engineering + Civil Engineering
 - Title Color: Green
 
 **Francis Woods** - Sustainability Implementation Engineer
-- Email: francis@eenconsulting.ng
-- Phone: +234 809 876 5432
+- Email: francis@eenconsult.com.ng
+- Phone: +234 812 757 6854
 - Background: Civil Engineering + Project Management
 - Title Color: Purple
 
 ### Company Contact
 
-**Address**: 123 Sustainability Avenue, Lagos, Nigeria
-**Email**: info@eenconsulting.ng
-**Phone**: +234 1 234 5678
-**Business Hours**: Mon-Fri: 9:00 AM - 6:00 PM, Sat: 10:00 AM - 4:00 PM
+**Address**: Road 14 Adebayo Doherty, Lekki Phase 1, Lagos, Nigeria
+**Email**: info@eenconsult.com.ng
+**Phone**: +234 812 757 6854
+**Business Hours**: Mon-Fri: 9:00 AM - 5:00 PM, Sat: 9:00 AM - 1:00 PM, Sun: Closed
 
 ---
 
@@ -2051,8 +2051,8 @@ const teamMembers = [
     title: 'Co-Founder & CEO',
     titleColor: 'text-[#1AA3DD]',
     description: '...',
-    email: 'unoma@eenconsulting.ng',
-    phone: '+234 706 925 6000'
+    email: 'unoma@eenconsult.com.ng',
+    phone: '+234 809 456 3216'
   }
 ]
 ```
@@ -2061,9 +2061,9 @@ const teamMembers = [
 
 Edit [src/app/contact-us/page.tsx](src/app/contact-us/page.tsx):
 ```tsx
-<p>123 Sustainability Avenue, Lagos, Nigeria</p>
-<p>info@eenconsulting.ng</p>
-<p>+234 1 234 5678</p>
+<p>Road 14 Adebayo Doherty, Lekki Phase 1, Lagos, Nigeria</p>
+<p>info@eenconsult.com.ng</p>
+<p>+234 812 757 6854</p>
 ```
 
 ### Add New Service

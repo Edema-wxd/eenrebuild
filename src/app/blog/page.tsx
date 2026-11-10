@@ -5,9 +5,9 @@ import BlogListing from '@/components/blog/BlogListing'
 export const revalidate = 3600
 
 export const metadata = {
-  title: 'Blog | EEN Consulting - Sustainability & Energy Insights',
+  title: 'Sustainability Blog | Green Building & Energy Insights Nigeria',
   description:
-    'Expert insights on solar energy, water conservation, EDGE certification, and sustainable building practices in Nigeria',
+    'Expert articles on solar energy, water conservation, EDGE certification, and sustainable building practices in Nigeria from EEN Consulting.',
 }
 
 export default function BlogPage() {

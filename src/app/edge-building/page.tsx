@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { edgeServiceSchema } from "@/lib/seo/structuredData";
 import React from "react";
 import EHero from "@/components/edge/EHero";
 import Esect from "@/components/edge/Esect";
@@ -5,9 +8,16 @@ import ECertificate from "@/components/edge/ECertificate";
 import EBenefits from "@/components/edge/EBenefits";
 import CTA from "@/components/home/CTA";
 
+export const metadata: Metadata = {
+  title: "EDGE Certification Nigeria | Green Building Certification, Lagos",
+  description:
+    "Get your building EDGE certified in Nigeria. IFC World Bank green building standard for homes, offices, hotels, and hospitals. 20%+ savings in energy, water, and materials.",
+};
+
 function page() {
   return (
     <div>
+      <JsonLd data={edgeServiceSchema} />
       <EHero />
       <Esect />
       <ECertificate />
