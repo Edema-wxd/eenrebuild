@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-11-03T11:10:23.310Z",
         "reason": "CLAUDE.md brand design system prescribes from-[#1AA3DD] to-[#73C167] text gradient"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/components/partners/PHero.tsx"
+        ],
+        "createdAt": "2026-11-10T13:38:29.911Z",
+        "reason": "CLAUDE.md brand guidelines document blue-to-green gradient text as the site's heading style; pre-existing, not part of this change"
       }
     ]
   }

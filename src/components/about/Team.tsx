@@ -34,7 +34,7 @@ const leaders = [
     initials: "FW",
     image: "/images/Francis.jpg",
     name: "Francis Woods",
-    title: "Sustainablity Implementation Engineer",
+    title: "Sustainability Implementation Engineer",
     titleColor: "text-sky-600",
     description:
       "Civil Engineer and Sustainability Implementation Engineer, integrating green building strategies to meet EDGE standards and maximize project impact.",

@@ -9,12 +9,15 @@ const GradientText = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-// Count-up animation hook
+// Count-up animation hook. Starts at the final value so the server-rendered
+// HTML (what crawlers and no-JS visitors see) shows the real number, then
+// replays from 0 on the client while the stats row is still fading in.
 function useCountUp(to: number, duration = 1200) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(to);
   const start = useRef<number | null>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let frame: number;
     function animate(ts: number) {
       if (!start.current) start.current = ts;
