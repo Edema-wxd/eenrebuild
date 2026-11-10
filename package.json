@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build && next export"
+    "deploy": "next build && node scripts/deploy-ftp.mjs",
+    "deploy:upload": "node scripts/deploy-ftp.mjs",
+    "deploy:check": "node scripts/deploy-ftp.mjs --check"
   },
   "dependencies": {
     "@contentful/rich-text-plain-text-renderer": "^17.1.6",
@@ -38,6 +40,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "basic-ftp": "^6.2.6",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
     "tailwindcss": "^4",
