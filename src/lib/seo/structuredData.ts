@@ -1,7 +1,8 @@
 // Schema.org JSON-LD for the business and its services.
 // Read by search engines and AI assistants.
 
-export const SITE_URL = "https://eenconsult.com.ng";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://eenconsult.com.ng";
 
 const provider = {
   "@type": "ProfessionalService",
