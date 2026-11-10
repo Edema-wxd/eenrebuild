@@ -203,16 +203,29 @@ npm run build
 # Use FileZilla, lftp, or rsync
 ```
 
-### FTP Upload Example
+### Deploying to FTP
+
+Pushes to `main` deploy automatically through GitHub Actions ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)). To deploy from your own machine instead, add the FTP settings to `.env.local`:
+
+```env
+FTP_SERVER=ftp.eenconsult.com.ng
+FTP_USERNAME=deploy@eenconsult.com.ng
+FTP_PASSWORD=your-ftp-password
+# Optional
+FTP_PROTOCOL=ftp            # or ftps
+FTP_PORT=21
+FTP_SERVER_DIR=public_html/
+```
+
+Then:
 
 ```bash
-# Using lftp (recommended)
-lftp -u username,password ftp.yourdomain.com <<EOF
-cd /public_html
-mirror -R out/ ./
-bye
-EOF
+npm run deploy:check    # test the FTP login only
+npm run deploy          # build and upload out/
+npm run deploy:upload   # upload the existing out/ without rebuilding
 ```
+
+The upload overwrites files on the server but never deletes any, so remove retired pages by hand.
 
 For detailed deployment instructions, see [BLOG_DEPLOYMENT_GUIDE.md](BLOG_DEPLOYMENT_GUIDE.md).
 
