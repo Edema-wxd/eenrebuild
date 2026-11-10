@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import React from "react";
 import PHero from "@/components/partners/PHero";
 import Pcards from "@/components/partners/Pcards";
@@ -6,11 +6,12 @@ import CTA from "@/components/home/CTA";
 import PPower from "@/components/partners/PPower";
 import PIntegrate from "@/components/partners/PIntegrate";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Our Partners | Neoperl, IFC EDGE & Solid Green | EEN Consulting",
   description:
     "EEN Consulting partners with Neoperl (exclusive West Africa distributor), IFC World Bank's EDGE program, and Solid Green to deliver green buildings in Nigeria.",
-};
+  path: "/partners",
+});
 
 export default function PartnersPage() {
   return (

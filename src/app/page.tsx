@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
 import JsonLd from "@/components/seo/JsonLd";
 import { businessSchema } from "@/lib/seo/structuredData";
 import Hero from "@/components/home/Hero";
@@ -7,11 +7,12 @@ import WhyEdge from "@/components/home/WhyEdge";
 import Trusted from "@/components/home/Trusted";
 import CTA from "@/components/home/CTA";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "EEN Consulting | Green Building & Sustainability Experts, Lagos Nigeria",
   description:
     "EDGE-certified green building consultants in Lagos. Water efficiency, solar energy, smart metering, and EDGE certification for homes, offices, and commercial buildings across Nigeria.",
-};
+  path: "/",
+});
 
 export default function Home() {
   return (
