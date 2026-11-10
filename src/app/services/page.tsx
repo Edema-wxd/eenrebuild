@@ -1,15 +1,15 @@
+import type { Metadata } from "next";
 import React from "react";
 import CTA from "@/components/home/CTA";
 import SHero from "@/components/services/SHero";
 import SServices from "@/components/services/SServices";
 import SProcess from "@/components/services/SProcess";
 import SChoose from "@/components/services/SChoose";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | EEN Consulting",
+  title: "Green Building Services Nigeria | Water, Solar, EDGE, Metering",
   description:
-    "End-to-end sustainability services in Nigeria: solar energy, Neoperl water-saving solutions, smart energy metering and EDGE green building certification.",
+    "Water-saving solutions, solar energy systems, EDGE certification, and smart metering for Nigerian buildings. Up to 70% water savings and 50% energy reduction.",
 };
 
 function page() {

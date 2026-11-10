@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { waterServiceSchema } from "@/lib/seo/structuredData";
 import React from "react";
 import WHero from "@/components/services/WHero";
 import WChallenge from "@/components/services/WChallenge";
@@ -5,17 +8,17 @@ import WSol from "@/components/services/WSol";
 import WTech from "@/components/services/WTech";
 import CTA from "@/components/home/CTA";
 import WCase from "@/components/services/WCase";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Water Conservation Solutions | EEN Consulting",
+  title: "Neoperl Water Saving Solutions Nigeria | Up to 70% Water Reduction",
   description:
-    "Premium Neoperl flow regulators and aerators that cut water use without compromising performance. Supplied and installed by West Africa's exclusive Neoperl distributor.",
+    "Exclusive West African distributor of Neoperl flow regulators and aerators. Reduce building water consumption by up to 70%. 5-minute retrofit, German engineering.",
 };
 
 function page() {
   return (
     <div>
+      <JsonLd data={waterServiceSchema} />
       <WHero />
       <WChallenge />
       <WSol />

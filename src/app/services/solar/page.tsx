@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 import SolarHero from "@/components/services/SolarHero";
 import SolarChallenge from "@/components/services/SolarChallenge";
@@ -6,12 +7,11 @@ import SolarTechnology from "@/components/services/SolarTechnology";
 import SolarProcess from "@/components/services/SolarProcess";
 import SolarBenefits from "@/components/services/SolarBenefits";
 import CTA from "@/components/home/CTA";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Solar Energy Solutions | EEN Consulting",
+  title: "Solar Energy Installation Lagos Nigeria | Residential & Commercial",
   description:
-    "Solar power systems designed, installed and maintained for Nigerian homes and businesses. Cut grid and generator costs with reliable clean energy.",
+    "Solar panel installation with battery backup for homes and businesses in Lagos. Hybrid inverters, 5-year warranty, maintenance plans. Up to 95% energy independence.",
 };
 
 export default function SolarPage() {

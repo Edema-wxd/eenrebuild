@@ -1,19 +1,22 @@
+import type { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { businessSchema } from "@/lib/seo/structuredData";
 import Hero from "@/components/home/Hero";
 import Services from "@/components/home/Services";
 import WhyEdge from "@/components/home/WhyEdge";
 import Trusted from "@/components/home/Trusted";
 import CTA from "@/components/home/CTA";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "EEN Consulting | Sustainable Energy & Green Buildings in Nigeria",
+  title: "EEN Consulting | Green Building & Sustainability Experts, Lagos Nigeria",
   description:
-    "Solar energy, water conservation, smart metering and EDGE green building certification for Nigerian homes and businesses, from West Africa's exclusive Neoperl distributor.",
+    "EDGE-certified green building consultants in Lagos. Water efficiency, solar energy, smart metering, and EDGE certification for homes, offices, and commercial buildings across Nigeria.",
 };
 
 export default function Home() {
   return (
     <div>
+      <JsonLd data={businessSchema} />
       <Hero />
       <Services />
       <WhyEdge />

@@ -12,9 +12,10 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "EEN Consulting",
+  // Fallback only: every page sets its own title and description.
+  title: "EEN Consulting | Green Building & Sustainability Experts, Lagos Nigeria",
   description:
-    "EEN Consulting - Driving sustainability in the Nigerian built environment through energy consulting and implementation. Building sustainable homes, offices, schools, and hospitals for a thriving future.",
+    "EDGE-certified green building consultants in Lagos. Water efficiency, solar energy, smart metering, and EDGE certification for homes, offices, and commercial buildings across Nigeria.",
 };
 
 export default function RootLayout({

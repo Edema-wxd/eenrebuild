@@ -1,7 +1,7 @@
 # EEN Consulting Website - Development Guide
 
-**Last Updated**: 2026-01-04
-**Version**: 1.1
+**Last Updated**: 2026-11-10
+**Version**: 1.2
 **Project Type**: Next.js 15 (App Router) - Static Export Site
 
 ---
@@ -101,6 +101,7 @@
 │   ├── /images/          # Hero images, backgrounds
 │   ├── /logos/           # Company and partner logos
 │   ├── /team/            # Team member photos
+│   ├── llms.txt          # Plain-text site summary for AI assistants
 │   └── *.svg            # Icon assets
 ├── /src/
 │   ├── /app/            # Next.js App Router pages
@@ -115,6 +116,8 @@
 │   │   │   ├── smart-metering/page.tsx
 │   │   │   └── water-solutions/page.tsx
 │   │   ├── layout.tsx                  # Root layout
+│   │   ├── robots.ts                   # Generates /robots.txt
+│   │   ├── sitemap.ts                  # Generates /sitemap.xml
 │   │   └── globals.css                 # Global styles
 │   ├── /components/
 │   │   ├── /ui/                # shadcn/ui primitives
@@ -123,9 +126,12 @@
 │   │   ├── /about/             # About page components
 │   │   ├── /blog/              # Blog components (NEW!)
 │   │   ├── /edge/              # EDGE certification components
+│   │   ├── /seo/               # JsonLd (structured data script tag)
 │   │   ├── /services/          # Service page components
 │   │   └── /partners/          # Partner components
 │   ├── /lib/
+│   │   ├── /seo/
+│   │   │   └── structuredData.ts  # Schema.org JSON-LD objects
 │   │   └── utils.ts            # cn() utility for classnames
 │   └── /utils/
 │       ├── email.ts            # Email service configuration
@@ -612,6 +618,46 @@ export const metadata = {
 }
 ```
 
+For a client-component page (e.g. `contact-us/page.tsx`), put `metadata` in a sibling `layout.tsx`.
+
+### Structured Data (JSON-LD)
+
+Schema.org JSON-LD tells search engines and AI assistants the business type, location, hours and services.
+
+- **Data**: [src/lib/seo/structuredData.ts](src/lib/seo/structuredData.ts). Contact details, hours and the site URL live here once; update them here when they change.
+- **Component**: [src/components/seo/JsonLd.tsx](src/components/seo/JsonLd.tsx) renders the `<script type="application/ld+json">` tag (escapes `<`).
+- **Site URL**: `NEXT_PUBLIC_SITE_URL`, falling back to `https://eenconsult.com.ng` (same as `robots.ts`).
+
+| Page | Schema |
+|------|--------|
+| `/` | `businessSchema` (ProfessionalService) |
+| `/contact-us` | `businessSchema`, rendered from `contact-us/layout.tsx` |
+| `/edge-building` | `edgeServiceSchema` (Service) |
+| `/services/water-solutions` | `waterServiceSchema` (Service) |
+
+Adding a schema to another page:
+
+```tsx
+import JsonLd from '@/components/seo/JsonLd'
+import { mySchema } from '@/lib/seo/structuredData'
+
+export default function Page() {
+  return (
+    <div>
+      <JsonLd data={mySchema} />
+      {/* ... */}
+    </div>
+  )
+}
+```
+
+Validate changes with Google's Rich Results Test after deploying.
+
+### Crawlers & AI Assistants
+
+- [src/app/robots.ts](src/app/robots.ts) generates `/robots.txt`: allows all crawlers, explicitly allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.), blocks `/api/`, and points to the sitemap. Don't block `/_next/`; Google needs the bundles to render pages.
+- [public/llms.txt](public/llms.txt) is a plain-text summary of the company and site for AI assistants. Keep it in step with services and contact details.
+
 ---
 
 ## Features & Functionality
@@ -966,7 +1012,7 @@ The website now includes a fully-featured blog system powered by **Contentful CM
    ```
 
 3. **Verify**:
-   - Visit `yourdomain.com/blog`
+   - Visit `eenconsult.com.ng/blog`
    - New post should appear
 
 #### Updating a Post
@@ -1056,7 +1102,7 @@ The website includes a newsletter subscription system that allows visitors to su
 ### Features
 
 ✅ **Dual Email System**
-- Admin notification (sent to `info@eenconsulting.ng`)
+- Admin notification (sent to `info@eenconsult.com.ng`)
 - Welcome email (sent to subscriber)
 
 ✅ **Two Display Variants**
@@ -1142,7 +1188,7 @@ You need to create **2 templates** in EmailJS dashboard:
 **1. Admin Notification Template**
 - **Template ID**: `template_newsletter`
 - **Purpose**: Notifies you when someone subscribes
-- **Sent to**: `info@eenconsulting.ng`
+- **Sent to**: `info@eenconsult.com.ng`
 - **Variables**: `{{subscriber_email}}`, `{{current_date}}`
 
 **2. Welcome Email Template**
@@ -1342,7 +1388,7 @@ When you subscribe to our newsletter, we collect your email address to send you:
 - Special offers (optional)
 
 You can unsubscribe anytime by clicking the unsubscribe link in our emails
-or emailing info@eenconsulting.ng.
+or emailing info@eenconsult.com.ng.
 
 We do not share your email with third parties for marketing purposes.
 ```
@@ -1358,7 +1404,7 @@ We do not share your email with third parties for marketing purposes.
 **Track Clicks**:
 - Use UTM parameters in newsletter links
 ```
-https://eenconsulting.ng/blog/post-slug?utm_source=newsletter&utm_medium=email&utm_campaign=weekly_01
+https://eenconsult.com.ng/blog/post-slug?utm_source=newsletter&utm_medium=email&utm_campaign=weekly_01
 ```
 
 #### Advanced Tracking (Paid Services)
@@ -1910,29 +1956,29 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ### Leadership Team
 
 **Unoma Grant** - Co-Founder & CEO
-- Email: unoma@eenconsulting.ng
-- Phone: +234 706 925 6000
+- Email: unoma@eenconsult.com.ng
+- Phone: +234 809 456 3216
 - Background: Mechanical Engineering + Business Administration
 - Title Color: Blue
 
 **Obinna Ukwa** - Co-Founder & Managing Director
-- Email: obinna@eenconsulting.ng
-- Phone: +234 812 345 6789
+- Email: obinna@eenconsult.com.ng
+- Phone: +234 809 971 9533
 - Background: Mechanical Engineering + Civil Engineering
 - Title Color: Green
 
 **Francis Woods** - Sustainability Implementation Engineer
-- Email: francis@eenconsulting.ng
-- Phone: +234 809 876 5432
+- Email: francis@eenconsult.com.ng
+- Phone: +234 812 757 6854
 - Background: Civil Engineering + Project Management
 - Title Color: Purple
 
 ### Company Contact
 
-**Address**: 123 Sustainability Avenue, Lagos, Nigeria
-**Email**: info@eenconsulting.ng
-**Phone**: +234 1 234 5678
-**Business Hours**: Mon-Fri: 9:00 AM - 6:00 PM, Sat: 10:00 AM - 4:00 PM
+**Address**: Road 14 Adebayo Doherty, Lekki Phase 1, Lagos, Nigeria
+**Email**: info@eenconsult.com.ng
+**Phone**: +234 812 757 6854
+**Business Hours**: Mon-Fri: 9:00 AM - 5:00 PM, Sat: 9:00 AM - 1:00 PM, Sun: Closed
 
 ---
 
@@ -1980,12 +2026,14 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ✅ Sitemap implemented (dynamic, includes blog posts)
 ✅ Open Graph tags implemented (for blog posts)
+✅ Structured data (JSON-LD) for the business, EDGE and water services
+✅ robots.txt (allows AI crawlers) and llms.txt
+✅ Meta titles and descriptions on all main pages
 
 **Still To Do**:
-- Add structured data (JSON-LD)
-- Add robots.txt
-- Optimize meta descriptions for all pages
-- Implement breadcrumbs
+- JSON-LD for the solar and smart-metering service pages
+- `BlogPosting` JSON-LD for blog posts
+- Implement breadcrumbs (and `BreadcrumbList` JSON-LD)
 
 ### Performance Optimizations
 
@@ -2051,8 +2099,8 @@ const teamMembers = [
     title: 'Co-Founder & CEO',
     titleColor: 'text-[#1AA3DD]',
     description: '...',
-    email: 'unoma@eenconsulting.ng',
-    phone: '+234 706 925 6000'
+    email: 'unoma@eenconsult.com.ng',
+    phone: '+234 809 456 3216'
   }
 ]
 ```
@@ -2061,9 +2109,9 @@ const teamMembers = [
 
 Edit [src/app/contact-us/page.tsx](src/app/contact-us/page.tsx):
 ```tsx
-<p>123 Sustainability Avenue, Lagos, Nigeria</p>
-<p>info@eenconsulting.ng</p>
-<p>+234 1 234 5678</p>
+<p>Road 14 Adebayo Doherty, Lekki Phase 1, Lagos, Nigeria</p>
+<p>info@eenconsult.com.ng</p>
+<p>+234 812 757 6854</p>
 ```
 
 ### Add New Service
@@ -2158,6 +2206,6 @@ Use this guide when:
 
 ---
 
-**Document Version**: 1.0
-**Last Updated**: 2026-01-03
+**Document Version**: 1.2
+**Last Updated**: 2026-11-10
 **Maintained By**: EEN Consulting Development Team

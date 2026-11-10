@@ -1,15 +1,15 @@
+import type { Metadata } from "next";
 import React from "react";
 import AboutHero from "@/components/about/AboutHero";
 import Mission from "@/components/about/Mission";
 import Building from "@/components/about/Building";
 import CTA from "@/components/home/CTA";
 import Team from "@/components/about/Team";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | EEN Consulting",
+  title: "About EEN Consulting | Sustainability Engineers, Lagos Nigeria",
   description:
-    "Meet the team leading Nigeria's move to sustainable buildings: certified EDGE experts delivering energy and water efficiency for homes, offices, schools and hospitals.",
+    "Meet the certified EDGE experts behind EEN Consulting. Energy efficiency consulting and green building implementation for Nigeria's built environment since 2016.",
 };
 
 function page() {
